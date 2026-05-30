@@ -25,7 +25,7 @@ enableRobotsTXT = true
   author      = "cloudmato.com"
 
   [params.theme_config]
-    appearance  = "matrix"
+    appearance  = "light"
     date_format = "02 Jan 2006"
     tags        = true
     post_limit  = 100
