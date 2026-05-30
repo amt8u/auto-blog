@@ -1,0 +1,15 @@
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+
+# Python
+publish/.venv/
+publish/.env
+__pycache__/
+*.pyc
+
+# Editor
+.DS_Store
+.idea/
+.vscode/

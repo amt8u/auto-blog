@@ -1,0 +1,22 @@
+baseURL      = "https://cloudmato.com/"
+languageCode = "en-us"
+title        = "Auto Blog"
+theme        = "hugo-bearblog"
+
+enableRobotsTXT = true
+
+[params]
+  description = "A research-driven blog where each article is written with cited web sources."
+  author      = "Auto Blog"
+  favicon     = "✍️"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  tag = "tags"
+
+[sitemap]
+  changefreq = "weekly"
+  priority   = 0.5
+  filename   = "sitemap.xml"
