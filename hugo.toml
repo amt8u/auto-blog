@@ -1,17 +1,60 @@
-baseURL      = "https://cloudmato.com/"
-languageCode = "en-us"
-title        = "Auto Blog"
-theme        = "hugo-bearblog"
+baseURL = "https://cloudmato.com/"
+title        = "cloudmato.com"
+theme        = "somestyleplease"
+
+defaultContentLanguage        = "en"
+defaultContentLanguageInSubdir = false
+disableLanguages               = ["pl"]
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight       = 1
+  [languages.hi]
+    languageName = "हिंदी"
+    title        = "cloudmato.com"
+    weight       = 2
 
 enableRobotsTXT = true
 
+[permalinks]
+  posts = "/posts/:slug/"
+
 [params]
   description = "A research-driven blog where each article is written with cited web sources."
-  author      = "Auto Blog"
-  favicon     = "✍️"
+  author      = "cloudmato.com"
 
-[markup.goldmark.renderer]
-  unsafe = true
+  [params.theme_config]
+    appearance  = "matrix"
+    date_format = "02 Jan 2006"
+    tags        = true
+    post_limit  = 100
+    favicon     = "favicon.ico"
+    copyright   = "cloudmato.com"
+
+  [params.homepage]
+    [[params.homepage.blocks]]
+      enabled       = true
+      type          = "all"
+      title_key     = "allPostsTitle"
+      limit         = 100
+      show_more_key = "showMoreAll"
+      show_more_url = "/posts"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.parser.attribute]
+    block = true
+    title = true
+  [markup.highlight]
+    codeFences = true
+    noClasses  = true
+    style      = "rrt"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel   = 3
+    ordered    = false
 
 [taxonomies]
   tag = "tags"

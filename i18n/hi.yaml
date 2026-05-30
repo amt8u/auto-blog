@@ -1,0 +1,20 @@
+general:
+  back_home_text: "↩︎ होमपेज पर वापस जाएं"
+  categories: "श्रेणियां:"
+  tags: "टैग:"
+  intro: "परिचय"
+
+homepage:
+  intro: "cloudmato.com पर हर लेख लाइव वेब स्रोतों से शोध करके  लिखा जाता है — बिना किसी भराव के, सीधे तथ्य।"
+  moreintro: "नीचे सभी लेख देखें, या [कोई विषय सुझाएं](mailto:amiit8@gmail.com)।"
+  footer: "© cloudmato.com — शोध-आधारित लेखन।"
+
+rss:
+  rss_title: "ऑटो ब्लॉग"
+  rss_description: "शोध-आधारित लेख, हिंदी में।"
+
+allPostsTitle: "सभी लेख:"
+showMoreAll: "सभी लेख देखें"
+categoryTitle: "श्रेणी में लेख: {{ . }}"
+showMoreCategory: "इस श्रेणी से और देखें"
+showMoreDefault: "इस श्रेणी से और देखें"

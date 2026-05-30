@@ -1,9 +1,12 @@
 """Local-only publisher: Flask form -> Claude (streaming + web_search) -> Markdown -> git.
 
 Run:
-    publish/.venv/bin/python publish/publish.py
+    publish/api-key/.venv/bin/python publish/api-key/publish.py
 
 Opens http://localhost:5000 — paste a topic, click publish. Progress streams live.
+
+Requires an Anthropic API key in publish/api-key/.env:
+    ANTHROPIC_API_KEY=sk-ant-...
 """
 from __future__ import annotations
 
@@ -20,7 +23,7 @@ from flask import Flask, Response, render_template_string, request
 
 from prompts import SYSTEM_PROMPT, user_prompt
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 POSTS_DIR = REPO_ROOT / "content" / "posts"
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 4096

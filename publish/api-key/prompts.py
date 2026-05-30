@@ -19,13 +19,12 @@ article". Do NOT add any trailing commentary after the ## Sources list. Schema:
 title       = "Concise, SEO-friendly title (≤ 65 chars)"
 description = "Meta description, 140-160 chars, hooks the reader and includes the primary keyword"
 date        = "<ISO 8601 datetime with timezone, provided by user>"
-slug        = "kebab-case-url-slug"
-tags        = ["tag1", "tag2", "tag3"]
-keywords    = ["primary keyword", "secondary keyword", "..."]
-canonical   = "/posts/<slug>/"
+slug          = "kebab-case-url-slug"
+tags          = ["tag1", "tag2", "tag3"]
+keywords      = ["primary keyword", "secondary keyword", "..."]
+canonical     = "/posts/<slug>/"
+feature_image = "<direct URL to a relevant, freely-available image, or omit this line if none found>"
 +++
-
-# <Article title — same as front matter title>
 
 <Lead paragraph: 2-3 sentences that hook the reader and state the article's value.>
 

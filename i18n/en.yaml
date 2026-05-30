@@ -1,0 +1,30 @@
+general:
+  back_home_text: "↩︎ back to homepage"
+  categories: "categories:"
+  tags: "tags:"
+  intro: "Intro1."
+  
+  
+homepage:
+  intro: "Every article on cloudmato.com is researched with live web sources — no filler, no fluff."
+  moreintro: "Pick a topic below, or [suggest one](mailto:cloudmato@gmail.com)."
+  footer: "© cloudmato.com — research-driven writing, powered by a developer's manual efforts."
+
+# Category page description
+categories:
+  tech: "Posts about technology"
+  hobby: "Here are posts about my hobby"
+
+# RSS feed description
+rss:
+  rss_title: "My website name"
+  rss_description: "RSS description."
+
+# Translation homepage posts list
+allPostsTitle: "Posts:"
+showMoreAll: "See all posts"
+categoryTitle: "Posts in category: {{ . }}"
+showMoreCategory: "See more from this category"
+showMoreTech: "More about technology"
+showMoreHobby: "Show all DIY projects"
+showMoreDefault: "See more from this category"
