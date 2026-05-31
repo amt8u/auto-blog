@@ -1,0 +1,23 @@
+[[navbar]]
+  identifier = "about"
+  name       = "About"
+  url        = "/pages/about/"
+  weight     = 1
+
+[[navbar]]
+  identifier = "services"
+  name       = "Services"
+  url        = "/pages/services/"
+  weight     = 2
+
+[[navbar]]
+  identifier = "themes"
+  name       = "Themes"
+  url        = "/pages/themes/"
+  weight     = 3
+
+[[navbar]]
+  identifier = "blogs"
+  name       = "Blog"
+  url        = "/posts/"
+  weight     = 4

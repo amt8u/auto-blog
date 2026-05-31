@@ -1,0 +1,23 @@
+[[navbar]]
+  identifier = "about"
+  name       = "हमारे बारे में"
+  url        = "/hi/pages/about/"
+  weight     = 1
+
+[[navbar]]
+  identifier = "services"
+  name       = "सेवाएं"
+  url        = "/hi/pages/services/"
+  weight     = 2
+
+[[navbar]]
+  identifier = "themes"
+  name       = "थीम्स"
+  url        = "/hi/pages/themes/"
+  weight     = 3
+
+[[navbar]]
+  identifier = "blogs"
+  name       = "ब्लॉग"
+  url        = "/hi/posts/"
+  weight     = 4

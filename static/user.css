@@ -35,6 +35,16 @@
   margin-bottom: 1.5rem;
 }
 
+/* ── Nav: show full navbar at 768px+, hide hamburger at same point ──────── */
+@media screen and (min-width: 48rem) {
+  #header_navbar {
+    display: block !important;
+  }
+  #sidebar_btn {
+    display: none !important;
+  }
+}
+
 /* ── Mobile: stack image above content ─────────────────────────────────── */
 @media (max-width: 640px) {
   .postcard-item {

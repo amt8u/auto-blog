@@ -2,30 +2,56 @@
 {{ $pages := .pages }}
 
 <div class="postcard-layout content-margin">
-    {{ range ($ctx.Paginator).Pages }}
-        <a href="{{ .Permalink }}">
-            <div class="postcard-item">
-                {{ $img := .Params.feature_image | default .Site.Params.default_feature_image }}
-                {{ with $img }}
-                <div class="postcard-image">
-                    <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+    {{ if $pages }}
+        {{ range $pages }}
+            <a href="{{ .Permalink }}">
+                <div class="postcard-item">
+                    {{ $img := .Params.feature_image | default .Site.Params.default_feature_image }}
+                    {{ with $img }}
+                    <div class="postcard-image">
+                        <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+                    </div>
+                    {{ end }}
+                    <div class="postcard-body">
+                        <div class="postcard-title">
+                            <span>{{ .Title }}</span>
+                        </div>
+                        <div class="postcard-summary">
+                            <span>{{ .Summary | plainify }}</span>
+                        </div>
+                        <div class="postcard-metadata">
+                            <span>{{ .Date.Format "2006/01/02" }} · {{ template "breadcrumbtext" (dict "p1" .Page.Parent) }}</span>
+                        </div>
+                    </div>
                 </div>
-                {{ end }}
-                <div class="postcard-body">
-                    <div class="postcard-title">
-                        <span>{{ .Title }}</span>
+            </a>
+        {{ end }}
+    {{ else }}
+        {{ range ($ctx.Paginator).Pages }}
+            <a href="{{ .Permalink }}">
+                <div class="postcard-item">
+                    {{ $img := .Params.feature_image | default .Site.Params.default_feature_image }}
+                    {{ with $img }}
+                    <div class="postcard-image">
+                        <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
                     </div>
-                    <div class="postcard-summary">
-                        <span>{{ .Summary | plainify }}</span>
-                    </div>
-                    <div class="postcard-metadata">
-                        <span>{{ .Date.Format "2006/01/02" }} · {{ template "breadcrumbtext" (dict "p1" .Page.Parent) }}</span>
+                    {{ end }}
+                    <div class="postcard-body">
+                        <div class="postcard-title">
+                            <span>{{ .Title }}</span>
+                        </div>
+                        <div class="postcard-summary">
+                            <span>{{ .Summary | plainify }}</span>
+                        </div>
+                        <div class="postcard-metadata">
+                            <span>{{ .Date.Format "2006/01/02" }} · {{ template "breadcrumbtext" (dict "p1" .Page.Parent) }}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        {{ end }}
+        {{ partial "pagination.html" $ctx }}
     {{ end }}
-    {{ partial "pagination.html" $ctx }}
 </div>
 
 {{ define "breadcrumbtext" }}

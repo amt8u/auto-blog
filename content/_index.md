@@ -1,11 +1,7 @@
 +++
 title = "Home"
-menu  = "main"
-weight = 1
 +++
 
-# Auto Blog
+Every article on cloudmato.com is researched with live web sources — no filler, no fluff.
 
-A research-driven blog. Each article is generated from a topic prompt and cites real web sources.
-
-Browse the [Posts](/posts/).
+Pick a topic below, or [suggest one](mailto:cloudmato@gmail.com).

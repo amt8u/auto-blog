@@ -1,0 +1,12 @@
+{{ define "content" }}
+
+{{ if .Content }}
+<div class="content-margin homepage-intro">
+    {{- partial "content.html" (dict "ctx" . "content" .Content) -}}
+</div>
+{{ end }}
+
+{{ $posts := where .Site.RegularPages "Section" "posts" | first 20 }}
+{{ partial "postcard/layout.html" (dict "pages" $posts "ctx" .) }}
+
+{{ end }}
