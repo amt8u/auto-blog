@@ -25,9 +25,15 @@ from prompts import SYSTEM_PROMPT, user_prompt
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 POSTS_DIR = REPO_ROOT / "content" / "posts"
+IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
 MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 4096
+MAX_TOKENS = 8096
 MAX_SEARCHES = 5
+
+SVG_BLOCK_RE = re.compile(
+    r'<!-- SVG_FILE: ([^\n]+?\.svg) -->\s*\n(<svg[\s\S]+?</svg>)\s*\n<!-- /SVG_FILE -->',
+    re.DOTALL,
+)
 
 load_dotenv(Path(__file__).parent / ".env")
 client = Anthropic()
@@ -73,21 +79,46 @@ def parse_article(raw: str) -> tuple[str, str, str]:
     return slug, title, article
 
 
-def write_post(slug: str, body: str) -> Path:
+def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
+    """Replace SVG blocks with Markdown image references and save SVG files."""
+    img_dir = IMAGES_DIR / slug
+    saved: list[Path] = []
+
+    def replace(m: re.Match) -> str:
+        filename = m.group(1).strip()
+        svg_content = m.group(2).strip()
+        img_dir.mkdir(parents=True, exist_ok=True)
+        out_path = img_dir / filename
+        out_path.write_text(svg_content, encoding="utf-8")
+        saved.append(out_path)
+        alt = filename.rsplit(".", 1)[0].replace("-", " ").replace("_", " ")
+        return f"![{alt}](/images/posts/{slug}/{filename})"
+
+    cleaned = SVG_BLOCK_RE.sub(replace, body)
+    return cleaned, saved
+
+
+def write_post(slug: str, body: str) -> tuple[Path, list[Path]]:
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
+    body, svg_paths = extract_svgs(body, slug)
     path = POSTS_DIR / f"{datetime.now().strftime('%Y-%m-%d')}-{slug}.md"
     path.write_text(body, encoding="utf-8")
-    return path
+    return path, svg_paths
 
 
 # ---------- git ----------
 
-def git_publish(path: Path, title: str) -> tuple[str, str | None]:
+def git_publish(path: Path, title: str, svg_paths: list[Path] | None = None) -> tuple[str, str | None]:
     """Commit + push. Returns (sha, push_error_or_None)."""
     def run(*a: str, check: bool = True) -> subprocess.CompletedProcess:
         return subprocess.run(a, cwd=REPO_ROOT, check=check, capture_output=True, text=True)
 
     run("git", "add", str(path.relative_to(REPO_ROOT)))
+    if svg_paths:
+        slug = svg_paths[0].parent.name
+        img_dir = IMAGES_DIR / slug
+        if img_dir.exists():
+            run("git", "add", str(img_dir.relative_to(REPO_ROOT)))
     run("git", "commit", "-m", f"post: {title}")
     sha = run("git", "rev-parse", "HEAD").stdout.strip()
     push = run("git", "push", check=False)
@@ -192,11 +223,13 @@ def stream_generation(topic: str) -> Iterator[str]:
         yield sse("error", message=str(e))
         return
 
-    path = write_post(slug, body)
+    path, svg_paths = write_post(slug, body)
     yield sse("log", message=f"Wrote {path.relative_to(REPO_ROOT)}")
+    if svg_paths:
+        yield sse("log", message=f"Saved {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}")
 
     yield sse("log", message="Committing…")
-    sha, push_err = git_publish(path, title)
+    sha, push_err = git_publish(path, title, svg_paths=svg_paths)
     if push_err:
         yield sse("log", message=f"Local commit {sha[:8]} created. Push skipped: {push_err}")
     else:

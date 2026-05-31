@@ -22,11 +22,16 @@ from prompts import SYSTEM_PROMPT, user_prompt
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 POSTS_DIR = REPO_ROOT / "content" / "posts"
+IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
 
 FRONT_MATTER_RE = re.compile(r"\+\+\+\s*\n(.*?)\n\+\+\+\s*\n", re.DOTALL)
 CODE_FENCE_RE = re.compile(r"\A```(?:[\w-]+)?\s*\n(.*?)\n```\s*\Z", re.DOTALL)
 SLUG_RE = re.compile(r'^\s*slug\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
 TITLE_RE = re.compile(r'^\s*title\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
+SVG_BLOCK_RE = re.compile(
+    r'<!-- SVG_FILE: ([^\n]+?\.svg) -->\s*\n(<svg[\s\S]+?</svg>)\s*\n<!-- /SVG_FILE -->',
+    re.DOTALL,
+)
 
 
 # ---------- utilities ----------
@@ -100,6 +105,31 @@ def parse_article(raw: str) -> tuple[str, str, str]:
     return slug, title, article
 
 
+# ---------- SVG extraction ----------
+
+def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
+    """Replace <!-- SVG_FILE: name.svg -->...<svg>...</svg><!-- /SVG_FILE --> blocks.
+
+    Saves each SVG to static/images/posts/<slug>/name.svg and replaces the
+    block with a Markdown image reference. Returns (cleaned_body, saved_paths).
+    """
+    img_dir = IMAGES_DIR / slug
+    saved: list[Path] = []
+
+    def replace(m: re.Match) -> str:
+        filename = m.group(1).strip()
+        svg_content = m.group(2).strip()
+        img_dir.mkdir(parents=True, exist_ok=True)
+        out_path = img_dir / filename
+        out_path.write_text(svg_content, encoding="utf-8")
+        saved.append(out_path)
+        alt = filename.rsplit(".", 1)[0].replace("-", " ").replace("_", " ")
+        return f"![{alt}](/images/posts/{slug}/{filename})"
+
+    cleaned = SVG_BLOCK_RE.sub(replace, body)
+    return cleaned, saved
+
+
 # ---------- file writing ----------
 
 def write_post(slug: str, body: str, date_prefix: str, lang: str = "") -> Path:
@@ -112,11 +142,14 @@ def write_post(slug: str, body: str, date_prefix: str, lang: str = "") -> Path:
 
 # ---------- git ----------
 
-def git_publish(paths: list[Path], title: str) -> tuple[str, str | None]:
+def git_publish(paths: list[Path], title: str, extra_dirs: list[Path] | None = None) -> tuple[str, str | None]:
     def run(*a: str, check: bool = True) -> subprocess.CompletedProcess:
         return subprocess.run(a, cwd=REPO_ROOT, check=check, capture_output=True, text=True)
     for path in paths:
         run("git", "add", str(path.relative_to(REPO_ROOT)))
+    for d in (extra_dirs or []):
+        if d.exists():
+            run("git", "add", str(d.relative_to(REPO_ROOT)))
     run("git", "commit", "-m", f"post: {title}")
     sha = run("git", "rev-parse", "HEAD").stdout.strip()
     push = run("git", "push", check=False)
@@ -299,11 +332,16 @@ def main() -> None:
         print(f"\nParse failed: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Step 2: Feature image
+    # Step 2: Extract SVG diagrams
+    body, svg_paths = extract_svgs(body, slug)
+    if svg_paths:
+        print(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}", flush=True)
+
+    # Step 3: Feature image
     image_url = find_feature_image(title, claude_bin)
     body = inject_feature_image(body, image_url)
 
-    # Step 3: Translate to Hindi
+    # Step 4: Translate to Hindi
     hindi_body = translate_to_hindi(body, slug, claude_bin)
 
     # Write files
@@ -321,7 +359,8 @@ def main() -> None:
 
     # Commit and push everything in one commit
     print("Committing and pushing...", flush=True)
-    sha, push_err = git_publish(paths, title)
+    img_dir = IMAGES_DIR / slug if svg_paths else None
+    sha, push_err = git_publish(paths, title, extra_dirs=[img_dir] if img_dir else None)
     if push_err:
         print(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
     else:
