@@ -1,0 +1,26 @@
+[tags]
+other = "टैग"
+
+[recent_posts]
+other = "हाल के लेख"
+
+[toc]
+other = "विषय-सूची"
+
+[no_page_under_resources]
+other = "\"{{ .Params.resources }}\" फ़ोल्डर में कोई पृष्ठ नहीं मिला।"
+
+[resources_not_found]
+other = "संसाधन नहीं मिला।"
+
+[search]
+other = "लेख खोजें"
+
+[changelogs]
+other = "बदलाव लॉग"
+
+[dark_mode_btn_tooltip]
+other = "डार्क मोड पर स्विच करें"
+
+[light_mode_btn_tooltip]
+other = "लाइट मोड पर स्विच करें"

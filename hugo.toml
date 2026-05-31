@@ -1,45 +1,55 @@
 baseURL = "https://cloudmato.com/"
-title        = "cloudmato.com"
-theme        = "somestyleplease"
+title   = "cloudmato.com"
+theme   = "hugo-theme-monochrome"
 
 defaultContentLanguage        = "en"
 defaultContentLanguageInSubdir = false
-disableLanguages               = ["pl"]
+
+enableEmoji     = true
+enableRobotsTXT = true
+paginate        = 10
 
 [languages]
   [languages.en]
-    languageName = "English"
-    weight       = 1
+    label  = "English"
+    weight = 1
   [languages.hi]
-    languageName = "हिंदी"
-    title        = "cloudmato.com"
-    weight       = 2
-
-enableRobotsTXT = true
+    label  = "हिंदी"
+    title  = "cloudmato.com"
+    weight = 2
 
 [permalinks]
   posts = "/posts/:slug/"
 
 [params]
-  description = "A research-driven blog where each article is written with cited web sources."
-  author      = "cloudmato.com"
+  navbar_title          = "cloudmato.com"
+  hide_navbar_on_scroll = false
+  footer                = "© cloudmato.com — research-driven writing."
+  color_scheme          = "light"
+  navbar_width          = "wide"
+  navbar_show_all_languages = true
 
-  [params.theme_config]
-    appearance  = "light"
-    date_format = "02 Jan 2006"
-    tags        = true
-    post_limit  = 100
-    favicon     = "favicon.ico"
-    copyright   = "cloudmato.com"
+  [params.author]
+    name = "cloudmato.com"
 
-  [params.homepage]
-    [[params.homepage.blocks]]
-      enabled       = true
-      type          = "all"
-      title_key     = "allPostsTitle"
-      limit         = 100
-      show_more_key = "showMoreAll"
-      show_more_url = "/posts"
+  # Features
+  enable_zooming_js    = true
+  enable_header_anchor = true
+  enable_toc           = true
+  enable_site_search   = true
+  enable_math          = false
+  enable_open_graph    = true
+  enable_twitter_cards = true
+
+  # List layout
+  enable_group_by_year = true
+  enable_show_date     = true
+  enable_pagination    = false
+
+  # Syntax highlight
+  syntax_highlight_lib              = "prism"
+  enable_prism_copy_to_clipboard    = true
+  enable_prism_show_line_number     = false
 
 [markup]
   [markup.goldmark.renderer]
@@ -57,7 +67,9 @@ enableRobotsTXT = true
     ordered    = false
 
 [taxonomies]
-  tag = "tags"
+  tag      = "tags"
+  category = "categories"
+  series   = "series"
 
 [sitemap]
   changefreq = "weekly"
