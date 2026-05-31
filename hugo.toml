@@ -28,14 +28,14 @@ paginate        = 10
   color_scheme          = "light"
   navbar_width          = "wide"
   navbar_show_all_languages = true
-
-  [params.author]
-    name = "cloudmato.com"
+  author                    = {name = "cloudmato.com"}
+  default_feature_image     = "/images/default-feature.svg"
 
   # Features
   enable_zooming_js    = true
   enable_header_anchor = true
   enable_toc           = true
+  toc_position         = "right"
   enable_site_search   = true
   enable_math          = false
   enable_open_graph    = true

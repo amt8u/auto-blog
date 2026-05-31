@@ -1,0 +1,26 @@
+{{- define "content" -}}
+
+{{ if and (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") (.Store.Get "params").enable_toc }}
+    {{ $toc_position := (.Store.Get "params").toc_position }}
+    {{ if eq $toc_position "right" }}
+        {{ partial "fixed-toc.html" (dict "context" . "position" $toc_position) }}
+    {{ else if eq $toc_position "top" }}
+        {{ $enable_collapsible_toc := (.Store.Get "params").enable_collapsible_toc }}
+        {{ partial "collapsible-menu.html" (dict "type" "toc" "context" . "enable" $enable_collapsible_toc) }}
+    {{ end }}
+{{ end }}
+
+{{ $img := .Params.feature_image | default .Site.Params.default_feature_image }}
+{{ with $img }}
+<div class="content-margin">
+    <img src="{{ . }}" alt="{{ $.Title }}" class="feature-image" loading="lazy">
+</div>
+{{ end }}
+
+{{ if .Content }}
+    <div class="content-margin">
+        {{- partial "content.html" (dict "ctx" . "content" .Content) -}}
+    </div>
+{{ end }}
+
+{{- end -}}
