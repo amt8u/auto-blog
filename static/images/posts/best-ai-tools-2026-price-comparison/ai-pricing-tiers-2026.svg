@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420">
+  <!-- Background -->
+  <rect width="700" height="420" fill="white"/>
+  <!-- Title -->
+  <text x="350" y="32" font-family="sans-serif" font-size="15" font-weight="bold" fill="#333333" text-anchor="middle">AI Tool Pricing Tiers — 2026</text>
+  <!-- Tier: Free -->
+  <rect x="20" y="55" width="660" height="54" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="36" y="78" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">FREE  $0/mo</text>
+  <text x="36" y="97" font-family="sans-serif" font-size="11" fill="#555555">ChatGPT Free · Claude Free · Gemini Free · Copilot Free · Perplexity Free · Grok Free · Meta AI</text>
+  <!-- Tier: Budget -->
+  <rect x="20" y="120" width="660" height="54" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="36" y="143" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">BUDGET  $7–$20/mo</text>
+  <text x="36" y="162" font-family="sans-serif" font-size="11" fill="#555555">Wordtune $7 · ChatGPT Go $8 · Grammarly $12 · Writesonic $13–$16 · Midjourney Basic $10 · SuperGrok Lite $10</text>
+  <!-- Tier: Standard -->
+  <rect x="20" y="185" width="660" height="54" rx="6" fill="#dce8f7" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="36" y="208" font-family="sans-serif" font-size="12" font-weight="bold" fill="#4a90e2">STANDARD  $20–$40/mo  ★ Most Popular</text>
+  <text x="36" y="227" font-family="sans-serif" font-size="11" fill="#333333">ChatGPT Plus $20 · Claude Pro $20 · Gemini AI Pro $20 · Copilot Pro $20 · Perplexity Pro $20 · SuperGrok $30 · Midjourney Std $30</text>
+  <!-- Tier: Pro -->
+  <rect x="20" y="250" width="660" height="54" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="36" y="273" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">PRO  $49–$125/mo</text>
+  <text x="36" y="292" font-family="sans-serif" font-size="11" fill="#555555">Jasper Creator $49 · Midjourney Pro $60 · ChatGPT Pro $100 · Claude Max $100 · Gemini AI Ultra $100 · Jasper Teams $125</text>
+  <!-- Tier: Ultra -->
+  <rect x="20" y="315" width="660" height="54" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="36" y="338" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">ULTRA  $120–$300/mo</text>
+  <text x="36" y="357" font-family="sans-serif" font-size="11" fill="#555555">Midjourney Mega $120 · ChatGPT Pro $200 · Claude Max $200 · Gemini AI Ultra $250 · SuperGrok Heavy $300</text>
+  <!-- Legend note -->
+  <text x="350" y="400" font-family="sans-serif" font-size="10" fill="#888888" text-anchor="middle">Prices in USD/month as of May 2026 · Annual billing may reduce cost 15–20%</text>
+</svg>
