@@ -3,7 +3,7 @@ title       = "MacBook की समस्याएं और जहाँ Windo
 description = "ओवरहीटिंग, बंद हार्डवेयर, गेमिंग की कमी और सीमित पोर्ट्स — जानिए MacBook की सबसे बड़ी खामियां और क्यों Windows 2025 में आगे है।"
 date        = "2026-05-28T21:06:10+05:30"
 slug        = "macbook-problems-where-windows-is-better"
-tags        = ["MacBook", "Windows", "Mac बनाम PC", "लैपटॉप तुलना", "टेक्नोलॉजी"]
+tags        = ["MacBook", "Windows", "Mac vs PC", "laptop comparison", "tech"]
 keywords    = ["MacBook समस्याएं", "Windows Mac से बेहतर", "Mac बनाम Windows 2025", "MacBook के नुकसान", "Windows क्यों बेहतर है"]
 canonical   = "/hi/posts/macbook-problems-where-windows-is-better/"
 feature_image = "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200"

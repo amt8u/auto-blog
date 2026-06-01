@@ -3,7 +3,7 @@ title       = "भारत में अपने फोन को स्कै
 description = "भारत ने 2025 में साइबर अपराध से ₹22,495 करोड़ गंवाए। जानें कैसे अपने फोन को सुरक्षित करें, स्कैमर्स को ब्लॉक करें, और अपने UPI व बैंक खातों को आज ही सुरक्षित करें।"
 date        = "2026-06-01T09:42:36+05:30"
 slug          = "how-to-secure-your-phone-from-scams-india"
-tags          = ["साइबर सुरक्षा", "फोन सुरक्षा", "UPI धोखाधड़ी", "भारत", "स्कैम से बचाव"]
+tags          = ["cyber security", "phone safety", "UPI fraud", "India", "scam prevention"]
 keywords      = ["भारत में फोन कैसे सुरक्षित करें", "भारत में फोन स्कैम 2026", "UPI धोखाधड़ी से बचाव", "भारत में OTP धोखाधड़ी", "डिजिटल अरेस्ट स्कैम", "भारत में मोबाइल सुरक्षा"]
 canonical     = "/hi/posts/how-to-secure-your-phone-from-scams-india/"
 feature_image = "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?fit=crop&w=1200&q=80"

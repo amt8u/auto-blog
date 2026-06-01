@@ -3,7 +3,7 @@ title       = "thisisunsafe: Chrome का गुप्त SSL बायपा�
 description = "'thisisunsafe' टाइप करने से Chrome की SSL सर्टिफिकेट चेतावनियाँ कैसे बायपास होती हैं, इसका इतिहास, डेवलपर के वैध उपयोग, और इससे जुड़े गंभीर सुरक्षा जोखिमों की जानकारी लें।"
 date        = "2026-05-31T08:19:24+05:30"
 slug          = "thisisunsafe-chrome-ssl-bypass-explained"
-tags          = ["Chrome", "SSL", "सुरक्षा", "वेब डेवलपमेंट", "HTTPS"]
+tags          = ["Chrome", "SSL", "Security", "Web Development", "HTTPS"]
 keywords      = ["thisisunsafe", "Chrome SSL बायपास", "ERR_CERT_INVALID बायपास", "Chrome सुरक्षा चेतावनी बायपास", "HSTS बायपास Chrome"]
 canonical     = "/hi/posts/thisisunsafe-chrome-ssl-bypass-explained/"
 +++

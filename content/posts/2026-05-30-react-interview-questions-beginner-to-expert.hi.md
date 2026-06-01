@@ -3,7 +3,7 @@ title       = "React इंटरव्यू प्रश्न: शुरु�
 description = "20+ React इंटरव्यू प्रश्नों में महारत हासिल करें — hooks, Fiber, React 19 की नई सुविधाएं और वरिष्ठ स्तर के आर्किटेक्चर पैटर्न।"
 date        = "2026-05-30T17:26:46+05:30"
 slug          = "react-interview-questions-beginner-to-expert"
-tags          = ["React", "फ्रंटएंड इंटरव्यू", "JavaScript", "React 19", "वेब डेवलपमेंट"]
+tags          = ["React", "Frontend Interview", "JavaScript", "React 19", "Web Development"]
 keywords      = ["React इंटरव्यू प्रश्न", "React hooks इंटरव्यू", "React 19 इंटरव्यू", "फ्रंटएंड डेवलपर इंटरव्यू", "एडवांस्ड React प्रश्न"]
 canonical     = "/hi/posts/react-interview-questions-beginner-to-expert/"
 feature_image = "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200"

@@ -3,7 +3,7 @@ title       = "Claude सब्सक्रिप्शन बनाम Anthropi
 description = "Claude सब्सक्रिप्शन और Anthropic API key में उलझन है? यह गाइड 2026 में कीमत, उपयोग के मामले और सही विकल्प चुनने का तरीका बताती है।"
 date        = "2026-05-30T16:10:06+05:30"
 slug        = "claude-subscription-vs-anthropic-api-key"
-tags        = ["Claude AI", "Anthropic", "AI टूल्स", "डेवलपर टूल्स", "API"]
+tags        = ["Claude AI", "Anthropic", "AI Tools", "Developer Tools", "API"]
 keywords    = ["Claude सब्सक्रिप्शन बनाम API", "Anthropic API key", "Claude Pro बनाम API", "Claude API pricing", "Anthropic Console"]
 canonical     = "/hi/posts/claude-subscription-vs-anthropic-api-key/"
 feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200"

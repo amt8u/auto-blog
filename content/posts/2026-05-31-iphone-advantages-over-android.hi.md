@@ -3,7 +3,7 @@ title       = "iPhone बनाम Android: iPhone चुनने के 6 प�
 description = "2026 में Android पर iPhone के शीर्ष फायदे जानें — अतुलनीय प्राइवेसी डिफ़ॉल्ट और निर्बाध इकोसिस्टम से लेकर बेहतर रीसेल वैल्यू और दीर्घकालिक अपडेट तक।"
 date        = "2026-05-31T12:43:51+05:30"
 slug          = "iphone-advantages-over-android"
-tags          = ["iPhone", "Android", "स्मार्टफ़ोन", "Apple", "iOS"]
+tags          = ["iPhone", "Android", "Smartphone", "Apple", "iOS"]
 keywords      = ["Android पर iPhone के फायदे", "iPhone बनाम Android", "iPhone Android से बेहतर क्यों है", "iOS बनाम Android 2026"]
 canonical     = "/hi/posts/iphone-advantages-over-android/"
 feature_image = "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80"
