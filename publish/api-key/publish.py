@@ -26,6 +26,15 @@ from prompts import SYSTEM_PROMPT, user_prompt
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 POSTS_DIR = REPO_ROOT / "content" / "posts"
 IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
+STYLE_FILE = REPO_ROOT / "publish" / "writing-style.md"
+
+
+def load_system_prompt() -> str:
+    """Return SYSTEM_PROMPT with writing-style guide appended if the file exists."""
+    style = ""
+    if STYLE_FILE.exists():
+        style = "\n\n" + STYLE_FILE.read_text(encoding="utf-8")
+    return SYSTEM_PROMPT + style
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 8096
 MAX_SEARCHES = 5
@@ -147,7 +156,7 @@ def stream_generation(topic: str) -> Iterator[str]:
         with client.messages.stream(
             model=MODEL,
             max_tokens=MAX_TOKENS,
-            system=SYSTEM_PROMPT,
+            system=load_system_prompt(),
             tools=[{
                 "type": "web_search_20250305",
                 "name": "web_search",

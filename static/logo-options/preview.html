@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cloudmato — Logo Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+  body { font: 15px/1.6 system-ui, sans-serif; background: #f8f8f8; margin: 0; padding: 2rem; }
+  h1 { font-size: 1.1rem; color: #555; margin: 0 0 2rem; font-weight: 400; }
+  .options { display: flex; flex-direction: column; gap: 2rem; }
+  .card {
+    background: white; border-radius: 12px; padding: 2rem 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08); display: flex; gap: 3rem; align-items: center;
+  }
+  .label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .75rem; }
+  .name { font-weight: 600; font-size: 1rem; margin-bottom: .25rem; }
+  .desc { font-size: 0.85rem; color: #666; max-width: 320px; }
+  .preview { display: flex; gap: 3rem; align-items: center; }
+  .on-light, .on-dark { padding: 1rem 1.5rem; border-radius: 8px; }
+  .on-dark { background: #1a1a2e; }
+  .badge { font-size: 0.7rem; color: #aaa; margin-top: .4rem; text-align: center; }
+</style>
+</head>
+<body>
+<h1>cloudmato.com — Logo Concepts (Cloud + Tomato)</h1>
+<div class="options">
+
+  <!-- OPTION A -->
+  <div class="card">
+    <div>
+      <div class="label">Option A</div>
+      <div class="name">Tomato-Red Cloud</div>
+      <div class="desc">Classic cloud shape filled tomato-red with a green calyx leaf on top. The cloud form says "cloud computing", the tomato-red + leaf says "tomato". Simple and instantly readable at small sizes.</div>
+    </div>
+    <div>
+      <div class="preview">
+        <div>
+          <div class="on-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <!-- Icon: red cloud with green calyx -->
+              <circle cx="9" cy="22" r="7" fill="#dc2626"/>
+              <circle cx="17" cy="16" r="9" fill="#dc2626"/>
+              <circle cx="26" cy="19" r="8" fill="#dc2626"/>
+              <rect x="2" y="22" width="32" height="9" rx="1" fill="#dc2626"/>
+              <!-- Green calyx -->
+              <path d="M14 7 Q17 2 20 7 Q17 5 14 7Z" fill="#16a34a"/>
+              <path d="M17 3 L17 8" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Wordmark -->
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#dc2626">cloud</text>
+              <text x="111" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#991b1b">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Light bg</div>
+        </div>
+        <div>
+          <div class="on-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <circle cx="9" cy="22" r="7" fill="#ef4444"/>
+              <circle cx="17" cy="16" r="9" fill="#ef4444"/>
+              <circle cx="26" cy="19" r="8" fill="#ef4444"/>
+              <rect x="2" y="22" width="32" height="9" rx="1" fill="#ef4444"/>
+              <path d="M14 7 Q17 2 20 7 Q17 5 14 7Z" fill="#4ade80"/>
+              <path d="M17 3 L17 8" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#ef4444">cloud</text>
+              <text x="111" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#fca5a5">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Dark bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card">
+    <div>
+      <div class="label">Option B</div>
+      <div class="name">Cloud Blue + Tomato Split</div>
+      <div class="desc">A rounded-square icon split diagonally — left half sky-blue cloud bumps, right half tomato-red. The wordmark mirrors: "cloud" in blue, "mato" in red. Clean and modern.</div>
+    </div>
+    <div>
+      <div class="preview">
+        <div>
+          <div class="on-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 190 34" overflow="visible">
+              <defs>
+                <clipPath id="left-b"><rect x="0" y="0" width="17" height="34" rx="7"/></clipPath>
+                <clipPath id="right-b"><rect x="17" y="0" width="17" height="34" rx="7"/></clipPath>
+                <clipPath id="icon-b"><rect x="0" y="0" width="34" height="34" rx="7"/></clipPath>
+              </defs>
+              <!-- Icon box -->
+              <rect width="34" height="34" rx="7" fill="#e2e8f0"/>
+              <!-- Left half: blue -->
+              <rect width="17" height="34" fill="#2563eb" clip-path="url(#icon-b)"/>
+              <!-- Right half: red -->
+              <rect x="17" width="17" height="34" fill="#dc2626" clip-path="url(#icon-b)"/>
+              <!-- White cloud on top -->
+              <circle cx="9" cy="21" r="5.5" fill="white" opacity=".9"/>
+              <circle cx="17" cy="16" r="7" fill="white" opacity=".9"/>
+              <circle cx="25" cy="19" r="6" fill="white" opacity=".9"/>
+              <rect x="3.5" y="21" width="27" height="8" rx="1" fill="white" opacity=".9"/>
+              <!-- Green leaf -->
+              <path d="M14 8 Q17 3 20 8 Q17 6 14 8Z" fill="#16a34a"/>
+              <path d="M17 4 L17 9" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Wordmark -->
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#2563eb">cloud</text>
+              <text x="113" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#dc2626">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Light bg</div>
+        </div>
+        <div>
+          <div class="on-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 190 34" overflow="visible">
+              <defs><clipPath id="icon-bd"><rect x="0" y="0" width="34" height="34" rx="7"/></clipPath></defs>
+              <rect width="17" height="34" fill="#3b82f6" clip-path="url(#icon-bd)"/>
+              <rect x="17" width="17" height="34" fill="#ef4444" clip-path="url(#icon-bd)"/>
+              <circle cx="9" cy="21" r="5.5" fill="white" opacity=".85"/>
+              <circle cx="17" cy="16" r="7" fill="white" opacity=".85"/>
+              <circle cx="25" cy="19" r="6" fill="white" opacity=".85"/>
+              <rect x="3.5" y="21" width="27" height="8" rx="1" fill="white" opacity=".85"/>
+              <path d="M14 8 Q17 3 20 8 Q17 6 14 8Z" fill="#4ade80"/>
+              <path d="M17 4 L17 9" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#93c5fd">cloud</text>
+              <text x="113" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#fca5a5">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Dark bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card">
+    <div>
+      <div class="label">Option C</div>
+      <div class="name">Tomato with Cloud Profile</div>
+      <div class="desc">A tomato silhouette where the top edge is made of cloud-like bumps instead of a smooth curve. Tomato-red body, green calyx. The shape reads as both at once. Most creative/unique of the five.</div>
+    </div>
+    <div>
+      <div class="preview">
+        <div>
+          <div class="on-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <!-- Tomato body with cloud bumps on top -->
+              <path d="
+                M4,22
+                C4,29 8,33 17,33
+                C26,33 30,29 30,22
+                C30,18 28,15 26,14
+                A5,5 0 1,0 21,10
+                A6,6 0 1,0 13,10
+                A5,5 0 1,0 8,14
+                C6,15 4,18 4,22Z
+              " fill="#dc2626"/>
+              <!-- Green calyx -->
+              <path d="M12 10 Q10 4 15 2 Q14 7 12 10Z" fill="#16a34a"/>
+              <path d="M22 10 Q24 4 19 2 Q20 7 22 10Z" fill="#16a34a"/>
+              <path d="M17 9 L17 2" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Seeds / detail -->
+              <ellipse cx="13" cy="22" rx="2" ry="3" fill="#b91c1c" opacity=".5"/>
+              <ellipse cx="21" cy="22" rx="2" ry="3" fill="#b91c1c" opacity=".5"/>
+              <!-- Wordmark -->
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#dc2626">cloud</text>
+              <text x="111" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#991b1b">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Light bg</div>
+        </div>
+        <div>
+          <div class="on-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <path d="
+                M4,22
+                C4,29 8,33 17,33
+                C26,33 30,29 30,22
+                C30,18 28,15 26,14
+                A5,5 0 1,0 21,10
+                A6,6 0 1,0 13,10
+                A5,5 0 1,0 8,14
+                C6,15 4,18 4,22Z
+              " fill="#ef4444"/>
+              <path d="M12 10 Q10 4 15 2 Q14 7 12 10Z" fill="#4ade80"/>
+              <path d="M22 10 Q24 4 19 2 Q20 7 22 10Z" fill="#4ade80"/>
+              <path d="M17 9 L17 2" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"/>
+              <ellipse cx="13" cy="22" rx="2" ry="3" fill="#b91c1c" opacity=".5"/>
+              <ellipse cx="21" cy="22" rx="2" ry="3" fill="#b91c1c" opacity=".5"/>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#ef4444">cloud</text>
+              <text x="111" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#fca5a5">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Dark bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION D -->
+  <div class="card">
+    <div>
+      <div class="label">Option D</div>
+      <div class="name">Cloud above Tomato (Stacked)</div>
+      <div class="desc">A compact stacked icon: a small blue cloud floats directly above a small tomato. Clean separation of the two concepts. More literal, easier to explain, very distinctive at small sizes.</div>
+    </div>
+    <div>
+      <div class="preview">
+        <div>
+          <div class="on-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <!-- Rounded square bg -->
+              <rect width="34" height="34" rx="7" fill="#f1f5f9"/>
+              <!-- Cloud (top) in blue -->
+              <circle cx="10" cy="13" r="4" fill="#2563eb"/>
+              <circle cx="17" cy="10" r="5" fill="#2563eb"/>
+              <circle cx="24" cy="13" r="4" fill="#2563eb"/>
+              <rect x="6" y="13" width="22" height="5" rx="1" fill="#2563eb"/>
+              <!-- Tomato (bottom) in red -->
+              <circle cx="17" cy="25" r="6" fill="#dc2626"/>
+              <!-- Tomato calyx -->
+              <path d="M14 19 Q12 15 17 14 Q16 17 14 19Z" fill="#16a34a"/>
+              <path d="M20 19 Q22 15 17 14 Q18 17 20 19Z" fill="#16a34a"/>
+              <!-- Wordmark -->
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#2563eb">cloud</text>
+              <text x="113" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#dc2626">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Light bg</div>
+        </div>
+        <div>
+          <div class="on-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <rect width="34" height="34" rx="7" fill="#1e293b"/>
+              <circle cx="10" cy="13" r="4" fill="#60a5fa"/>
+              <circle cx="17" cy="10" r="5" fill="#60a5fa"/>
+              <circle cx="24" cy="13" r="4" fill="#60a5fa"/>
+              <rect x="6" y="13" width="22" height="5" rx="1" fill="#60a5fa"/>
+              <circle cx="17" cy="25" r="6" fill="#ef4444"/>
+              <path d="M14 19 Q12 15 17 14 Q16 17 14 19Z" fill="#4ade80"/>
+              <path d="M20 19 Q22 15 17 14 Q18 17 20 19Z" fill="#4ade80"/>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#93c5fd">cloud</text>
+              <text x="113" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="#fca5a5">mato</text>
+            </svg>
+          </div>
+          <div class="badge">Dark bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION E -->
+  <div class="card">
+    <div>
+      <div class="label">Option E</div>
+      <div class="name">Gradient Cloud-Tomato</div>
+      <div class="desc">A single cloud shape with a gradient that transitions from sky blue (top-left) to tomato red (bottom-right). Green leaf at the top. One shape, both ideas. Polished and modern.</div>
+    </div>
+    <div>
+      <div class="preview">
+        <div>
+          <div class="on-light">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <defs>
+                <linearGradient id="cloud-tomato-e" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+              </defs>
+              <!-- Gradient cloud shape -->
+              <circle cx="8" cy="22" r="6" fill="url(#cloud-tomato-e)"/>
+              <circle cx="16" cy="16" r="8" fill="url(#cloud-tomato-e)"/>
+              <circle cx="25" cy="19" r="7" fill="url(#cloud-tomato-e)"/>
+              <rect x="2" y="22" width="30" height="8" rx="1" fill="url(#cloud-tomato-e)"/>
+              <!-- Green leaf -->
+              <path d="M13 8 Q16 2 19 8 Q16 6 13 8Z" fill="#16a34a"/>
+              <path d="M16 3 L16 9" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Wordmark gradient -->
+              <defs>
+                <linearGradient id="text-grad-e" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+              </defs>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="url(#text-grad-e)">cloudmato</text>
+            </svg>
+          </div>
+          <div class="badge">Light bg</div>
+        </div>
+        <div>
+          <div class="on-dark">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34" viewBox="0 0 185 34" overflow="visible">
+              <defs>
+                <linearGradient id="cloud-tomato-ed" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#ef4444"/>
+                </linearGradient>
+                <linearGradient id="text-grad-ed" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#93c5fd"/>
+                  <stop offset="100%" stop-color="#fca5a5"/>
+                </linearGradient>
+              </defs>
+              <circle cx="8" cy="22" r="6" fill="url(#cloud-tomato-ed)"/>
+              <circle cx="16" cy="16" r="8" fill="url(#cloud-tomato-ed)"/>
+              <circle cx="25" cy="19" r="7" fill="url(#cloud-tomato-ed)"/>
+              <rect x="2" y="22" width="30" height="8" rx="1" fill="url(#cloud-tomato-ed)"/>
+              <path d="M13 8 Q16 2 19 8 Q16 6 13 8Z" fill="#4ade80"/>
+              <path d="M16 3 L16 9" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+              <text x="44" y="25" font-family="'Space Grotesk', system-ui" font-size="20" font-weight="700" fill="url(#text-grad-ed)">cloudmato</text>
+            </svg>
+          </div>
+          <div class="badge">Dark bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

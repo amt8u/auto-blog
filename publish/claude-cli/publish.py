@@ -21,6 +21,15 @@ from pathlib import Path
 from prompts import SYSTEM_PROMPT, user_prompt
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+STYLE_FILE = REPO_ROOT / "publish" / "writing-style.md"
+
+
+def load_system_prompt() -> str:
+    """Return SYSTEM_PROMPT with writing-style guide appended if the file exists."""
+    style = ""
+    if STYLE_FILE.exists():
+        style = "\n\n" + STYLE_FILE.read_text(encoding="utf-8")
+    return SYSTEM_PROMPT + style
 POSTS_DIR = REPO_ROOT / "content" / "posts"
 IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
 
@@ -178,7 +187,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
     cmd = [
         claude_bin, "--print", "--verbose",
         "--output-format", "stream-json",
-        "--system-prompt", SYSTEM_PROMPT,
+        "--system-prompt", load_system_prompt(),
         "--allowedTools", "WebSearch,WebFetch",
         "--dangerously-skip-permissions",
         prompt,
