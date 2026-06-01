@@ -32,6 +32,7 @@ SVG_BLOCK_RE = re.compile(
     r'<!-- SVG_FILE: ([^\n]+?\.svg) -->\s*\n(<svg[\s\S]+?</svg>)\s*\n<!-- /SVG_FILE -->',
     re.DOTALL,
 )
+POST_ID_RE = re.compile(r'POST-(\d+)', re.IGNORECASE)
 
 
 # ---------- utilities ----------
@@ -50,6 +51,17 @@ def find_claude() -> str:
         "Cannot find the claude CLI.\n"
         "Install Claude Code from https://claude.ai/code and make sure it's on PATH."
     )
+
+
+def next_post_id() -> str:
+    """Scan existing posts for the highest POST-XXXX number and return the next one."""
+    max_num = 1011  # floor: never go below the existing series
+    if POSTS_DIR.exists():
+        for p in POSTS_DIR.iterdir():
+            m = POST_ID_RE.search(p.name)
+            if m:
+                max_num = max(max_num, int(m.group(1)))
+    return f"POST-{max_num + 1}"
 
 
 def slugify(text: str) -> str:
@@ -132,10 +144,10 @@ def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
 
 # ---------- file writing ----------
 
-def write_post(slug: str, body: str, date_prefix: str, lang: str = "") -> Path:
+def write_post(slug: str, body: str, date_prefix: str, post_id: str, lang: str = "") -> Path:
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     suffix = f".{lang}.md" if lang else ".md"
-    path = POSTS_DIR / f"{date_prefix}-{slug}{suffix}"
+    path = POSTS_DIR / f"{date_prefix}-{post_id}-{slug}{suffix}"
     path.write_text(body, encoding="utf-8")
     return path
 
@@ -172,7 +184,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
         prompt,
     ]
 
-    print(f"[1/3] Researching: {topic[:80]}", flush=True)
+    print(f"[1/5] Researching: {topic[:80]}", flush=True)
 
     proc = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=REPO_ROOT,
@@ -298,6 +310,40 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
     return result
 
 
+def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
+    """Translate article to Marathi. Returns translated body or None on failure."""
+    print("[5/5] Translating to Marathi...", flush=True)
+    prompt = (
+        "Translate this Hugo blog post to Marathi.\n\n"
+        "Rules:\n"
+        f'- Keep slug exactly as: "{slug}"\n'
+        f'- Change canonical to "/mr/posts/{slug}/"\n'
+        "- Translate title, description, and all body text to Marathi\n"
+        "- Keep tags in English (same values as the original)\n"
+        "- Keep date, feature_image, and all other non-text front matter fields unchanged\n"
+        "- Keep all Markdown formatting intact (## headings, **bold**, links, tables, `code`)\n"
+        "- Do NOT add an H1 heading in the body\n"
+        "- Return ONLY the translated document starting with +++, no preamble or explanation\n\n"
+        f"{body}"
+    )
+    try:
+        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=300)
+    except (RuntimeError, subprocess.TimeoutExpired) as e:
+        print(f"  Translation failed: {e}", flush=True)
+        return None
+
+    if result.startswith("```"):
+        lines = result.split("\n")
+        result = "\n".join(lines[1:-1]).strip()
+
+    if not result.startswith("+++"):
+        print("  Translation returned unexpected format, skipping.", flush=True)
+        return None
+
+    print("  Done.", flush=True)
+    return result
+
+
 # ---------- main ----------
 
 def main() -> None:
@@ -338,24 +384,36 @@ def main() -> None:
         print(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}", flush=True)
 
     # Step 3: Feature image
+    print("[2/5] Finding feature image...", flush=True)
     image_url = find_feature_image(title, claude_bin)
     body = inject_feature_image(body, image_url)
 
     # Step 4: Translate to Hindi
+    print("[3/5] Translating to Hindi...", flush=True)
     hindi_body = translate_to_hindi(body, slug, claude_bin)
+
+    # Step 5: Translate to Marathi
+    marathi_body = translate_to_marathi(body, slug, claude_bin)
 
     # Write files
     date_prefix = datetime.now().strftime("%Y-%m-%d")
+    post_id = next_post_id()
+    print(f"  Assigned: {post_id}", flush=True)
     paths: list[Path] = []
 
-    path_en = write_post(slug, body, date_prefix)
+    path_en = write_post(slug, body, date_prefix, post_id)
     paths.append(path_en)
     print(f"Written: {path_en.relative_to(REPO_ROOT)}")
 
     if hindi_body:
-        path_hi = write_post(slug, hindi_body, date_prefix, lang="hi")
+        path_hi = write_post(slug, hindi_body, date_prefix, post_id, lang="hi")
         paths.append(path_hi)
         print(f"Written: {path_hi.relative_to(REPO_ROOT)}")
+
+    if marathi_body:
+        path_mr = write_post(slug, marathi_body, date_prefix, post_id, lang="mr")
+        paths.append(path_mr)
+        print(f"Written: {path_mr.relative_to(REPO_ROOT)}")
 
     # Commit and push everything in one commit
     print("Committing and pushing...", flush=True)
@@ -364,10 +422,12 @@ def main() -> None:
     if push_err:
         print(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
     else:
-        print(f'Done! "{title}" pushed as commit {sha[:8]}.')
+        print(f'Done! "{title}" [{post_id}] pushed as commit {sha[:8]}.')
+        print(f"  EN: /posts/{slug}/")
         if hindi_body:
-            print(f"  EN: /posts/{slug}/")
             print(f"  HI: /hi/posts/{slug}/")
+        if marathi_body:
+            print(f"  MR: /mr/posts/{slug}/")
 
 
 if __name__ == "__main__":

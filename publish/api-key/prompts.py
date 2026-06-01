@@ -74,6 +74,12 @@ SVG DIAGRAMS — create a diagram when a visual genuinely adds understanding tha
 
 The publish script will extract each SVG block, save it as a file under
 static/images/posts/<slug>/, and replace the block with the correct Markdown image reference.
+
+FILE NAMING CONVENTION:
+Each article is saved as  YYYY-MM-DD-POST-XXXX-<slug>.md  where POST-XXXX is a unique
+sequential identifier (e.g. POST-1012). The script derives the next number automatically
+by scanning existing files. The same POST-XXXX prefix is used for all language versions
+(.hi.md and .mr.md) so every translation of an article shares one identifier.
 """
 
 
