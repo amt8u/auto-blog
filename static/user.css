@@ -19,7 +19,11 @@
 }
 
 .logo-wordmark {
-  fill: currentColor;
+  fill: #2563eb;
+}
+
+html[data-theme="dark"] .logo-wordmark {
+  fill: #93c5fd;
 }
 
 /* ── Netlify status badge ────────────────────────────────────────────────── */
