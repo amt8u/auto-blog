@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="260" viewBox="0 0 700 260">
+  <!-- Background -->
+  <rect width="700" height="260" fill="white"/>
+  <!-- Title -->
+  <text x="350" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Cloud Provider Infrastructure vs. Traditional VPS</text>
+
+  <!-- Cloud side -->
+  <rect x="30" y="50" width="290" height="180" rx="10" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="175" y="74" font-family="sans-serif" font-size="12" font-weight="bold" fill="#4a90e2" text-anchor="middle">☁ Cloud (AWS / Azure / GCP)</text>
+  <rect x="50" y="85" width="80" height="36" rx="6" fill="#4a90e2"/>
+  <text x="90" y="107" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Zone A</text>
+  <rect x="155" y="85" width="80" height="36" rx="6" fill="#4a90e2"/>
+  <text x="195" y="107" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Zone B</text>
+  <rect x="260" y="85" width="45" height="36" rx="6" fill="#4a90e2"/>
+  <text x="282" y="107" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Zone C</text>
+  <!-- Arrow between zones -->
+  <line x1="130" y1="103" x2="155" y2="103" stroke="#333333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="235" y1="103" x2="260" y2="103" stroke="#333333" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="175" y="148" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Auto-scaling · Load balancer</text>
+  <text x="175" y="164" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Managed DB · CDN · Serverless</text>
+  <text x="175" y="180" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Multi-region failover</text>
+  <text x="175" y="218" font-family="sans-serif" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">SLA: 99.99% uptime</text>
+
+  <!-- VPS side -->
+  <rect x="380" y="50" width="290" height="180" rx="10" fill="#f0f4f8" stroke="#333333" stroke-width="2"/>
+  <text x="525" y="74" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">🖥 VPS (DigitalOcean / Linode)</text>
+  <rect x="460" y="85" width="130" height="36" rx="6" fill="#333333"/>
+  <text x="525" y="107" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">Single Physical Host</text>
+  <text x="525" y="148" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Fixed CPU · Fixed RAM · Fixed disk</text>
+  <text x="525" y="164" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Root SSH access · You manage OS</text>
+  <text x="525" y="180" font-family="sans-serif" font-size="10" fill="#333333" text-anchor="middle">Manual upgrades · Flat monthly fee</text>
+  <text x="525" y="218" font-family="sans-serif" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">SLA: ~99.9% uptime</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#333333"/>
+    </marker>
+  </defs>
+</svg>
