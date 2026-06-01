@@ -1,0 +1,59 @@
+[[navbar]]
+  identifier = "about"
+  name       = "आमच्याबद्दल"
+  url        = "/mr/pages/about/"
+  weight     = 1
+
+[[navbar]]
+  identifier = "services"
+  name       = "सेवा"
+  url        = "/mr/pages/services/"
+  weight     = 2
+
+[[navbar]]
+  identifier = "themes"
+  name       = "थीम्स"
+  url        = "/mr/pages/themes/"
+  weight     = 3
+
+[[navbar]]
+  identifier = "apps"
+  name       = "ॲप्स"
+  url        = "/mr/pages/apps/"
+  weight     = 4
+
+[[navbar]]
+  identifier = "sponsors"
+  name       = "प्रायोजक"
+  url        = "/mr/pages/sponsors/"
+  weight     = 5
+
+[[navbar]]
+  identifier = "clients"
+  name       = "ग्राहक"
+  url        = "/mr/pages/clients/"
+  weight     = 6
+
+[[navbar]]
+  identifier = "blogs"
+  name       = "ब्लॉग"
+  url        = "/mr/posts/"
+  weight     = 7
+
+[[navbar]]
+  identifier = "cat-security"
+  name       = "सुरक्षा"
+  url        = "/mr/tags/security/"
+  weight     = 8
+
+[[navbar]]
+  identifier = "cat-ai"
+  name       = "AI साधने"
+  url        = "/mr/tags/ai-tools/"
+  weight     = 9
+
+[[navbar]]
+  identifier = "cat-webdev"
+  name       = "वेब डेव"
+  url        = "/mr/tags/web-development/"
+  weight     = 10

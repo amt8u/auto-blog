@@ -1,0 +1,26 @@
+[tags]
+other = "टॅग्स"
+
+[recent_posts]
+other = "अलीकडील लेख"
+
+[toc]
+other = "अनुक्रमणिका"
+
+[no_page_under_resources]
+other = "\"{{ .Params.resources }}\" फोल्डरमध्ये कोणतेही पृष्ठ आढळले नाही."
+
+[resources_not_found]
+other = "संसाधन आढळले नाही."
+
+[search]
+other = "लेख शोधा"
+
+[changelogs]
+other = "बदल नोंदी"
+
+[dark_mode_btn_tooltip]
+other = "गडद मोडवर स्विच करा"
+
+[light_mode_btn_tooltip]
+other = "प्रकाश मोडवर स्विच करा"

@@ -21,6 +21,10 @@ paginate        = 10
     label  = "हिंदी"
     title  = "cloudmato.com"
     weight = 2
+  [languages.mr]
+    label  = "मराठी"
+    title  = "cloudmato.com"
+    weight = 3
 
 [permalinks]
   posts = "/posts/:slug/"
