@@ -1,0 +1,18 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('time.relative-time').forEach(function (el) {
+        var date = new Date(el.getAttribute('datetime'));
+        var now = new Date();
+        var diff = Math.floor((now - date) / 1000);
+        var rel;
+        if (diff < 60)             rel = 'just now';
+        else if (diff < 3600)      rel = Math.floor(diff / 60) + ' min ago';
+        else if (diff < 86400)     rel = Math.floor(diff / 3600) + ' hr ago';
+        else if (diff < 172800)    rel = 'yesterday';
+        else if (diff < 2592000)   rel = Math.floor(diff / 86400) + ' days ago';
+        else if (diff < 31536000)  rel = Math.floor(diff / 2592000) + ' months ago';
+        else                       rel = Math.floor(diff / 31536000) + ' years ago';
+        el.textContent = el.getAttribute('data-fmt') + ' · ' + rel;
+    });
+});
+</script>
