@@ -22,6 +22,19 @@
   fill: currentColor;
 }
 
+/* ── Netlify status badge ────────────────────────────────────────────────── */
+.netlify-badge {
+  display: flex;
+  align-items: center;
+}
+
+.netlify-badge img {
+  display: block;
+  height: 20px;
+  width: auto;
+  border-radius: 3px;
+}
+
 
 /* ── Postcard cards: image left, content right ─────────────────────────── */
 .postcard-item {
