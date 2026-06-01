@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300">
+  <!-- Background -->
+  <rect width="700" height="300" fill="white"/>
+  <!-- JS Box -->
+  <rect x="30" y="40" width="290" height="220" rx="8" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="175" y="75" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#333333">JavaScript</text>
+  <text x="175" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ Runs directly in browser</text>
+  <text x="175" y="130" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ No build step needed</text>
+  <text x="175" y="155" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ Easy to start fast</text>
+  <text x="175" y="180" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ Errors at runtime</text>
+  <text x="175" y="205" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ No type safety</text>
+  <text x="175" y="230" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ Hard to scale in teams</text>
+  <!-- TS Box -->
+  <rect x="380" y="40" width="290" height="220" rx="8" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="525" y="75" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90e2">TypeScript</text>
+  <text x="525" y="105" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ Compile-time error detection</text>
+  <text x="525" y="130" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ Better IDE support</text>
+  <text x="525" y="155" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">✅ Self-documenting code</text>
+  <text x="525" y="180" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ Requires build step</text>
+  <text x="525" y="205" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ Steeper learning curve</text>
+  <text x="525" y="230" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">❌ More setup overhead</text>
+  <!-- Arrow between boxes -->
+  <line x1="322" y1="150" x2="378" y2="150" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+  <text x="350" y="143" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4a90e2">compiles to</text>
+</svg>
