@@ -17,7 +17,43 @@
   weight     = 3
 
 [[navbar]]
+  identifier = "apps"
+  name       = "ऐप्स"
+  url        = "/hi/pages/apps/"
+  weight     = 4
+
+[[navbar]]
+  identifier = "sponsors"
+  name       = "प्रायोजक"
+  url        = "/hi/pages/sponsors/"
+  weight     = 5
+
+[[navbar]]
+  identifier = "clients"
+  name       = "क्लाइंट्स"
+  url        = "/hi/pages/clients/"
+  weight     = 6
+
+[[navbar]]
   identifier = "blogs"
   name       = "ब्लॉग"
   url        = "/hi/posts/"
-  weight     = 4
+  weight     = 7
+
+[[navbar]]
+  identifier = "cat-security"
+  name       = "सुरक्षा"
+  url        = "/hi/tags/security/"
+  weight     = 8
+
+[[navbar]]
+  identifier = "cat-ai"
+  name       = "AI टूल्स"
+  url        = "/hi/tags/ai-tools/"
+  weight     = 9
+
+[[navbar]]
+  identifier = "cat-webdev"
+  name       = "वेब डेव"
+  url        = "/hi/tags/web-development/"
+  weight     = 10

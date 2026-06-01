@@ -17,7 +17,43 @@
   weight     = 3
 
 [[navbar]]
+  identifier = "apps"
+  name       = "Apps"
+  url        = "/pages/apps/"
+  weight     = 4
+
+[[navbar]]
+  identifier = "sponsors"
+  name       = "Sponsors"
+  url        = "/pages/sponsors/"
+  weight     = 5
+
+[[navbar]]
+  identifier = "clients"
+  name       = "Clients"
+  url        = "/pages/clients/"
+  weight     = 6
+
+[[navbar]]
   identifier = "blogs"
   name       = "Blog"
   url        = "/posts/"
-  weight     = 4
+  weight     = 7
+
+[[navbar]]
+  identifier = "cat-security"
+  name       = "Security"
+  url        = "/tags/security/"
+  weight     = 8
+
+[[navbar]]
+  identifier = "cat-ai"
+  name       = "AI Tools"
+  url        = "/tags/ai-tools/"
+  weight     = 9
+
+[[navbar]]
+  identifier = "cat-webdev"
+  name       = "Web Dev"
+  url        = "/tags/web-development/"
+  weight     = 10

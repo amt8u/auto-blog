@@ -5,7 +5,8 @@ date        = "2026-06-01T10:24:49+05:30"
 slug        = "cbse-portal-hacks-vulnerabilities-2026"
 tags        = ["Cybersecurity", "CBSE", "Education", "Data Privacy", "India"]
 keywords    = ["CBSE portal hack", "CBSE OSM vulnerability", "CBSE data breach 2026", "India education cybersecurity", "student data privacy India"]
-canonical   = "/posts/cbse-portal-hacks-vulnerabilities-2026/"
+canonical     = "/posts/cbse-portal-hacks-vulnerabilities-2026/"
+feature_image = "/images/posts/cbse-portal-hacks-vulnerabilities-2026/cbse-feature.svg"
 +++
 
 India's most trusted examination board, CBSE, was rocked by a sweeping cybersecurity scandal in May 2026 when a 19-year-old ethical hacker demonstrated live, unrestricted access to its On-Screen Marking (OSM) evaluation system — including shell access to production servers and free downloads of student answer sheets from an unsecured cloud bucket [1][2]. The breach put the personal and academic data of an estimated 20 lakh (2 million) Class 12 students at risk [5]. This article unpacks every layer of the hack, explains what it means for students and families, and maps out what the government must do to prevent a repeat.

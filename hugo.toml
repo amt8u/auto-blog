@@ -33,6 +33,10 @@ paginate        = 10
   navbar_width          = "wide"
   navbar_show_all_languages = true
   author                    = {name = "cloudmato.com"}
+
+  [params.stats]
+    views       = "1M+"
+    impressions = "1.5M+"
   default_feature_image     = "/images/default-feature.svg"
 
   # Features

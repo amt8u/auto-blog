@@ -10,22 +10,100 @@
                     <div id="sidebar_canvas_overlay"></div>
                 </label>
                 <div id="sidebar">
-                    <ul>
-                        {{- range .Site.Menus.navbar -}}
-                            <li>
-                                {{- $name := .Name }}
-                                {{- with .Identifier }}
-                                    {{- with T . }}
-                                        {{- $name = . }}
-                                    {{- end }}
-                                {{- end }}
-                                <a href="{{ .URL }}">{{- $name -}}</a>
-                                {{- if .Children -}}
-                                    {{- partial "navbar/nested-mobile.html" . -}}
-                                {{- end -}}
-                            </li>
-                        {{- end -}}
+
+                    {{/* Logo */}}
+                    <div class="sb-logo-wrap">
+                        <a href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 150 28"
+                                 overflow="visible" class="site-logo" aria-hidden="true">
+                                <rect class="logo-icon-bg" x="0" y="0" width="28" height="28" rx="6"/>
+                                <circle cx="8.5" cy="18.5" r="4.5" fill="white"/>
+                                <circle cx="14"  cy="14"   r="6"   fill="white"/>
+                                <circle cx="20"  cy="16.5" r="5"   fill="white"/>
+                                <rect   x="4"    y="18"    width="20" height="5.5" rx="1" fill="white"/>
+                                <polyline points="10,16 13,19 18,13"
+                                          fill="none" stroke-width="1.6" stroke-linecap="round"
+                                          stroke-linejoin="round" class="logo-icon-check"/>
+                                <text x="37" y="20"
+                                      font-family="'Space Grotesk', system-ui, sans-serif"
+                                      font-size="17" font-weight="700"
+                                      class="logo-wordmark">cloudmato</text>
+                            </svg>
+                        </a>
+                    </div>
+
+                    {{/* Stats */}}
+                    {{ $postCount := len (where .Site.RegularPages "Section" "posts") }}
+                    <div class="sb-stats">
+                        <div class="sb-stat">
+                            <strong>{{ $postCount }}</strong>
+                            <span>{{ i18n "sb_posts_count" }}</span>
+                        </div>
+                        <div class="sb-stat">
+                            <strong>{{ .Site.Params.stats.views | default "1M+" }}</strong>
+                            <span>{{ i18n "sb_views" }}</span>
+                        </div>
+                        <div class="sb-stat">
+                            <strong>{{ .Site.Params.stats.impressions | default "1.5M+" }}</strong>
+                            <span>{{ i18n "sb_impressions" }}</span>
+                        </div>
+                    </div>
+
+                    {{/* Pages section */}}
+                    <div class="sb-section-head">{{ i18n "sb_pages" }}</div>
+                    <ul class="sb-nav">
+                        <li><a href="{{ relLangURL "/pages/about/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "user" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_about" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/pages/services/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "tool" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_services" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/pages/themes/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "layers" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_themes" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/pages/apps/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "grid" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_apps" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/pages/sponsors/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "heart" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_sponsors" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/pages/clients/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "briefcase" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_clients" }}</span>
+                        </a></li>
                     </ul>
+
+                    {{/* Blog section */}}
+                    <div class="sb-section-head">{{ i18n "sb_blog" }}</div>
+                    <ul class="sb-nav">
+                        <li><a href="{{ relLangURL "/posts/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "book-open" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_all_posts" }}</span>
+                        </a></li>
+                    </ul>
+
+                    {{/* Categories section */}}
+                    <div class="sb-section-head">{{ i18n "sb_categories" }}</div>
+                    <ul class="sb-nav">
+                        <li><a href="{{ relLangURL "/tags/security/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "shield" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_security" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/ai-tools/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "cpu" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_ai_tools" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/web-development/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "code" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_web_dev" }}</span>
+                        </a></li>
+                    </ul>
+
                 </div>
             </div>
 
