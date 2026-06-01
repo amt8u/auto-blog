@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="310" viewBox="0 0 700 310">
+  <rect width="700" height="310" fill="white"/>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a90e2"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc3333"/>
+    </marker>
+  </defs>
+  <!-- Title -->
+  <text x="350" y="28" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333333">CBSE OSM Portal — Attack Surface (May 2026)</text>
+  <text x="350" y="46" text-anchor="middle" font-family="Arial" font-size="11" fill="#666666">Multiple entry points allowed unauthorised access to answer sheets and examiner accounts</text>
+  <!-- Students box -->
+  <rect x="20" y="110" width="110" height="55" rx="8" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="75" y="133" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#333333">Students</text>
+  <text x="75" y="150" text-anchor="middle" font-family="Arial" font-size="11" fill="#555555">20 lakh (2M)</text>
+  <!-- Arrow 1 -->
+  <line x1="130" y1="137" x2="175" y2="137" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <!-- OnMark portal -->
+  <rect x="175" y="95" width="145" height="85" rx="8" fill="#fff5f5" stroke="#cc3333" stroke-width="2"/>
+  <text x="247" y="120" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#333333">OnMark / OSM Portal</text>
+  <text x="247" y="137" text-anchor="middle" font-family="Arial" font-size="11" fill="#555555">Vendor: COEMPT Eduteck</text>
+  <text x="247" y="153" text-anchor="middle" font-family="Arial" font-size="10" fill="#cc3333">⚠ 6 Critical Flaws Found</text>
+  <text x="247" y="169" text-anchor="middle" font-family="Arial" font-size="10" fill="#cc3333">⚠ Shell + Super-Admin Access</text>
+  <!-- Arrow 2 -->
+  <line x1="320" y1="137" x2="365" y2="137" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <!-- AWS Bucket -->
+  <rect x="365" y="95" width="145" height="85" rx="8" fill="#fff5f5" stroke="#cc3333" stroke-width="2"/>
+  <text x="437" y="120" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#333333">AWS S3 Bucket</text>
+  <text x="437" y="137" text-anchor="middle" font-family="Arial" font-size="11" fill="#555555">Answer Sheets (2026)</text>
+  <text x="437" y="153" text-anchor="middle" font-family="Arial" font-size="10" fill="#cc3333">⚠ No Authentication</text>
+  <text x="437" y="169" text-anchor="middle" font-family="Arial" font-size="10" fill="#cc3333">⚠ Publicly Accessible</text>
+  <!-- Arrow 3 red -->
+  <line x1="510" y1="137" x2="555" y2="137" stroke="#cc3333" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <!-- Attacker box -->
+  <rect x="555" y="110" width="120" height="55" rx="8" fill="#fff0f0" stroke="#cc3333" stroke-width="2"/>
+  <text x="615" y="133" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#cc3333">Anyone Online</text>
+  <text x="615" y="150" text-anchor="middle" font-family="Arial" font-size="11" fill="#cc3333">Hacker / Bad Actor</text>
+  <!-- Examiner bypass path -->
+  <rect x="175" y="225" width="145" height="55" rx="8" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="247" y="248" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#333333">Examiner Login</text>
+  <text x="247" y="265" text-anchor="middle" font-family="Arial" font-size="10" fill="#cc3333">⚠ OTP Bypass · Master Password</text>
+  <line x1="247" y1="180" x2="247" y2="225" stroke="#cc3333" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-red)"/>
+  <text x="257" y="210" font-family="Arial" font-size="10" fill="#cc3333">Impersonate</text>
+</svg>
