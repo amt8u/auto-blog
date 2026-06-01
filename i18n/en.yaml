@@ -16,6 +16,6 @@ sb_views:       "Views"
 sb_impressions: "Impressions"
 
 homepage:
-  intro: "Every article on cloudmato.com is researched with live web sources — no filler, no fluff."
-  moreintro: "Pick a topic below, or [suggest one](mailto:cloudmato@gmail.com)."
+  intro: "cloudmato publishes about latest technology and keeps you updated"
+  moreintro: ""
   footer: "© cloudmato.com — research-driven writing."

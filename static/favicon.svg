@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Blue rounded square background -->
+  <rect width="32" height="32" rx="7" fill="#2563eb"/>
+  <!-- White cloud from overlapping circles -->
+  <circle cx="9"  cy="20" r="5"   fill="white"/>
+  <circle cx="16" cy="15" r="7"   fill="white"/>
+  <circle cx="23" cy="18" r="5.5" fill="white"/>
+  <rect   x="4"   y="20"  width="24" height="7" rx="1" fill="white"/>
+  <!-- Blue checkmark on cloud -->
+  <polyline points="10,18 14,22 22,13"
+            fill="none" stroke="#2563eb" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

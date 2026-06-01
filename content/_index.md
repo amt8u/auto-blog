@@ -2,6 +2,6 @@
 title = "Home"
 +++
 
-Every article on cloudmato.com is researched with live web sources — no filler, no fluff.
+**cloudmato** publishes about latest technology and keeps you updated. I write in english, hindi and marathi so that knowledge reaches more and more people.
 
-Pick a topic below, or [suggest one](mailto:cloudmato@gmail.com).
+Learn more about new tech here

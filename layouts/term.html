@@ -1,0 +1,21 @@
+{{ define "content" }}
+
+<div class="content-margin">
+    <div class="term-title">
+        <h1>{{ .Title }}</h1>
+        {{ range .AlternativeOutputFormats -}}
+            {{ if eq .MediaType.Type "application/rss+xml" }}
+                <div class="icon">
+                    <a rel="noopener" target="_blank" href="{{ .Permalink | safeURL }}">
+                        {{ partial "svg/feather.html" (dict "name" "rss") }}
+                    </a>
+                </div>
+            {{ end }}
+        {{ end -}}
+    </div>
+</div>
+
+{{ $pages := .Pages.ByPublishDate.Reverse }}
+{{ partial "postcard/layout.html" (dict "pages" $pages "ctx" .) }}
+
+{{ end }}
