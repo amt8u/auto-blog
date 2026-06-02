@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <rect width="700" height="240" fill="white"/>
+  <text x="350" y="22" font-size="13" font-weight="bold" fill="#333" text-anchor="middle">AWS Evolution — Key Milestones</text>
+  <!-- Timeline -->
+  <line x1="25" y1="120" x2="672" y2="120" stroke="#4a90e2" stroke-width="2"/>
+  <polygon points="670,115 680,120 670,125" fill="#4a90e2"/>
+
+  <!-- 2003 above -->
+  <circle cx="50" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="50" y1="115" x2="50" y2="82" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="8" y="52" width="84" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="50" y="67" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2003</text>
+  <text x="50" y="80" font-size="9" fill="#333" text-anchor="middle">Vision doc</text>
+
+  <!-- 2006 below -->
+  <circle cx="140" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="140" y1="125" x2="140" y2="138" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="98" y="138" width="84" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="140" y="153" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2006</text>
+  <text x="140" y="166" font-size="9" fill="#333" text-anchor="middle">S3 + EC2</text>
+
+  <!-- 2009 above -->
+  <circle cx="225" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="225" y1="115" x2="225" y2="82" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="183" y="52" width="84" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="225" y="67" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2009</text>
+  <text x="225" y="80" font-size="9" fill="#333" text-anchor="middle">RDS + EMR</text>
+
+  <!-- 2012 below -->
+  <circle cx="308" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="308" y1="125" x2="308" y2="138" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="264" y="138" width="88" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="308" y="153" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2012</text>
+  <text x="308" y="166" font-size="9" fill="#333" text-anchor="middle">DynamoDB</text>
+
+  <!-- 2014 above -->
+  <circle cx="383" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="383" y1="115" x2="383" y2="82" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="341" y="52" width="84" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="383" y="67" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2014</text>
+  <text x="383" y="80" font-size="9" fill="#333" text-anchor="middle">Lambda</text>
+
+  <!-- 2016 below -->
+  <circle cx="455" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="455" y1="125" x2="455" y2="138" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="407" y="138" width="96" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="455" y="153" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2016</text>
+  <text x="455" y="166" font-size="9" fill="#333" text-anchor="middle">$12.2B revenue</text>
+
+  <!-- 2020 above -->
+  <circle cx="543" cy="120" r="5" fill="#4a90e2" stroke="white" stroke-width="2"/>
+  <line x1="543" y1="115" x2="543" y2="82" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="498" y="52" width="90" height="32" rx="3" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1"/>
+  <text x="543" y="67" font-size="9" font-weight="bold" fill="#4a90e2" text-anchor="middle">2020</text>
+  <text x="543" y="80" font-size="9" fill="#333" text-anchor="middle">200+ services</text>
+
+  <!-- 2026 below, highlighted -->
+  <circle cx="628" cy="120" r="6" fill="#f5a623" stroke="white" stroke-width="2"/>
+  <line x1="628" y1="126" x2="628" y2="138" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="580" y="138" width="96" height="32" rx="3" fill="#fff3cd" stroke="#f5a623" stroke-width="1"/>
+  <text x="628" y="153" font-size="9" font-weight="bold" fill="#e07b00" text-anchor="middle">2026</text>
+  <text x="628" y="166" font-size="9" fill="#333" text-anchor="middle">$128.7B revenue</text>
+</svg>
