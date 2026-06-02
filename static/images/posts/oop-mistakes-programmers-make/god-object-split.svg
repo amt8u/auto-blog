@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <!-- Left: God Object -->
+  <rect x="30" y="20" width="180" height="200" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="120" y="44" font-family="monospace" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">UserService</text>
+  <text x="120" y="62" font-family="monospace" font-size="10" fill="#e53e3e" text-anchor="middle">(God Object)</text>
+  <line x1="30" y1="70" x2="210" y2="70" stroke="#333333" stroke-width="1"/>
+  <text x="120" y="90" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">authenticate()</text>
+  <text x="120" y="108" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">sendEmail()</text>
+  <text x="120" y="126" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">processPayment()</text>
+  <text x="120" y="144" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">saveToDatabase()</text>
+  <text x="120" y="162" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">generateReport()</text>
+  <text x="120" y="180" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">sendSMS()</text>
+  <!-- Arrow -->
+  <line x1="220" y1="120" x2="280" y2="120" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="250" y="112" font-family="sans-serif" font-size="10" fill="#4a90e2" text-anchor="middle">split</text>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+  <!-- Right: Three focused classes -->
+  <rect x="290" y="20" width="130" height="70" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="355" y="40" font-family="monospace" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">AuthService</text>
+  <line x1="290" y1="48" x2="420" y2="48" stroke="#333333" stroke-width="1"/>
+  <text x="355" y="64" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">authenticate()</text>
+  <text x="355" y="80" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">validateToken()</text>
+
+  <rect x="290" y="105" width="130" height="70" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="355" y="125" font-family="monospace" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">PaymentService</text>
+  <line x1="290" y1="133" x2="420" y2="133" stroke="#333333" stroke-width="1"/>
+  <text x="355" y="149" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">processPayment()</text>
+  <text x="355" y="165" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">refund()</text>
+
+  <rect x="290" y="190" width="130" height="40" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="355" y="210" font-family="monospace" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">NotifyService</text>
+  <text x="355" y="224" font-family="monospace" font-size="10" fill="#333333" text-anchor="middle">sendEmail() sendSMS()</text>
+</svg>
