@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="230" viewBox="0 0 700 230">
+  <rect width="700" height="230" fill="white"/>
+  <text x="350" y="24" font-family="monospace" font-size="13" fill="#333333" text-anchor="middle" font-weight="bold">CSS Centering — Worst to Best</text>
+  <!-- Gradient bar -->
+  <defs>
+    <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e57373"/>
+      <stop offset="40%" style="stop-color:#ffb74d"/>
+      <stop offset="65%" style="stop-color:#81c784"/>
+      <stop offset="100%" style="stop-color:#7e57c2"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+  <rect x="30" y="40" width="640" height="18" rx="9" fill="url(#bar)"/>
+  <line x1="665" y1="49" x2="680" y2="49" stroke="#4a90e2" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Labels under bar -->
+  <text x="30"  y="75" font-family="monospace" font-size="9.5" fill="#c0392b">table-cell</text>
+  <text x="118" y="75" font-family="monospace" font-size="9.5" fill="#c0392b">neg-margins</text>
+  <text x="215" y="75" font-family="monospace" font-size="9.5" fill="#e67e22">abs+translate</text>
+  <text x="330" y="75" font-family="monospace" font-size="9.5" fill="#e67e22">inset+auto</text>
+  <text x="435" y="75" font-family="monospace" font-size="9.5" fill="#27ae60">margin:auto</text>
+  <text x="530" y="75" font-family="monospace" font-size="9.5" fill="#2980b9">Flexbox</text>
+  <text x="607" y="75" font-family="monospace" font-size="9.5" fill="#6a1b9a">Grid</text>
+
+  <!-- Code snippets -->
+  <rect x="30" y="95" width="195" height="120" rx="6" fill="#f0f4f8" stroke="#e57373"/>
+  <text x="42" y="112" font-family="monospace" font-size="9" fill="#c0392b" font-weight="bold">❌ AVOID</text>
+  <text x="42" y="129" font-family="monospace" font-size="8.5" fill="#555">display: table-cell;</text>
+  <text x="42" y="143" font-family="monospace" font-size="8.5" fill="#555">vertical-align: middle;</text>
+  <text x="42" y="160" font-family="monospace" font-size="8.5" fill="#555">──────────────</text>
+  <text x="42" y="175" font-family="monospace" font-size="8.5" fill="#555">top:50%; left:50%;</text>
+  <text x="42" y="190" font-family="monospace" font-size="8.5" fill="#555">translate(-50%,-50%)</text>
+
+  <rect x="240" y="95" width="195" height="120" rx="6" fill="#f0f4f8" stroke="#81c784"/>
+  <text x="252" y="112" font-family="monospace" font-size="9" fill="#27ae60" font-weight="bold">✅ FLEXBOX</text>
+  <text x="252" y="129" font-family="monospace" font-size="8.5" fill="#555">display: flex;</text>
+  <text x="252" y="143" font-family="monospace" font-size="8.5" fill="#555">justify-content: center;</text>
+  <text x="252" y="157" font-family="monospace" font-size="8.5" fill="#555">align-items: center;</text>
+
+  <rect x="450" y="95" width="220" height="120" rx="6" fill="#f0f4f8" stroke="#7e57c2"/>
+  <text x="462" y="112" font-family="monospace" font-size="9" fill="#6a1b9a" font-weight="bold">✅ GRID — BEST DEFAULT</text>
+  <text x="462" y="129" font-family="monospace" font-size="8.5" fill="#555">display: grid;</text>
+  <text x="462" y="143" font-family="monospace" font-size="8.5" fill="#555">place-items: center;</text>
+  <text x="462" y="160" font-family="monospace" font-size="8.5" fill="#555">──────────────────</text>
+  <text x="462" y="175" font-family="monospace" font-size="8.5" fill="#555">min-height: 100dvh;</text>
+  <text x="462" y="190" font-family="monospace" font-size="8.5" fill="#555">/* full viewport */</text>
+</svg>
