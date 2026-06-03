@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="280" viewBox="0 0 700 280">
+  <!-- Background -->
+  <rect width="700" height="280" fill="white"/>
+  <!-- Divider -->
+  <line x1="350" y1="20" x2="350" y2="260" stroke="#cccccc" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- LEFT: Centralized -->
+  <text x="175" y="40" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#333333">Centralized (SVN, CVS)</text>
+  <!-- Central server -->
+  <rect x="120" y="95" width="110" height="44" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="175" y="115" text-anchor="middle" font-family="monospace" font-size="11" fill="#333333">Central Server</text>
+  <text x="175" y="130" text-anchor="middle" font-family="monospace" font-size="10" fill="#666666">(single source)</text>
+  <!-- Dev nodes -->
+  <circle cx="60" cy="210" r="22" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="60" y="214" text-anchor="middle" font-family="monospace" font-size="10" fill="#333333">Dev A</text>
+  <circle cx="175" cy="210" r="22" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="175" y="214" text-anchor="middle" font-family="monospace" font-size="10" fill="#333333">Dev B</text>
+  <circle cx="290" cy="210" r="22" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="290" y="214" text-anchor="middle" font-family="monospace" font-size="10" fill="#333333">Dev C</text>
+  <!-- Arrows centralized -->
+  <line x1="80" y1="190" x2="143" y2="139" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="175" y1="188" x2="175" y2="139" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="270" y1="190" x2="207" y2="139" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- RIGHT: Distributed -->
+  <text x="525" y="40" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#333333">Distributed (Git)</text>
+  <!-- Dev nodes with full repo -->
+  <circle cx="430" cy="100" r="28" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="430" y="97" text-anchor="middle" font-family="monospace" font-size="9" fill="#333333">Dev A</text>
+  <text x="430" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#4a90e2">full repo</text>
+  <circle cx="540" cy="70" r="28" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="540" y="67" text-anchor="middle" font-family="monospace" font-size="9" fill="#333333">Dev B</text>
+  <text x="540" y="80" text-anchor="middle" font-family="monospace" font-size="8" fill="#4a90e2">full repo</text>
+  <circle cx="630" cy="140" r="28" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="630" y="137" text-anchor="middle" font-family="monospace" font-size="9" fill="#333333">Dev C</text>
+  <text x="630" y="150" text-anchor="middle" font-family="monospace" font-size="8" fill="#4a90e2">full repo</text>
+  <circle cx="490" cy="200" r="28" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="490" y="197" text-anchor="middle" font-family="monospace" font-size="9" fill="#333333">Dev D</text>
+  <text x="490" y="210" text-anchor="middle" font-family="monospace" font-size="8" fill="#4a90e2">full repo</text>
+  <!-- Peer arrows -->
+  <line x1="456" y1="115" x2="517" y2="83" stroke="#4a90e2" stroke-width="1.2"/>
+  <line x1="562" y1="95" x2="610" y2="122" stroke="#4a90e2" stroke-width="1.2"/>
+  <line x1="608" y1="162" x2="516" y2="186" stroke="#4a90e2" stroke-width="1.2"/>
+  <line x1="462" y1="180" x2="436" y2="127" stroke="#4a90e2" stroke-width="1.2"/>
+  <line x1="518" y1="195" x2="435" y2="127" stroke="#4a90e2" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+</svg>
