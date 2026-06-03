@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="340" viewBox="0 0 700 340">
+  <rect width="700" height="340" fill="white"/>
+
+  <!-- Consumer -->
+  <rect x="20" y="130" width="100" height="50" rx="6" fill="#f0f4f8" stroke="#333" stroke-width="1.5"/>
+  <text x="70" y="160" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">Consumer</text>
+
+  <!-- Bootstrap Broker -->
+  <rect x="200" y="40" width="120" height="50" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="260" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333">Bootstrap Broker</text>
+  <text x="260" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">(metadata fetch)</text>
+
+  <!-- Group Coordinator -->
+  <rect x="200" y="135" width="120" height="50" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="260" y="160" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333">Group Coordinator</text>
+  <text x="260" y="175" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">(JoinGroup / SyncGroup)</text>
+
+  <!-- Partition Leader -->
+  <rect x="200" y="240" width="120" height="50" rx="6" fill="#4a90e2" opacity="0.85"/>
+  <text x="260" y="265" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white">Partition Leader</text>
+  <text x="260" y="280" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">(fetch messages)</text>
+
+  <!-- KRaft Controller -->
+  <rect x="460" y="130" width="140" height="50" rx="6" fill="#f0f4f8" stroke="#333" stroke-width="1.5"/>
+  <text x="530" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333">KRaft Controller</text>
+  <text x="530" y="170" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">(leader elections, metadata)</text>
+
+  <!-- Arrows -->
+  <!-- Consumer → Bootstrap -->
+  <line x1="120" y1="145" x2="198" y2="80" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="148" y="105" font-family="sans-serif" font-size="10" fill="#4a90e2">① Metadata req</text>
+
+  <!-- Consumer → Coordinator -->
+  <line x1="120" y1="155" x2="198" y2="157" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="133" y="148" font-family="sans-serif" font-size="10" fill="#4a90e2">② FindCoordinator</text>
+
+  <!-- Consumer → Partition Leader -->
+  <line x1="120" y1="165" x2="198" y2="255" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="125" y="220" font-family="sans-serif" font-size="10" fill="#4a90e2">③ Fetch</text>
+
+  <!-- Coordinator ↔ KRaft -->
+  <line x1="320" y1="160" x2="458" y2="155" stroke="#333" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="365" y="148" font-family="sans-serif" font-size="10" fill="#666">partition map</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+
+  <text x="350" y="325" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#666">Three-step consumer connection: discover → coordinate → fetch</text>
+</svg>
