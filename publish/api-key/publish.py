@@ -138,8 +138,9 @@ def git_publish(path: Path, title: str, svg_paths: list[Path] | None = None) -> 
 # ---------- streaming (SSE) ----------
 
 def sse(event_type: str, **data: Any) -> str:
-    """Format one SSE event."""
-    return f"data: {json.dumps({'type': event_type, **data})}\n\n"
+    """Format one SSE event. Includes an HH:MM:SS timestamp on every event."""
+    ts = datetime.now().strftime("%H:%M:%S")
+    return f"data: {json.dumps({'type': event_type, 'ts': ts, **data})}\n\n"
 
 
 def stream_generation(topic: str) -> Iterator[str]:
@@ -266,6 +267,7 @@ FORM_HTML = r"""<!doctype html>
  button:disabled{opacity:.5;cursor:wait}
  #log{margin-top:1.5rem;padding:1rem;background:#0f1419;color:#cfd5dc;border-radius:6px;font:13px/1.55 ui-monospace,Menlo,monospace;white-space:pre-wrap;min-height:0;max-height:60vh;overflow:auto;display:none}
  #log.show{display:block}
+ #log .ts{color:#6a7280;margin-right:.4em}
  #log .ev-search_start{color:#7fd9ff}
  #log .ev-search_result{color:#9ee37d}
  #log .ev-progress{color:#888}
@@ -289,10 +291,13 @@ const topicEl = document.getElementById('topic');
 const go = document.getElementById('go');
 const log = document.getElementById('log');
 
-function append(cls, html, withSpin) {
+function nowTs(){const d=new Date();const p=n=>String(n).padStart(2,'0');return p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())}
+
+function append(cls, html, withSpin, ts) {
   const line = document.createElement('div');
   line.className = 'ev-' + cls;
-  line.innerHTML = (withSpin ? '<span class="spin"></span>' : '') + html;
+  const stamp = '<span class="ts">[' + (ts || nowTs()) + ']</span> ';
+  line.innerHTML = (withSpin ? '<span class="spin"></span>' : '') + stamp + html;
   log.appendChild(line);
   log.scrollTop = log.scrollHeight;
 }
@@ -310,13 +315,13 @@ f.addEventListener('submit', (e) => {
   const es = new EventSource('/stream?topic=' + encodeURIComponent(topic));
   es.onmessage = (msg) => {
     const ev = JSON.parse(msg.data);
-    if (ev.type === 'search_start') append('search_start', '🔎 Searching: ' + escapeHTML(ev.query));
-    else if (ev.type === 'search_result') append('search_result', '✓ ' + escapeHTML(ev.message));
-    else if (ev.type === 'progress') append('progress', '… ' + ev.chars + ' chars written');
-    else if (ev.type === 'log') append('log', escapeHTML(ev.message));
-    else if (ev.type === 'error') { append('error', '✗ ' + escapeHTML(ev.message)); es.close(); go.disabled = false; go.textContent = 'Research & Publish'; }
+    if (ev.type === 'search_start') append('search_start', '🔎 Searching: ' + escapeHTML(ev.query), false, ev.ts);
+    else if (ev.type === 'search_result') append('search_result', '✓ ' + escapeHTML(ev.message), false, ev.ts);
+    else if (ev.type === 'progress') append('progress', '… ' + ev.chars + ' chars written', false, ev.ts);
+    else if (ev.type === 'log') append('log', escapeHTML(ev.message), false, ev.ts);
+    else if (ev.type === 'error') { append('error', '✗ ' + escapeHTML(ev.message), false, ev.ts); es.close(); go.disabled = false; go.textContent = 'Research & Publish'; }
     else if (ev.type === 'done') {
-      append('done', '✓ Published "' + escapeHTML(ev.title) + '" — <a href="' + ev.preview_url + '" target="_blank">' + ev.preview_url + '</a> (commit ' + ev.sha + ')');
+      append('done', '✓ Published "' + escapeHTML(ev.title) + '" — <a href="' + ev.preview_url + '" target="_blank">' + ev.preview_url + '</a> (commit ' + ev.sha + ')', false, ev.ts);
       es.close();
       go.disabled = false; go.textContent = 'Research & Publish';
       topicEl.value = '';

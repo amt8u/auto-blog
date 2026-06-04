@@ -46,6 +46,21 @@ POST_ID_RE = re.compile(r'POST-(\d+)', re.IGNORECASE)
 
 # ---------- utilities ----------
 
+def log(message: str = "", *, file=None) -> None:
+    """Print a log line prefixed with [HH:MM:SS]. Preserves leading newlines."""
+    ts = datetime.now().strftime("%H:%M:%S")
+    leading_nl = ""
+    rest = message
+    while rest.startswith("\n"):
+        leading_nl += "\n"
+        rest = rest[1:]
+    line = f"{leading_nl}[{ts}] {rest}" if rest else leading_nl
+    if file is not None:
+        print(line, flush=True, file=file)
+    else:
+        print(line, flush=True)
+
+
 def find_claude() -> str:
     found = shutil.which("claude")
     if found:
@@ -193,7 +208,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
         prompt,
     ]
 
-    print(f"[1/5] Researching: {topic[:80]}", flush=True)
+    log(f"[1/5] Researching: {topic[:80]}")
 
     proc = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=REPO_ROOT,
@@ -222,7 +237,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
                             print(".", end="", flush=True)
                     elif block.get("type") == "tool_use":
                         query = block.get("input", {}).get("query", "")
-                        print(f"\n  Searching: {query}" if query else "\n  Searching...", flush=True)
+                        log(f"\n  Searching: {query}" if query else "\n  Searching...")
             elif etype == "result":
                 if event.get("subtype") == "success":
                     result_text = event.get("result", "")
@@ -244,7 +259,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
 
 def find_feature_image(title: str, claude_bin: str) -> str:
     """Search for a freely available image and return its URL, or empty string."""
-    print("[2/3] Finding feature image...", flush=True)
+    log("[2/3] Finding feature image...")
     prompt = (
         f'Find one freely available, high-quality photo for a blog post titled: "{title}". '
         f'Search Unsplash (images.unsplash.com) for a relevant image. '
@@ -264,9 +279,9 @@ def find_feature_image(title: str, claude_bin: str) -> str:
     # Accept only clean Unsplash or other https image URLs
     url = url.strip().strip('"').strip("'")
     if url == "NONE" or not url.startswith("https://"):
-        print("  No image found, skipping.", flush=True)
+        log("  No image found, skipping.")
         return ""
-    print(f"  Image: {url[:70]}", flush=True)
+    log(f"  Image: {url[:70]}")
     return url
 
 
@@ -287,7 +302,7 @@ def inject_feature_image(body: str, image_url: str) -> str:
 
 def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
     """Translate article to Hindi. Returns translated body or None on failure."""
-    print("[3/3] Translating to Hindi...", flush=True)
+    log("[3/3] Translating to Hindi...")
     prompt = (
         "Translate this Hugo blog post to Hindi.\n\n"
         "Rules:\n"
@@ -303,7 +318,7 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
     try:
         result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600)
     except (RuntimeError, subprocess.TimeoutExpired) as e:
-        print(f"  Translation failed: {e}", flush=True)
+        log(f"  Translation failed: {e}")
         return None
 
     # Strip accidental code fence
@@ -312,16 +327,16 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
         result = "\n".join(lines[1:-1]).strip()
 
     if not result.startswith("+++"):
-        print("  Translation returned unexpected format, skipping.", flush=True)
+        log("  Translation returned unexpected format, skipping.")
         return None
 
-    print("  Done.", flush=True)
+    log("  Done.")
     return result
 
 
 def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
     """Translate article to Marathi. Returns translated body or None on failure."""
-    print("[5/5] Translating to Marathi...", flush=True)
+    log("[5/5] Translating to Marathi...")
     prompt = (
         "Translate this Hugo blog post to Marathi.\n\n"
         "Rules:\n"
@@ -338,7 +353,7 @@ def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
     try:
         result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600)
     except (RuntimeError, subprocess.TimeoutExpired) as e:
-        print(f"  Translation failed: {e}", flush=True)
+        log(f"  Translation failed: {e}")
         return None
 
     if result.startswith("```"):
@@ -346,10 +361,10 @@ def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
         result = "\n".join(lines[1:-1]).strip()
 
     if not result.startswith("+++"):
-        print("  Translation returned unexpected format, skipping.", flush=True)
+        log("  Translation returned unexpected format, skipping.")
         return None
 
-    print("  Done.", flush=True)
+    log("  Done.")
     return result
 
 
@@ -365,40 +380,40 @@ def main() -> None:
             print()
             sys.exit(0)
         if not topic:
-            print("No topic provided.", file=sys.stderr)
+            log("No topic provided.", file=sys.stderr)
             sys.exit(1)
 
     try:
         claude_bin = find_claude()
     except FileNotFoundError as e:
-        print(f"Error: {e}", file=sys.stderr)
+        log(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Step 1: Generate article
     try:
         raw = generate_article(topic, claude_bin)
     except RuntimeError as e:
-        print(f"\nGeneration failed: {e}", file=sys.stderr)
+        log(f"\nGeneration failed: {e}", file=sys.stderr)
         sys.exit(1)
 
     try:
         slug, title, body = parse_article(raw)
     except ValueError as e:
-        print(f"\nParse failed: {e}", file=sys.stderr)
+        log(f"\nParse failed: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Step 2: Extract SVG diagrams
     body, svg_paths = extract_svgs(body, slug)
     if svg_paths:
-        print(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}", flush=True)
+        log(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}")
 
     # Step 3: Feature image
-    print("[2/5] Finding feature image...", flush=True)
+    log("[2/5] Finding feature image...")
     image_url = find_feature_image(title, claude_bin)
     body = inject_feature_image(body, image_url)
 
     # Step 4: Translate to Hindi
-    print("[3/5] Translating to Hindi...", flush=True)
+    log("[3/5] Translating to Hindi...")
     hindi_body = translate_to_hindi(body, slug, claude_bin)
 
     # Step 5: Translate to Marathi
@@ -407,36 +422,36 @@ def main() -> None:
     # Write files
     date_prefix = datetime.now().strftime("%Y-%m-%d")
     post_id = next_post_id()
-    print(f"  Assigned: {post_id}", flush=True)
+    log(f"  Assigned: {post_id}")
     paths: list[Path] = []
 
     path_en = write_post(slug, body, date_prefix, post_id)
     paths.append(path_en)
-    print(f"Written: {path_en.relative_to(REPO_ROOT)}")
+    log(f"Written: {path_en.relative_to(REPO_ROOT)}")
 
     if hindi_body:
         path_hi = write_post(slug, hindi_body, date_prefix, post_id, lang="hi")
         paths.append(path_hi)
-        print(f"Written: {path_hi.relative_to(REPO_ROOT)}")
+        log(f"Written: {path_hi.relative_to(REPO_ROOT)}")
 
     if marathi_body:
         path_mr = write_post(slug, marathi_body, date_prefix, post_id, lang="mr")
         paths.append(path_mr)
-        print(f"Written: {path_mr.relative_to(REPO_ROOT)}")
+        log(f"Written: {path_mr.relative_to(REPO_ROOT)}")
 
     # Commit and push everything in one commit
-    print("Committing and pushing...", flush=True)
+    log("Committing and pushing...")
     img_dir = IMAGES_DIR / slug if svg_paths else None
     sha, push_err = git_publish(paths, title, extra_dirs=[img_dir] if img_dir else None)
     if push_err:
-        print(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
+        log(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
     else:
-        print(f'Done! "{title}" [{post_id}] pushed as commit {sha[:8]}.')
-        print(f"  EN: /posts/{slug}/")
+        log(f'Done! "{title}" [{post_id}] pushed as commit {sha[:8]}.')
+        log(f"  EN: /posts/{slug}/")
         if hindi_body:
-            print(f"  HI: /hi/posts/{slug}/")
+            log(f"  HI: /hi/posts/{slug}/")
         if marathi_body:
-            print(f"  MR: /mr/posts/{slug}/")
+            log(f"  MR: /mr/posts/{slug}/")
 
 
 if __name__ == "__main__":
