@@ -17,14 +17,14 @@ CSS centering के साथ पहली लड़ाई कोई नही�
 
 | तरीका | क्षैतिज | ऊर्ध्वाधर | निर्णय |
 |---|---|---|---|
-| `display: table-cell` | ✅ | ✅ | ❌ कभी नहीं |
-| Negative margins | ✅ | ✅ | ❌ कभी नहीं |
-| `abs` + `translate(-50%, -50%)` | ✅ | ✅ | ⚠️ बचें |
-| `inset: 0` + `margin: auto` | ✅ | ✅ | ⚠️ कभी-कभी |
-| `margin: auto` | ✅ | ❌ | ✅ केवल क्षैतिज |
-| Flexbox | ✅ | ✅ | ✅ अच्छा डिफ़ॉल्ट |
-| CSS Grid | ✅ | ✅ | ✅ सर्वश्रेष्ठ डिफ़ॉल्ट |
-| CSS Anchor Positioning | relative | relative | ✅ विशिष्ट उपयोग |
+| `display: table-cell` | हाँ | हाँ | कभी नहीं |
+| Negative margins | हाँ | हाँ | कभी नहीं |
+| `abs` + `translate(-50%, -50%)` | हाँ | हाँ | बचें |
+| `inset: 0` + `margin: auto` | हाँ | हाँ | कभी-कभी |
+| `margin: auto` | हाँ | नहीं | केवल क्षैतिज |
+| Flexbox | हाँ | हाँ | अच्छा डिफ़ॉल्ट |
+| CSS Grid | हाँ | हाँ | सर्वश्रेष्ठ डिफ़ॉल्ट |
+| CSS Anchor Positioning | सापेक्ष | सापेक्ष | विशिष्ट उपयोग |
 
 ---
 

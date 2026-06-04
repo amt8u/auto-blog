@@ -17,14 +17,14 @@ Here's all of them, ranked worst to best.
 
 | Method | Horizontal | Vertical | Verdict |
 |---|---|---|---|
-| `display: table-cell` | ✅ | ✅ | ❌ Never |
-| Negative margins | ✅ | ✅ | ❌ Never |
-| `abs` + `translate(-50%, -50%)` | ✅ | ✅ | ⚠️ Avoid |
-| `inset: 0` + `margin: auto` | ✅ | ✅ | ⚠️ Sometimes |
-| `margin: auto` | ✅ | ❌ | ✅ Horizontal only |
-| Flexbox | ✅ | ✅ | ✅ Good default |
-| CSS Grid | ✅ | ✅ | ✅ Best default |
-| CSS Anchor Positioning | relative | relative | ✅ Specific use |
+| `display: table-cell` | Yes | Yes | Never |
+| Negative margins | Yes | Yes | Never |
+| `abs` + `translate(-50%, -50%)` | Yes | Yes | Avoid |
+| `inset: 0` + `margin: auto` | Yes | Yes | Sometimes |
+| `margin: auto` | Yes | No | Horizontal only |
+| Flexbox | Yes | Yes | Good default |
+| CSS Grid | Yes | Yes | Best default |
+| CSS Anchor Positioning | Relative | Relative | Specific use |
 
 ---
 
