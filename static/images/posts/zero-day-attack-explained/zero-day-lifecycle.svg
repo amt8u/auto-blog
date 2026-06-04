@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="175" viewBox="0 0 700 175">
+  <rect width="700" height="175" fill="white"/>
+  <!-- Timeline axis -->
+  <line x1="22" y1="88" x2="685" y2="88" stroke="#4a90e2" stroke-width="2"/>
+  <polygon points="685,82 698,88 685,94" fill="#4a90e2"/>
+  <!-- Stage 1 -->
+  <rect x="22" y="63" width="88" height="50" rx="5" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="66" y="83" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333333">Introduction</text>
+  <text x="66" y="98" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">(bug written)</text>
+  <!-- Stage 2 -->
+  <rect x="126" y="63" width="88" height="50" rx="5" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="170" y="83" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333333">Discovery</text>
+  <text x="170" y="98" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">(attacker finds it)</text>
+  <!-- Stage 3 - red/danger zone -->
+  <rect x="230" y="53" width="100" height="70" rx="5" fill="#fff0f0" stroke="#e05c5c" stroke-width="2"/>
+  <text x="280" y="76" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c0392b" font-weight="bold">Exploitation</text>
+  <text x="280" y="91" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#c0392b" font-weight="bold">ZERO-DAY</text>
+  <text x="280" y="106" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">(no patch exists)</text>
+  <!-- Stage 4 -->
+  <rect x="346" y="63" width="88" height="50" rx="5" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="390" y="83" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333333">Disclosure</text>
+  <text x="390" y="98" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">(CVE assigned)</text>
+  <!-- Stage 5 - green -->
+  <rect x="450" y="58" width="100" height="60" rx="5" fill="#f0fff0" stroke="#27ae60" stroke-width="2"/>
+  <text x="500" y="80" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#27ae60" font-weight="bold">Patch Released</text>
+  <text x="500" y="96" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#27ae60">← zero-day ends</text>
+  <text x="500" y="109" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">n-day begins</text>
+  <!-- Stage 6 -->
+  <rect x="566" y="63" width="100" height="50" rx="5" fill="#f0f4f8" stroke="#333333" stroke-width="1"/>
+  <text x="616" y="83" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#333333">Patch Adoption</text>
+  <text x="616" y="98" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#888">(orgs deploy fix)</text>
+  <!-- Connector ticks -->
+  <line x1="110" y1="88" x2="126" y2="88" stroke="#4a90e2" stroke-width="1.5"/>
+  <line x1="214" y1="88" x2="230" y2="88" stroke="#e05c5c" stroke-width="2"/>
+  <line x1="330" y1="88" x2="346" y2="88" stroke="#4a90e2" stroke-width="1.5"/>
+  <line x1="434" y1="88" x2="450" y2="88" stroke="#4a90e2" stroke-width="1.5"/>
+  <line x1="550" y1="88" x2="566" y2="88" stroke="#27ae60" stroke-width="1.5"/>
+  <!-- Bottom caption -->
+  <text x="350" y="152" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#555" font-style="italic">Average window from bug introduction to patch adoption: ~312 days</text>
+</svg>
