@@ -6,6 +6,7 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-codes", "how-it-works", "tech-explained"]
 keywords    = ["QR कोडला तीन चौरस का असतात", "QR कोड फाइंडर पॅटर्न", "QR कोड संरचना", "QR कोड कसे कार्य करतात"]
 canonical   = "/mr/posts/why-qr-codes-have-three-squares/"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
 +++
 
 दररोज QR कोड स्कॅन करायचा पण त्या तीन चौरसांबद्दल कधी विचारच करायचा नाही. मी अनेक वर्षे त्याच गटात होतो. पण खरं सांगायचं तर ते काही खरोखरच चतुर अभियांत्रिकी कार्य करत आहेत — आणि ते नक्की *तीन* का आहेत, चार का नाहीत, हे तुम्हाला वाटेल त्यापेक्षा जास्त रंजक आहे.

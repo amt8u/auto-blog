@@ -6,6 +6,7 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-कोड", "कैसे-काम-करता-है", "तकनीक-समझाई"]
 keywords    = ["QR कोड में तीन वर्ग क्यों होते हैं", "QR कोड फाइंडर पैटर्न", "QR कोड संरचना", "QR कोड कैसे काम करता है"]
 canonical   = "/hi/posts/why-qr-codes-have-three-squares/"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
 +++
 
 रोज़ QR कोड स्कैन करें और उन तीन वर्गों के बारे में कभी न सोचें। मैं भी सालों तक उसी श्रेणी में था। असल में ये वर्ग कुछ वाकई चतुर इंजीनियरिंग का काम कर रहे हैं — और उनकी संख्या ठीक *तीन* क्यों है, चार नहीं, यह उतना दिलचस्प है जितना आप सोच सकते हैं।

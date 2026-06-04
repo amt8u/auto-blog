@@ -6,6 +6,7 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-codes", "how-it-works", "tech-explained"]
 keywords    = ["why QR codes have three squares", "QR code finder pattern", "QR code structure", "how QR codes work"]
 canonical   = "/posts/why-qr-codes-have-three-squares/"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
 +++
 
 Scan a QR code every day and never once think about those three squares. I was in that category for years. Turns out they are doing some genuinely clever engineering work — and the reason there are exactly *three*, not four, is more interesting than you'd expect.
