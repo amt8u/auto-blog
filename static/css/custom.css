@@ -211,6 +211,63 @@ nav a.active {
   border-bottom-color: transparent !important;
 }
 
+/* ---------- single post header (title + meta) ---------- */
+
+/* Let the site nav (monochrome's <header>) scroll away with the rest of the
+   page — it was position: sticky by default. */
+header {
+  position: static !important;
+  transform: none !important;
+}
+
+.post-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: var(--color-background);
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
+  padding: .75rem 0;
+}
+.post-header .post-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: var(--color-text);
+}
+.post-header .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .75rem;
+  font-size: .85rem;
+  color: var(--color-text-secondary);
+}
+.post-header .post-meta time {
+  color: var(--color-text-secondary);
+}
+.post-header .post-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+.post-header .post-tag {
+  display: inline-block;
+  padding: 2px .55em;
+  border: 1px solid var(--tag-border);
+  border-radius: 4px;
+  color: var(--tag-color);
+  font-size: .85em;
+  text-decoration: none;
+  transition: color .12s ease-in-out, border-color .12s ease-in-out;
+}
+.post-header .post-tag:hover {
+  color: var(--tag-color-hover);
+  border-color: var(--tag-color-hover);
+  text-decoration: none;
+}
+
 /* ---------- postcards (list of posts on home/section pages) ---------- */
 
 .postcard-layout .postcard-item {
@@ -227,6 +284,46 @@ nav a.active {
   width: 100%;
   border-radius: 4px;
   box-shadow: none;
+}
+
+/* Mobile: side-by-side compact layout with a square thumbnail; hide summary. */
+@media (max-width: 48rem) {
+  .postcard-layout .postcard-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: .85rem;
+    margin: 1.25rem 0;
+  }
+  .postcard-layout .postcard-image {
+    width: 80px;
+    height: 80px;
+  }
+  .postcard-layout .postcard-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .postcard-layout .postcard-body {
+    flex: 1;
+    min-width: 0;
+    padding: 0 1rem;
+  }
+  .postcard-layout .postcard-summary {
+    display: none;
+  }
+  .postcard-layout .postcard-title {
+    line-height: 1.25;
+    font-size: 1.05rem;
+  }
+  .postcard-layout .postcard-metadata {
+    margin-top: .35rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .35rem .6rem;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
 /* Kill the hover background shift the theme applies by default. */
@@ -246,21 +343,32 @@ nav a.active {
   text-underline-offset: 3px;
 }
 
-/* Tag chips inside the postcard metadata row. */
+/* Tag chips inside the postcard metadata row. Blue by default; brightens on hover. */
+html[data-theme="light"] {
+  --tag-color:        #3b82f6;   /* mid-blue, readable on cream bg */
+  --tag-color-hover:  #1d4ed8;   /* deeper blue on hover */
+  --tag-border:       #bfdbfe;   /* soft blue border */
+}
+html[data-theme="dark"] {
+  --tag-color:        #93c5fd;   /* light blue, readable on dark bg */
+  --tag-color-hover:  #bfdbfe;   /* even lighter on hover */
+  --tag-border:       #1e3a8a;   /* dim blue border */
+}
+
 .postcard-layout .postcard-tag {
   display: inline-block;
   margin-right: .4rem;
   padding: 2px .55em;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--tag-border);
   border-radius: 4px;
-  color: var(--color-text-secondary);
+  color: var(--tag-color);
   font-size: .8em;
   text-decoration: none;
   transition: color .12s ease-in-out, border-color .12s ease-in-out;
 }
 .postcard-layout .postcard-tag:hover {
-  color: var(--maincolor);
-  border-color: var(--maincolor);
+  color: var(--tag-color-hover);
+  border-color: var(--tag-color-hover);
   text-decoration: none;
 }
 

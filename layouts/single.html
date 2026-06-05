@@ -10,6 +10,22 @@
     {{ end }}
 {{ end }}
 
+<header class="post-header content-margin">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="post-meta">
+        {{ with .Date }}
+        <time class="relative-time"
+              datetime="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
+              data-fmt="{{ .Format "02 Jan 2006" }}">{{ .Format "02 Jan 2006" }}</time>
+        {{ end }}
+        {{ with .Params.tags }}
+        <span class="post-tags">
+            {{ range . }}<a class="post-tag" href="{{ (printf "/tags/%s/" (. | urlize)) | relLangURL }}">{{ . }}</a>{{ end }}
+        </span>
+        {{ end }}
+    </div>
+</header>
+
 {{ $img := .Params.feature_image | default .Site.Params.default_feature_image }}
 {{ with $img }}
 <div class="content-margin">
