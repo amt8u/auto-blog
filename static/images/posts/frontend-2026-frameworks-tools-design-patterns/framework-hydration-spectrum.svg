@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="180" viewBox="0 0 700 180">
+  <rect width="700" height="180" fill="white"/>
+  <!-- axis line -->
+  <line x1="40" y1="100" x2="660" y2="100" stroke="#4a90e2" stroke-width="2"/>
+  <polygon points="660,95 672,100 660,105" fill="#4a90e2"/>
+  <text x="40" y="130" font-size="12" fill="#333" text-anchor="middle">Full</text>
+  <text x="40" y="143" font-size="12" fill="#333" text-anchor="middle">Hydration</text>
+  <text x="660" y="130" font-size="12" fill="#333" text-anchor="middle">No</text>
+  <text x="660" y="143" font-size="12" fill="#333" text-anchor="middle">Hydration</text>
+  <text x="350" y="20" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Client JS Shipped → Less is Better for Content Sites</text>
+  <!-- React -->
+  <circle cx="130" cy="100" r="12" fill="#4a90e2"/>
+  <text x="130" y="75" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">React 19</text>
+  <text x="130" y="158" font-size="11" fill="#666" text-anchor="middle">Full hydration</text>
+  <!-- Svelte -->
+  <circle cx="270" cy="100" r="12" fill="#4a90e2"/>
+  <text x="270" y="75" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">Svelte 5</text>
+  <text x="270" y="158" font-size="11" fill="#666" text-anchor="middle">Compiled, minimal JS</text>
+  <!-- Astro -->
+  <circle cx="470" cy="100" r="12" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="470" y="75" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">Astro 5</text>
+  <text x="470" y="158" font-size="11" fill="#666" text-anchor="middle">Island / partial hydration</text>
+  <!-- Qwik -->
+  <circle cx="610" cy="100" r="12" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="610" y="75" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">Qwik</text>
+  <text x="610" y="158" font-size="11" fill="#666" text-anchor="middle">Resumability, ~0 JS</text>
+</svg>
