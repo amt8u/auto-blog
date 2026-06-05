@@ -1,8 +1,354 @@
-.feature-image {
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin: 1rem 0 1.75rem;
-    display: block;
+/* Archie-inspired styling for the monochrome theme.
+   Re-maps monochrome's CSS variables (which already toggle via html[data-theme]),
+   then adds typography + accents from the reference site (cybercafe.dev). */
+
+/* ---------- color palettes ---------- */
+
+html[data-theme="light"] {
+  --maincolor:        #2563eb;       /* blue */
+  --bordercl:         rebeccapurple; /* dotted hr / footer rule */
+  --calloutcolor:     dodgerblue;
+  --textColor:        #232333;
+  --pageBackground:   #f7f7f1;
+  --pageBackgroundEl: #fff;
+  --codeInlineBg:     #dedede;
+  --codeBlockBg:      #ececec;
+  --tableBorder:      #dfe2e5;
+  --mutedText:        #737373;
+
+  --color-text:                          var(--textColor);
+  --color-text-secondary:                #6a6a76;
+  --color-text-footer:                   #6a6a76;
+  --color-background:                    var(--pageBackground);
+  --color-background-card:               var(--pageBackgroundEl);
+  --color-background-hover:              #eeeee6;
+  --color-background-overlay:            #eaeae2;
+  --color-background-inline-code:        var(--codeInlineBg);
+  --color-border:                        var(--tableBorder);
+  --color-border-collapsible-menu:       #e3e3da;
+  --color-link:                          var(--maincolor);
+  --color-header-menu-item-inactive:     #6a6a76;
+  --color-header-menu-item-active:       var(--maincolor);
+  --color-header-menu-item-in-section:   var(--maincolor);
 }
+
+html[data-theme="dark"] {
+  --maincolor:        #60a5fa;       /* lighter blue for dark bg */
+  --bordercl:         #4f78ff;       /* dotted hr / footer rule */
+  --calloutcolor:     #1e88e5;
+  --textColor:        #cbcbcb;
+  --pageBackground:   #1c1c1c;
+  --pageBackgroundEl: #232323;
+  --codeInlineBg:     #151515;
+  --codeBlockBg:      #272822;       /* monokai-ish */
+  --tableBorder:      #333333;
+  --mutedText:        #8a8a8a;
+
+  --color-text:                          var(--textColor);
+  --color-text-secondary:                #9a9a9a;
+  --color-text-footer:                   #9a9a9a;
+  --color-background:                    var(--pageBackground);
+  --color-background-card:               var(--pageBackgroundEl);
+  --color-background-hover:              #2a2a2a;
+  --color-background-overlay:            #262626;
+  --color-background-inline-code:        var(--codeInlineBg);
+  --color-border:                        var(--tableBorder);
+  --color-border-collapsible-menu:       #2e2e2e;
+  --color-link:                          var(--maincolor);
+  --color-header-menu-item-inactive:     #9a9a9a;
+  --color-header-menu-item-active:       var(--maincolor);
+  --color-header-menu-item-in-section:   var(--maincolor);
+}
+
+/* ---------- typography ---------- */
+
+html, body {
+  font-family: Nunito, "Book Antiqua", Helvetica, Georgia, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+article :is(h1, h2, h3, h4, h5, h6) {
+  padding-top: 0.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+article h1 { font-size: 1.7rem; margin-block-start: 2rem; }
+article h2 { font-size: 1.3rem; margin-block-start: 1.75rem; }
+article h3 { font-size: 1.1rem; }
+article h4, article h5, article h6 { font-size: 1rem; }
+
+/* ---------- links and selection ---------- */
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color .12s ease-in-out;
+}
+a:hover {
+  color: var(--maincolor);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+::selection      { background: var(--maincolor); color: #fff; text-shadow: none; }
+::-moz-selection { background: var(--maincolor); color: #fff; text-shadow: none; }
+
+/* ---------- rules and blockquotes ---------- */
+
+hr {
+  border: 0;
+  border-top: 3px dotted var(--bordercl);
+  margin: 1.25em 0;
+}
+
+blockquote {
+  border-left: 3px solid var(--maincolor);
+  color: var(--mutedText);
+  margin: 1em 0;
+  padding: 0.4em 1em;
+  background: var(--color-background-overlay);
+  border-radius: 0 4px 4px 0;
+}
+blockquote p { margin: .35em 0; }
+
+/* ---------- code ---------- */
+
+code, kbd, samp {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: .92em;
+}
+
+:not(pre) > code {
+  background-color: var(--codeInlineBg);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+html[data-theme="dark"] :not(pre) > code {
+  color: #ab8965;
+}
+
+pre {
+  background-color: var(--codeBlockBg) !important;
+  line-height: 1.45;
+  overflow-x: auto;
+  padding: 1em;
+  border-radius: 5px;
+}
+pre code {
+  background-color: transparent !important;
+  color: inherit;
+  padding: 0;
+}
+
+/* ---------- tables ---------- */
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+table th, table td {
+  padding: 6px 13px;
+  border: 1px solid var(--tableBorder);
+}
+table th {
+  background: var(--color-background-overlay);
+  font-weight: 700;
+}
+
+/* ---------- images and feature image ---------- */
+
+article img {
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .35);
+  border-radius: 4px;
+}
+html[data-theme="dark"] article img {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
+}
+
+.feature-image,
+.featured-image,
+.post-feature-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 1rem 0 1.75rem;
+  display: block;
+}
+
+/* ---------- header / footer accents ---------- */
+
+footer, .footer, .site-footer {
+  border-top: 0.4rem dotted var(--bordercl);
+  padding-top: 1.25rem;
+  margin-top: 2rem;
+}
+
+.menu .menu-item a.active,
+nav a.active {
+  color: var(--maincolor);
+}
+
+/* Monochrome puts a 2px border-bottom on the <li>.header-menu-item that flips
+   colored on hover / active / in-section — that's the second underline. Drop it,
+   keep only the <a>'s underline. */
+.header-menu .header-menu-item,
+.header-menu .header-menu-item:hover,
+.header-menu .header-menu-item.active,
+.header-menu .header-menu-item.insection {
+  border-bottom-color: transparent !important;
+}
+
+/* ---------- postcards (list of posts on home/section pages) ---------- */
+
+.postcard-layout .postcard-item {
+  box-shadow: none;
+  border: 0;
+  background-color: transparent;
+}
+
+.postcard-layout .postcard-image {
+  width: 140px;
+  flex-shrink: 0;
+}
+.postcard-layout .postcard-image img {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* Kill the hover background shift the theme applies by default. */
+.postcard-layout .postcard-item:hover {
+  background-color: transparent;
+}
+
+/* Now that the wrapping <a> is gone, only the title links. Style it accent on hover. */
+.postcard-layout .postcard-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.postcard-layout .postcard-title a:hover {
+  color: var(--maincolor);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* Tag chips inside the postcard metadata row. */
+.postcard-layout .postcard-tag {
+  display: inline-block;
+  margin-right: .4rem;
+  padding: 2px .55em;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  font-size: .8em;
+  text-decoration: none;
+  transition: color .12s ease-in-out, border-color .12s ease-in-out;
+}
+.postcard-layout .postcard-tag:hover {
+  color: var(--maincolor);
+  border-color: var(--maincolor);
+  text-decoration: none;
+}
+
+/* ---------- table of contents ---------- */
+
+/* Monochrome wraps the TOC in .collapsible-menu-wrapper, with a .right modifier
+   for the fixed sidebar variant. The reference site (cybercafe.dev) uses a soft
+   3-stop gradient + small radius — re-create that here. */
+
+html[data-theme="light"] {
+  --toc-gradient: linear-gradient(to bottom, #f7f7f2, #ececec, #f7f7f2);
+}
+html[data-theme="dark"] {
+  --toc-gradient: linear-gradient(to bottom, #1c1c1c, #161616, #1c1c1c);
+}
+
+/* The fixed-right TOC: vertically centered, soft gradient + border, hidden
+   until the reader scrolls one viewport down (the `.show` class is toggled by
+   JS in user_head.html). Only renders on wider screens. */
+.toc-fixed {
+  display: none;
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18vw;
+  max-width: 320px;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background: var(--toc-gradient);
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: .9rem;
+  opacity: 0;
+  transition: opacity .15s ease-in;
+  pointer-events: none;
+  z-index: 50;
+}
+.toc-fixed.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 80rem) {
+  .toc-fixed { display: block; }
+}
+
+/* Restore list markers — monochrome's collapsible-menu.scss forces
+   `list-style: none` on BOTH ul AND li, so we have to revert both. */
+#TableOfContents ul,
+#TableOfContents li {
+  list-style: revert;
+}
+#TableOfContents ul {
+  padding-left: 1.25em;
+}
+#TableOfContents li {
+  margin-top: .25rem;
+}
+
+/* TOC links: muted by default, accent on hover and when active. */
+#TableOfContents a {
+  color: var(--color-text-secondary);
+  transition: color .12s ease-in-out;
+}
+#TableOfContents a:hover {
+  color: var(--maincolor);
+  border-bottom: 0 !important;
+  text-decoration: none;
+}
+#TableOfContents .active > a,
+#TableOfContents li.active > a {
+  color: var(--maincolor);
+  border-bottom: 0 !important;
+  text-decoration: none;
+}
+
+/* ---------- callouts ---------- */
+
+.callout {
+  background-color: var(--calloutcolor);
+  color: #fff;
+  padding: 1em;
+  border-radius: 4px;
+}
+.callout a {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+.callout a:hover { background: #fff; color: var(--calloutcolor); }

@@ -6,7 +6,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Space+Grotesk:wght@700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/custom.css">
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -24,5 +25,20 @@ document.addEventListener('DOMContentLoaded', function () {
         else                       rel = Math.floor(diff / 31536000) + ' years ago';
         el.textContent = el.getAttribute('data-fmt') + ' · ' + rel;
     });
+
+    // Show the fixed-right TOC only after the reader has scrolled at least one
+    // viewport down — matches the cybercafe.dev behavior.
+    var toc = document.querySelector('.toc-fixed');
+    if (toc) {
+        var update = function () {
+            if (window.scrollY > window.innerHeight / 2) {
+                toc.classList.add('show');
+            } else {
+                toc.classList.remove('show');
+            }
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    }
 });
 </script>
