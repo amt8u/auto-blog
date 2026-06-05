@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="260" viewBox="0 0 700 260">
+  <rect width="700" height="260" fill="white"/>
+  <text x="14" y="44" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">WEBPACK</text>
+  <rect x="14" y="52" width="100" height="46" rx="4" fill="#f0f4f8" stroke="#cccccc" stroke-width="1"/>
+  <text x="64" y="71" font-family="sans-serif" font-size="10" fill="#555" text-anchor="middle">Source files</text>
+  <text x="64" y="87" font-family="sans-serif" font-size="9" fill="#999" text-anchor="middle">+ node_modules ×100s</text>
+  <line x1="114" y1="75" x2="148" y2="75" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#aw)"/>
+  <rect x="148" y="55" width="110" height="40" rx="4" fill="#4a90e2"/>
+  <text x="203" y="71" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold">Webpack Bundler</text>
+  <text x="203" y="86" font-family="sans-serif" font-size="9" fill="#c0dcf8" text-anchor="middle">bundles everything first</text>
+  <line x1="258" y1="75" x2="292" y2="75" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#aw)"/>
+  <rect x="292" y="55" width="85" height="40" rx="4" fill="#f0f4f8" stroke="#cccccc" stroke-width="1"/>
+  <text x="334" y="71" font-family="sans-serif" font-size="10" fill="#333" text-anchor="middle">bundle.js</text>
+  <text x="334" y="86" font-family="sans-serif" font-size="9" fill="#999" text-anchor="middle">(everything merged)</text>
+  <line x1="377" y1="75" x2="411" y2="75" stroke="#4a90e2" stroke-width="1.5" marker-end="url(#aw)"/>
+  <rect x="411" y="55" width="80" height="40" rx="4" fill="#f0f4f8" stroke="#cccccc" stroke-width="1"/>
+  <text x="451" y="78" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle">Browser</text>
+  <text x="280" y="116" font-family="sans-serif" font-size="11" fill="#c0392b" text-anchor="middle">⏳ Cold start: 15–30 seconds — browser gets nothing until bundling is done</text>
+  <line x1="14" y1="132" x2="686" y2="132" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="5,4"/>
+  <text x="14" y="155" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">VITE</text>
+  <rect x="14" y="162" width="80" height="50" rx="4" fill="#f0f4f8" stroke="#cccccc" stroke-width="1"/>
+  <text x="54" y="183" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle">Browser</text>
+  <text x="54" y="199" font-family="sans-serif" font-size="9" fill="#999" text-anchor="middle">native ESM</text>
+  <path d="M94 172 Q130 162 178 165" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#aw)"/>
+  <text x="136" y="156" font-family="sans-serif" font-size="9" fill="#4a90e2" text-anchor="middle">import request</text>
+  <path d="M178 195 Q130 210 94 200" stroke="#22a06b" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#awg)"/>
+  <text x="136" y="218" font-family="sans-serif" font-size="9" fill="#22a06b" text-anchor="middle">ESM module (transformed)</text>
+  <rect x="178" y="152" width="135" height="58" rx="4" fill="#4a90e2"/>
+  <text x="245" y="176" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">Vite Dev Server</text>
+  <text x="245" y="192" font-family="sans-serif" font-size="9" fill="#c0dcf8" text-anchor="middle">transforms only requested file</text>
+  <text x="245" y="204" font-family="sans-serif" font-size="9" fill="#c0dcf8" text-anchor="middle">(esbuild for TS/JSX)</text>
+  <line x1="413" y1="175" x2="313" y2="178" stroke="#999" stroke-width="1" marker-end="url(#awgray)"/>
+  <rect x="413" y="157" width="140" height="42" rx="4" fill="#f0f4f8" stroke="#cccccc" stroke-width="1"/>
+  <text x="483" y="174" font-family="sans-serif" font-size="10" fill="#333" text-anchor="middle">deps (pre-bundled once</text>
+  <text x="483" y="188" font-family="sans-serif" font-size="10" fill="#555" text-anchor="middle">by esbuild at startup)</text>
+  <text x="280" y="240" font-family="sans-serif" font-size="11" fill="#27ae60" text-anchor="middle">⚡ Cold start: &lt;1 second — only requested modules are loaded and transformed</text>
+  <defs>
+    <marker id="aw" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4a90e2"/></marker>
+    <marker id="awg" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#22a06b"/></marker>
+    <marker id="awgray" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#999"/></marker>
+  </defs>
+</svg>
