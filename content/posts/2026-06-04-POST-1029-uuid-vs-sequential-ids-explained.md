@@ -6,6 +6,7 @@ slug        = "uuid-vs-sequential-ids-explained"
 tags        = ["database", "uuid", "backend", "security", "distributed-systems"]
 keywords    = ["UUID", "universally unique identifier", "UUID vs sequential ID", "UUIDv7", "database primary key", "IDOR prevention"]
 canonical   = "/posts/uuid-vs-sequential-ids-explained/"
+feature_image = "/images/posts/uuid-vs-sequential-ids-explained/uuid-feature.svg"
 +++
 
 You expose an API endpoint like `/api/orders/1042`. That integer tells anyone listening — a competitor, an attacker, a curious user — exactly how many orders you have. Change the number to 1041, you get the previous order. Change it to 1, you get the very first one. No auth bypass needed. The ID itself is the information leak.

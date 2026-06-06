@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="python-split" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="50%" style="stop-color:#3776ab"/>
+      <stop offset="50%" style="stop-color:#ffd43b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="80" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="42" font-weight="800"
+        fill="#f8fafc" letter-spacing="-0.5">OOP vs Functional Languages</text>
+  <text x="600" y="120" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="20" font-weight="500"
+        fill="#94a3b8">Two paradigms shaped by the languages that picked them</text>
+
+  <!-- Center VS divider -->
+  <line x1="600" y1="170" x2="600" y2="500"
+        stroke="#334155" stroke-width="2" stroke-dasharray="4 6"/>
+  <circle cx="600" cy="335" r="32" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="600" y="345" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="22" font-weight="800"
+        fill="#94a3b8" letter-spacing="1">VS</text>
+
+  <!-- Column labels -->
+  <text x="300" y="195" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="18" font-weight="700"
+        fill="#60a5fa" letter-spacing="3">OBJECT-ORIENTED</text>
+  <text x="900" y="195" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="18" font-weight="700"
+        fill="#facc15" letter-spacing="3">FUNCTIONAL</text>
+
+  <!-- ============ LEFT: OOP badges (2x2) ============ -->
+  <g font-family="Inter, system-ui, sans-serif" font-weight="800" text-anchor="middle">
+
+    <!-- Java — orange circle, white "Java" -->
+    <g transform="translate(200 270)">
+      <circle cx="0" cy="0" r="58" fill="#f89820" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="10" font-size="28" fill="#fff">Java</text>
+    </g>
+
+    <!-- Python — split blue/yellow, white "Py" -->
+    <g transform="translate(400 270)">
+      <circle cx="0" cy="0" r="58" fill="url(#python-split)" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="10" font-size="28" fill="#fff">Py</text>
+    </g>
+
+    <!-- C# — purple, white "C#" -->
+    <g transform="translate(200 430)">
+      <circle cx="0" cy="0" r="58" fill="#9b4f96" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="12" font-size="36" fill="#fff">C#</text>
+    </g>
+
+    <!-- Ruby — red, white "Ruby" -->
+    <g transform="translate(400 430)">
+      <circle cx="0" cy="0" r="58" fill="#cc342d" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="10" font-size="26" fill="#fff">Ruby</text>
+    </g>
+  </g>
+
+  <!-- ============ RIGHT: FP badges (2x2) ============ -->
+  <g font-family="Inter, system-ui, sans-serif" font-weight="800" text-anchor="middle">
+
+    <!-- Haskell — purple, white lambda -->
+    <g transform="translate(800 270)">
+      <circle cx="0" cy="0" r="58" fill="#5e5086" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="18" font-size="50" fill="#fff" font-family="Georgia, serif">&#x3bb;</text>
+    </g>
+
+    <!-- Clojure — green, white "(λ)" parens -->
+    <g transform="translate(1000 270)">
+      <circle cx="0" cy="0" r="58" fill="#5881d8" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="14" font-size="32" fill="#91dc47" font-family="ui-monospace, Menlo, monospace">(λ)</text>
+    </g>
+
+    <!-- Elixir — purple/violet, white "ex" -->
+    <g transform="translate(800 430)">
+      <circle cx="0" cy="0" r="58" fill="#6e4a7e" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="12" font-size="36" fill="#fff" font-family="ui-monospace, Menlo, monospace">ex</text>
+    </g>
+
+    <!-- F# — blue, white "F#" -->
+    <g transform="translate(1000 430)">
+      <circle cx="0" cy="0" r="58" fill="#378bba" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="12" font-size="36" fill="#fff">F#</text>
+    </g>
+  </g>
+
+  <!-- Bottom taglines -->
+  <text x="300" y="545" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="15" font-style="italic" fill="#64748b">state + behavior, bundled together</text>
+  <text x="900" y="545" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="15" font-style="italic" fill="#64748b">pure functions, immutable data</text>
+
+  <!-- Footer brand mark -->
+  <text x="600" y="595" text-anchor="middle"
+        font-family="ui-monospace, Menlo, monospace"
+        font-size="14" fill="#64748b">cloudmato.com</text>
+</svg>

@@ -6,7 +6,7 @@ slug        = "frontend-2026-frameworks-tools-design-patterns"
 tags        = ["frontend", "javascript", "web-development", "react", "svelte"]
 keywords    = ["frontend development 2026", "new frontend frameworks", "React 19", "Svelte 5 runes", "frontend design patterns 2026"]
 canonical   = "/mr/posts/frontend-2026-frameworks-tools-design-patterns/"
-feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop"
+feature_image = "/images/posts/frontend-2026-frameworks-tools-design-patterns/frontend-2026-feature.svg"
 +++
 
 फ्रंटएंड परिसंस्था दरवर्षी बदलते, पण 2025-2026 हे संरचनात्मकदृष्ट्या वेगळे वाटले. हे फक्त नवीन libraries नव्हते — मूलभूत mental models बदलले. आपण कसे hydrate करतो, bundle करतो, components कसे structure करतो, आणि reactivity कसे हाताळतो — हे सारे अशा प्रकारे बदलले ज्यामुळे apps च्या कार्यक्षमतेवर आणि build होण्यास लागणाऱ्या वेळावर खरोखरच परिणाम होतो. येथे काय लक्षात ठेवण्यासारखे आहे ते पाहू.

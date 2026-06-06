@@ -6,6 +6,7 @@ slug        = "functional-programming-vs-oop-do-you-need-both"
 tags        = ["functional-programming", "oop", "software-design", "javascript", "programming"]
 keywords    = ["functional programming vs OOP", "functional programming", "OOP and functional programming", "multi-paradigm programming", "pure functions"]
 canonical   = "/hi/posts/functional-programming-vs-oop-do-you-need-both/"
+feature_image = "/images/posts/functional-programming-vs-oop-do-you-need-both/fp-vs-oop-feature.svg"
 +++
 
 OOP 50+ साल पुराना है। Classes, objects, inheritance — यह काम करता है, सब इसे जानते हैं, और लगभग हर लोकप्रिय भाषा इसे support करती है। तो फिर लोग Functional Programming की बात ऐसे क्यों कर रहे हैं जैसे यह कोई नई खोज हो? क्योंकि OOP *चीज़ों* को model करने में बेहतरीन है। FP *बदलावों* (transformations) को model करने में। ज़्यादातर असली software में दोनों होते हैं, और इन दोनों को एक समझना ही असली उलझन की जड़ है।

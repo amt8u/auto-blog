@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="vite-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#bd34fe"/>
+      <stop offset="100%" style="stop-color:#41d1ff"/>
+    </linearGradient>
+    <linearGradient id="js-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0db4f"/>
+      <stop offset="100%" style="stop-color:#f7df1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="78" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="44" font-weight="800"
+        fill="#f8fafc" letter-spacing="-0.5">Frontend 2026</text>
+  <text x="600" y="115" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="20" font-weight="500"
+        fill="#94a3b8">New frameworks, tools &amp; design patterns</text>
+
+  <!-- Section label: frameworks -->
+  <text x="600" y="170" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="14" font-weight="700"
+        fill="#60a5fa" letter-spacing="3">FRAMEWORKS</text>
+
+  <!-- ===== FRAMEWORK BADGES: 4 cols × 2 rows ===== -->
+  <g font-family="Inter, system-ui, sans-serif" font-weight="800" text-anchor="middle">
+
+    <!-- ROW 1 (y = 250): React, Vue, Svelte, Angular -->
+
+    <!-- React — cyan with stylised orbital atom -->
+    <g transform="translate(225 250)">
+      <circle cx="0" cy="0" r="55" fill="#20232a" stroke="#61dafb" stroke-width="2"/>
+      <g stroke="#61dafb" stroke-width="2.5" fill="none">
+        <ellipse cx="0" cy="0" rx="40" ry="15"/>
+        <ellipse cx="0" cy="0" rx="40" ry="15" transform="rotate(60)"/>
+        <ellipse cx="0" cy="0" rx="40" ry="15" transform="rotate(-60)"/>
+      </g>
+      <circle cx="0" cy="0" r="6" fill="#61dafb"/>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">React</text>
+    </g>
+
+    <!-- Vue — green V -->
+    <g transform="translate(475 250)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#4fc08d" stroke-width="2"/>
+      <path d="M -28 -16 L 0 28 L 28 -16 L 16 -16 L 0 8 L -16 -16 Z" fill="#4fc08d"/>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Vue</text>
+    </g>
+
+    <!-- Svelte — orange flame / 'S' -->
+    <g transform="translate(725 250)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#ff3e00" stroke-width="2"/>
+      <text x="0" y="14" font-size="50" font-weight="800" fill="#ff3e00"
+            font-family="Inter, system-ui, sans-serif">S</text>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Svelte 5</text>
+    </g>
+
+    <!-- Angular — red A -->
+    <g transform="translate(975 250)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#dd0031" stroke-width="2"/>
+      <path d="M 0 -32 L -28 28 L -18 28 L -13 16 L 13 16 L 18 28 L 28 28 Z
+               M -9 6 L 0 -18 L 9 6 Z" fill="#dd0031"/>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Angular</text>
+    </g>
+
+    <!-- ROW 2 (y = 405): Astro, Qwik, Solid, Next.js -->
+
+    <!-- Astro — purple rocket -->
+    <g transform="translate(225 405)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#ff5d01" stroke-width="2"/>
+      <!-- Stylised astro mark: a triangle with a notch (the official logo silhouette) -->
+      <path d="M 0 -28 L 22 28 L 0 18 L -22 28 Z" fill="#ff5d01"/>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Astro</text>
+    </g>
+
+    <!-- Qwik — blue/cyan lightning Q -->
+    <g transform="translate(475 405)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#18b6f6" stroke-width="2"/>
+      <!-- Lightning bolt -->
+      <path d="M -10 -28 L 14 -28 L 4 -4 L 18 -4 L -12 28 L 0 4 L -16 4 Z"
+            fill="#18b6f6"/>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Qwik</text>
+    </g>
+
+    <!-- SolidJS — blue stacked bars -->
+    <g transform="translate(725 405)">
+      <circle cx="0" cy="0" r="55" fill="#1e293b" stroke="#2c4f7c" stroke-width="2"/>
+      <g fill="#66c8ff">
+        <ellipse cx="0" cy="-15" rx="28" ry="6"/>
+        <ellipse cx="0" cy="0"   rx="28" ry="6"/>
+        <ellipse cx="0" cy="15"  rx="28" ry="6"/>
+      </g>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Solid</text>
+    </g>
+
+    <!-- Next.js — black N -->
+    <g transform="translate(975 405)">
+      <circle cx="0" cy="0" r="55" fill="#0a0a0a" stroke="#fff" stroke-width="2"/>
+      <text x="0" y="14" font-size="44" font-weight="800" fill="#fff"
+            font-family="Inter, system-ui, sans-serif">N</text>
+      <text x="0" y="100" font-size="14" fill="#cbd5e1">Next.js</text>
+    </g>
+  </g>
+
+  <!-- ===== LANGUAGES + TOOLS ROW ===== -->
+  <text x="600" y="525" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="12" font-weight="700"
+        fill="#facc15" letter-spacing="3">LANGUAGES &amp; TOOLS</text>
+
+  <g font-family="Inter, system-ui, sans-serif" font-weight="800" text-anchor="middle">
+
+    <!-- HTML5 -->
+    <g transform="translate(350 565)">
+      <rect x="-26" y="-22" width="52" height="44" rx="6" fill="#e34c26"/>
+      <text x="0" y="6" font-size="20" fill="#fff">5</text>
+    </g>
+
+    <!-- CSS3 -->
+    <g transform="translate(440 565)">
+      <rect x="-26" y="-22" width="52" height="44" rx="6" fill="#1572b6"/>
+      <text x="0" y="6" font-size="20" fill="#fff">3</text>
+    </g>
+
+    <!-- JS -->
+    <g transform="translate(530 565)">
+      <rect x="-26" y="-22" width="52" height="44" rx="6" fill="url(#js-grad)"/>
+      <text x="0" y="6" font-size="18" fill="#222">JS</text>
+    </g>
+
+    <!-- TS -->
+    <g transform="translate(620 565)">
+      <rect x="-26" y="-22" width="52" height="44" rx="6" fill="#3178c6"/>
+      <text x="0" y="6" font-size="18" fill="#fff">TS</text>
+    </g>
+
+    <!-- Vite -->
+    <g transform="translate(720 565)">
+      <rect x="-30" y="-22" width="60" height="44" rx="6" fill="url(#vite-grad)"/>
+      <text x="0" y="6" font-size="14" fill="#fff">Vite</text>
+    </g>
+
+    <!-- Tailwind -->
+    <g transform="translate(820 565)">
+      <rect x="-34" y="-22" width="68" height="44" rx="6" fill="#06b6d4"/>
+      <text x="0" y="6" font-size="13" fill="#fff">Tailwind</text>
+    </g>
+  </g>
+
+  <!-- Footer brand mark -->
+  <text x="600" y="615" text-anchor="middle"
+        font-family="ui-monospace, Menlo, monospace"
+        font-size="12" fill="#64748b">cloudmato.com</text>
+</svg>

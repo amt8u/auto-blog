@@ -6,7 +6,7 @@
 
 html[data-theme="light"] {
   --maincolor:        #2563eb;       /* blue */
-  --bordercl:         rebeccapurple; /* dotted hr / footer rule */
+  --bordercl:         #1e40af;       /* deeper blue — dotted hr / footer rule */
   --calloutcolor:     dodgerblue;
   --textColor:        #232333;
   --pageBackground:   #f7f7f1;
@@ -34,7 +34,7 @@ html[data-theme="light"] {
 
 html[data-theme="dark"] {
   --maincolor:        #60a5fa;       /* lighter blue for dark bg */
-  --bordercl:         #4f78ff;       /* dotted hr / footer rule */
+  --bordercl:         #3b82f6;       /* mid blue — dotted hr / footer rule */
   --calloutcolor:     #1e88e5;
   --textColor:        #cbcbcb;
   --pageBackground:   #1c1c1c;
@@ -105,7 +105,7 @@ a:hover {
 
 hr {
   border: 0;
-  border-top: 3px dotted var(--bordercl);
+  border-top: 2px dotted var(--bordercl);
   margin: 1.25em 0;
 }
 

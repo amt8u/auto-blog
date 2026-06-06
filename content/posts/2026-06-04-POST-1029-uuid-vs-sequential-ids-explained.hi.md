@@ -6,6 +6,7 @@ slug        = "uuid-vs-sequential-ids-explained"
 tags        = ["डेटाबेस", "uuid", "बैकएंड", "सुरक्षा", "वितरित-प्रणालियाँ"]
 keywords    = ["UUID", "यूनिवर्सली यूनिक आइडेंटिफायर", "UUID बनाम अनुक्रमिक ID", "UUIDv7", "डेटाबेस प्राइमरी की", "IDOR रोकथाम"]
 canonical   = "/hi/posts/uuid-vs-sequential-ids-explained/"
+feature_image = "/images/posts/uuid-vs-sequential-ids-explained/uuid-feature.svg"
 +++
 
 आप एक API एंडपॉइंट `/api/orders/1042` एक्सपोज़ करते हैं। वह इंटीजर किसी को भी — एक प्रतिस्पर्धी, एक हमलावर, एक जिज्ञासु उपयोगकर्ता — बिल्कुल बता देता है कि आपके पास कितने ऑर्डर हैं। नंबर को 1041 में बदलें, तो पिछला ऑर्डर मिल जाता है। इसे 1 में बदलें, तो पहला ऑर्डर मिल जाता है। कोई auth bypass की ज़रूरत नहीं। ID खुद ही जानकारी का रिसाव है।

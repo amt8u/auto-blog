@@ -6,7 +6,7 @@ slug        = "vite-vs-webpack-why-vite-is-fast"
 tags        = ["vite", "webpack", "build-tools", "frontend", "javascript"]
 keywords    = ["what is vite", "vite vs webpack", "vite build tool", "vite faster than webpack", "vite future"]
 canonical   = "/posts/vite-vs-webpack-why-vite-is-fast/"
-feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop"
+feature_image = "/images/posts/vite-vs-webpack-why-vite-is-fast/vite-feature.svg"
 +++
 
 I remember the first time I switched a project from CRA (which uses Webpack under the hood) to Vite. The dev server came up in under a second. I genuinely stared at the terminal for a moment, waiting for something else to happen. Nothing did. That was it — it was ready. That's not a small improvement over Webpack. It's a completely different experience.

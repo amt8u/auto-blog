@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="95" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="48" font-weight="800"
+        fill="#f8fafc" letter-spacing="-0.5">UUID vs Sequential IDs</text>
+  <text x="600" y="140" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="22" font-weight="500"
+        fill="#94a3b8">What, why, and which one to actually pick</text>
+
+  <!-- VS divider -->
+  <text x="600" y="350" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="34" font-weight="800"
+        fill="#475569" letter-spacing="2">VS</text>
+
+  <!-- === LEFT: Sequential === -->
+  <g>
+    <text x="290" y="210" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="18" font-weight="700"
+          fill="#60a5fa" letter-spacing="3">SEQUENTIAL</text>
+
+    <!-- ID stack — bottom-up small to bigger -->
+    <g font-family="ui-monospace, Menlo, monospace" font-weight="600">
+      <rect x="170" y="245" width="240" height="46" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="290" y="275" text-anchor="middle" font-size="26" fill="#dbeafe">1</text>
+
+      <rect x="170" y="305" width="240" height="46" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="290" y="335" text-anchor="middle" font-size="26" fill="#dbeafe">2</text>
+
+      <rect x="170" y="365" width="240" height="46" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="290" y="395" text-anchor="middle" font-size="26" fill="#dbeafe">3</text>
+
+      <rect x="170" y="425" width="240" height="46" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="290" y="455" text-anchor="middle" font-size="26" fill="#93c5fd">…</text>
+    </g>
+
+    <text x="290" y="510" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="15" font-style="italic" fill="#64748b">simple · predictable · centralised</text>
+  </g>
+
+  <!-- === RIGHT: UUID === -->
+  <g>
+    <text x="910" y="210" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="18" font-weight="700"
+          fill="#facc15" letter-spacing="3">UUID</text>
+
+    <!-- Big UUID box -->
+    <rect x="700" y="245" width="420" height="170" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- 128-bit UUID — broken into v4 dashed format -->
+    <g font-family="ui-monospace, Menlo, monospace" font-size="22" font-weight="600" fill="#fde047" text-anchor="middle">
+      <text x="910" y="295">f47ac10b</text>
+      <text x="910" y="325">58cc</text>
+      <text x="910" y="355">4372</text>
+      <text x="910" y="385">a567-0e02b2c3d479</text>
+    </g>
+
+    <!-- Distributed dots — three little nodes connected to UUID -->
+    <g stroke="#475569" stroke-width="1.5" fill="#3b82f6">
+      <circle cx="720" cy="445" r="6"/>
+      <circle cx="910" cy="455" r="6"/>
+      <circle cx="1100" cy="445" r="6"/>
+      <line x1="720" y1="445" x2="910" y2="455" stroke-dasharray="3 3"/>
+      <line x1="910" y1="455" x2="1100" y2="445" stroke-dasharray="3 3"/>
+    </g>
+
+    <text x="910" y="510" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="15" font-style="italic" fill="#64748b">128-bit · global · no coordination</text>
+  </g>
+
+  <!-- Footer brand mark -->
+  <text x="600" y="585" text-anchor="middle"
+        font-family="ui-monospace, Menlo, monospace"
+        font-size="14" fill="#64748b">cloudmato.com</text>
+</svg>

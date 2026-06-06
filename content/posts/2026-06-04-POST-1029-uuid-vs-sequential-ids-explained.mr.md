@@ -6,6 +6,7 @@ slug        = "uuid-vs-sequential-ids-explained"
 tags        = ["database", "uuid", "backend", "security", "distributed-systems"]
 keywords    = ["UUID", "universally unique identifier", "UUID vs sequential ID", "UUIDv7", "database primary key", "IDOR prevention"]
 canonical   = "/mr/posts/uuid-vs-sequential-ids-explained/"
+feature_image = "/images/posts/uuid-vs-sequential-ids-explained/uuid-feature.svg"
 +++
 
 तुम्ही `/api/orders/1042` सारखा API endpoint उघड करता. तो integer कोणालाही ऐकणाऱ्याला — एखाद्या प्रतिस्पर्ध्याला, आक्रमणकर्त्याला, उत्सुक वापरकर्त्याला — तुमच्याकडे किती orders आहेत ते सांगतो. संख्या 1041 केली, तर तुम्हाला मागील order मिळतो. ती 1 केली, तर तुम्हाला पहिली order मिळते. कोणत्याही auth bypass ची गरज नाही. ID स्वतःच माहितीची गळती आहे.

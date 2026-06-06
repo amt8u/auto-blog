@@ -6,7 +6,7 @@ slug        = "frontend-2026-frameworks-tools-design-patterns"
 tags        = ["frontend", "javascript", "web-development", "react", "svelte"]
 keywords    = ["frontend development 2026", "new frontend frameworks", "React 19", "Svelte 5 runes", "frontend design patterns 2026"]
 canonical   = "/posts/frontend-2026-frameworks-tools-design-patterns/"
-feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop"
+feature_image = "/images/posts/frontend-2026-frameworks-tools-design-patterns/frontend-2026-feature.svg"
 +++
 
 The frontend ecosystem shifts every year, but 2025-2026 felt structurally different. It wasn't just new libraries — the underlying mental models changed. How we hydrate, bundle, structure components, and handle reactivity has moved in ways that actually affect how apps perform and how long they take to build. Here's what's worth paying attention to.
