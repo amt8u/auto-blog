@@ -382,6 +382,10 @@ html[data-theme="dark"] {
   time.relative-time .rel {
     display: none;
   }
+  /* Drop the 1.2rem vertical margin the theme puts on sidebar list items. */
+  header #sidebar li {
+    margin: 0;
+  }
 }
 
 /* ---------- table of contents ---------- */
