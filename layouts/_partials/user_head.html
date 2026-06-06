@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
         else if (diff < 2592000)   rel = Math.floor(diff / 86400) + ' days ago';
         else if (diff < 31536000)  rel = Math.floor(diff / 2592000) + ' months ago';
         else                       rel = Math.floor(diff / 31536000) + ' years ago';
-        el.textContent = el.getAttribute('data-fmt') + ' · ' + rel;
+        // Wrap the relative-time portion in a span so CSS can hide it on mobile.
+        el.textContent = '';
+        el.appendChild(document.createTextNode(el.getAttribute('data-fmt')));
+        var relSpan = document.createElement('span');
+        relSpan.className = 'rel';
+        relSpan.textContent = ' · ' + rel;
+        el.appendChild(relSpan);
     });
 
     // Show the fixed-right TOC only after the reader has scrolled at least one

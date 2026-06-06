@@ -286,46 +286,6 @@ header {
   box-shadow: none;
 }
 
-/* Mobile: side-by-side compact layout with a square thumbnail; hide summary. */
-@media (max-width: 48rem) {
-  .postcard-layout .postcard-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: .85rem;
-    margin: 1.25rem 0;
-  }
-  .postcard-layout .postcard-image {
-    width: 80px;
-    height: 80px;
-  }
-  .postcard-layout .postcard-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .postcard-layout .postcard-body {
-    flex: 1;
-    min-width: 0;
-    padding: 0 1rem;
-  }
-  .postcard-layout .postcard-summary {
-    display: none;
-  }
-  .postcard-layout .postcard-title {
-    line-height: 1.25;
-    font-size: 1.05rem;
-  }
-  .postcard-layout .postcard-metadata {
-    margin-top: .35rem;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: .35rem .6rem;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
-
 /* Kill the hover background shift the theme applies by default. */
 .postcard-layout .postcard-item:hover {
   background-color: transparent;
@@ -370,6 +330,58 @@ html[data-theme="dark"] {
   color: var(--tag-color-hover);
   border-color: var(--tag-color-hover);
   text-decoration: none;
+}
+
+/* Mobile: side-by-side compact layout with a square thumbnail; hide summary.
+   Placed last so its rules override the desktop defaults above at equal
+   specificity (cascade resolves by source order). */
+@media (max-width: 48rem) {
+  .postcard-layout .postcard-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: .85rem;
+    margin: 1.25rem 0;
+  }
+  .postcard-layout .postcard-image {
+    width: 80px;
+    height: 80px;
+  }
+  .postcard-layout .postcard-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .postcard-layout .postcard-body {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+  }
+  .postcard-layout .postcard-summary {
+    display: none;
+  }
+  .postcard-layout .postcard-item .postcard-title {
+    line-height: 1.2rem;
+    font-size: 1rem;
+  }
+  .postcard-layout .postcard-metadata {
+    margin-top: .35rem;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .postcard-tags {
+    display: unset;
+  }
+  .postcard-layout .postcard-tag {
+    font-size: .6rem;
+    border: unset;
+    background-color: unset;
+    padding: 0;
+  }
+  /* Hide the "· N days ago" portion appended by the relative-time JS. */
+  time.relative-time .rel {
+    display: none;
+  }
 }
 
 /* ---------- table of contents ---------- */
