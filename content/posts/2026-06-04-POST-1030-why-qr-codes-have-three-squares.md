@@ -6,12 +6,14 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-codes", "how-it-works", "tech-explained"]
 keywords    = ["why QR codes have three squares", "QR code finder pattern", "QR code structure", "how QR codes work"]
 canonical   = "/posts/why-qr-codes-have-three-squares/"
-feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-code.png"
 +++
 
 Scan a QR code every day and never once think about those three squares. I was in that category for years. Turns out they are doing some genuinely clever engineering work — and the reason there are exactly *three*, not four, is more interesting than you'd expect.
 
 ## They Have a Name: Finder Patterns
+
+![qr-code-finder-pattern](/images/posts/why-qr-codes-have-three-squares/qr-feature.svg)
 
 The three large squares are officially called **position detection patterns**, though almost everyone calls them **finder patterns** [4]. They sit in the top-left, top-right, and bottom-left corners of every QR code — never the bottom-right. That asymmetry is intentional, and it's the whole point.
 

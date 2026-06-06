@@ -6,12 +6,14 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-codes", "how-it-works", "tech-explained"]
 keywords    = ["QR कोडला तीन चौरस का असतात", "QR कोड फाइंडर पॅटर्न", "QR कोड संरचना", "QR कोड कसे कार्य करतात"]
 canonical   = "/mr/posts/why-qr-codes-have-three-squares/"
-feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-code.png"
 +++
 
 दररोज QR कोड स्कॅन करायचा पण त्या तीन चौरसांबद्दल कधी विचारच करायचा नाही. मी अनेक वर्षे त्याच गटात होतो. पण खरं सांगायचं तर ते काही खरोखरच चतुर अभियांत्रिकी कार्य करत आहेत — आणि ते नक्की *तीन* का आहेत, चार का नाहीत, हे तुम्हाला वाटेल त्यापेक्षा जास्त रंजक आहे.
 
 ## त्यांना एक नाव आहे: फाइंडर पॅटर्न
+
+![qr-code-finder-pattern](/images/posts/why-qr-codes-have-three-squares/qr-feature.svg)
 
 तीन मोठे चौरस अधिकृतपणे **पोझिशन डिटेक्शन पॅटर्न** म्हणून ओळखले जातात, जरी जवळपास सर्वजण त्यांना **फाइंडर पॅटर्न** [4] म्हणतात. ते प्रत्येक QR कोडच्या वरच्या-डाव्या, वरच्या-उजव्या आणि खालच्या-डाव्या कोपऱ्यात असतात — खालच्या-उजव्या कोपऱ्यात कधीच नाही. ही असममितता हेतुपुरस्सर आहे, आणि तेच मुख्य कारण आहे.
 

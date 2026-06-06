@@ -6,12 +6,14 @@ slug        = "why-qr-codes-have-three-squares"
 tags        = ["qr-कोड", "कैसे-काम-करता-है", "तकनीक-समझाई"]
 keywords    = ["QR कोड में तीन वर्ग क्यों होते हैं", "QR कोड फाइंडर पैटर्न", "QR कोड संरचना", "QR कोड कैसे काम करता है"]
 canonical   = "/hi/posts/why-qr-codes-have-three-squares/"
-feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-feature.svg"
+feature_image = "/images/posts/why-qr-codes-have-three-squares/qr-code.png"
 +++
 
 रोज़ QR कोड स्कैन करें और उन तीन वर्गों के बारे में कभी न सोचें। मैं भी सालों तक उसी श्रेणी में था। असल में ये वर्ग कुछ वाकई चतुर इंजीनियरिंग का काम कर रहे हैं — और उनकी संख्या ठीक *तीन* क्यों है, चार नहीं, यह उतना दिलचस्प है जितना आप सोच सकते हैं।
 
 ## इनका एक नाम है: फाइंडर पैटर्न
+
+![qr-code-finder-pattern](/images/posts/why-qr-codes-have-three-squares/qr-feature.svg)
 
 तीन बड़े वर्गों को आधिकारिक तौर पर **पोज़िशन डिटेक्शन पैटर्न** कहा जाता है, हालाँकि लगभग सभी लोग इन्हें **फाइंडर पैटर्न** कहते हैं [4]। ये हर QR कोड के ऊपर-बाएँ, ऊपर-दाएँ और नीचे-बाएँ कोनों में होते हैं — नीचे-दाएँ कभी नहीं। यह असमानता जानबूझकर है, और यही पूरी बात है।
 
