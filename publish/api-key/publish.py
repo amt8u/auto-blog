@@ -29,15 +29,18 @@ IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
 STYLE_FILE = REPO_ROOT / "publish" / "writing-style.md"
 
 
-def load_system_prompt() -> str:
-    """Return SYSTEM_PROMPT with writing-style guide appended if the file exists."""
+def load_system_prompt() -> tuple[str, str]:
+    """Return (system_prompt, log_message) — appends writing-style guide if present."""
     style = ""
     if STYLE_FILE.exists():
         style = "\n\n" + STYLE_FILE.read_text(encoding="utf-8")
-    return SYSTEM_PROMPT + style
+        msg = f"Loaded writing style: {STYLE_FILE.relative_to(REPO_ROOT)} ({len(style)} chars)"
+    else:
+        msg = f"Writing style file not found: {STYLE_FILE.relative_to(REPO_ROOT)} (base prompt only)"
+    return SYSTEM_PROMPT + style, msg
 MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 8096
-MAX_SEARCHES = 5
+MAX_TOKENS = 12000  # Increased for longer, more in-depth articles (2000-3500 words)
+MAX_SEARCHES = 15   # Increased for more thorough research
 
 SVG_BLOCK_RE = re.compile(
     r'<!-- SVG_FILE: ([^\n]+?\.svg) -->\s*\n(<svg[\s\S]+?</svg>)\s*\n<!-- /SVG_FILE -->',
@@ -107,7 +110,85 @@ def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
     return cleaned, saved
 
 
+def generate_feature_image_svg(title: str, slug: str, post_id: str) -> str:
+    """Generate a professional feature image SVG locally as fallback."""
+    try:
+        img_dir = REPO_ROOT / "static" / "images"
+        img_dir.mkdir(parents=True, exist_ok=True)
+
+        filename = f"{post_id}-{slug}.svg"
+        svg_path = img_dir / filename
+
+        # Truncate title if too long
+        display_title = title[:60] + "..." if len(title) > 60 else title
+
+        # Generate SVG with dark background
+        svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark gradient background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Accent shapes -->
+  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
+  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
+  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+
+  <!-- Title text -->
+  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
+        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
+        letter-spacing="-0.5">
+    {display_title}
+  </text>
+
+  <!-- Post ID badge -->
+  <g>
+    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
+    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+          font-family="IBM Plex Mono, monospace">
+      {post_id}
+    </text>
+  </g>
+
+  <!-- cloudmato.com watermark -->
+  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+        font-family="Nunito, sans-serif">
+    cloudmato.com
+  </text>
+</svg>'''
+
+        svg_path.write_text(svg_content, encoding="utf-8")
+        return f"/images/{filename}"
+    except Exception as e:
+        print(f"[ERROR] Image generation failed: {e}")
+        return ""
+
+
 def write_post(slug: str, body: str) -> tuple[Path, list[Path]]:
+    """Write article to file. Extract SVG diagrams to static/images/.
+
+    Feature Image Guidelines (if creating manually):
+    1. Search for freely available images from Unsplash, Pexels, etc.
+    2. If no suitable image found, create a custom SVG with:
+       - Dark background (black or dark gradient)
+       - Minimal text (title + subtitle only)
+       - Logos, diagrams, or visual elements representing the article topic
+       - Professional, clean design
+       - Save as SVG to static/images/POST-XXXX-<slug>.svg
+       - Reference in frontmatter as: feature_image = "/images/POST-XXXX-<slug>.svg"
+    """
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     body, svg_paths = extract_svgs(body, slug)
     path = POSTS_DIR / f"{datetime.now().strftime('%Y-%m-%d')}-{slug}.md"
@@ -148,6 +229,9 @@ def stream_generation(topic: str) -> Iterator[str]:
     iso_date = datetime.now().astimezone().isoformat(timespec="seconds")
     yield sse("log", message=f"Starting research on: {topic[:120]}")
 
+    system_prompt, style_msg = load_system_prompt()
+    yield sse("log", message=style_msg)
+
     # Buffers to assemble the final text and to track the in-flight tool input.
     full_text_parts: list[str] = []
     tool_input_buffers: dict[int, str] = {}  # index -> accumulating JSON for that block
@@ -157,7 +241,7 @@ def stream_generation(topic: str) -> Iterator[str]:
         with client.messages.stream(
             model=MODEL,
             max_tokens=MAX_TOKENS,
-            system=load_system_prompt(),
+            system=system_prompt,
             tools=[{
                 "type": "web_search_20250305",
                 "name": "web_search",
@@ -188,7 +272,7 @@ def stream_generation(topic: str) -> Iterator[str]:
                             msg += ": " + " · ".join(titles)
                         yield sse("search_result", message=msg, count=n)
                     elif btype == "text":
-                        yield sse("log", message="Writing article…")
+                        yield sse("log", message="Generating article content…")
 
                 elif et == "content_block_delta":
                     delta = event.delta
@@ -216,6 +300,23 @@ def stream_generation(topic: str) -> Iterator[str]:
 
                 # Other events (message_start, message_delta, message_stop) -> ignored.
 
+            # Log token usage for the article-generation call.
+            try:
+                usage = stream.get_final_message().usage
+                parts = [
+                    f"in={getattr(usage, 'input_tokens', 0):,}",
+                    f"out={getattr(usage, 'output_tokens', 0):,}",
+                ]
+                cache_read = getattr(usage, "cache_read_input_tokens", 0) or 0
+                cache_write = getattr(usage, "cache_creation_input_tokens", 0) or 0
+                if cache_read:
+                    parts.append(f"cache_read={cache_read:,}")
+                if cache_write:
+                    parts.append(f"cache_write={cache_write:,}")
+                yield sse("log", message=f"Usage [article]: {', '.join(parts)}")
+            except Exception:
+                pass
+
     except Exception as e:
         app.logger.exception("Claude stream failed")
         yield sse("error", message=f"{type(e).__name__}: {e}")
@@ -237,6 +338,15 @@ def stream_generation(topic: str) -> Iterator[str]:
     yield sse("log", message=f"Wrote {path.relative_to(REPO_ROOT)}")
     if svg_paths:
         yield sse("log", message=f"Saved {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}")
+
+    # Feature image generation with fallback to local generation
+    # Implementation note: In a full implementation, this would:
+    # 1. Try to search for a freely available image
+    # 2. If search fails or no image found, call generate_feature_image_svg()
+    # 3. Add the image path to front matter
+    # yield sse("log", message="Searching for feature image...")
+    # image_path = generate_feature_image_svg(title, slug, post_id) if search_fails else url
+    # yield sse("log", message=f"Feature image: {image_path}")
 
     yield sse("log", message="Committing…")
     sha, push_err = git_publish(path, title, svg_paths=svg_paths)

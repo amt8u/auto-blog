@@ -7,7 +7,6 @@ tags          = ["git", "वर्शन कंट्रोल", "डेवल�
 keywords      = ["git commit message", "अच्छा commit message कैसे लिखें", "conventional commits", "imperative mood commit", "atomic commits"]
 canonical     = "/hi/posts/how-to-write-the-best-git-commit-message/"
 feature_image = "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1040-how-to-write-the-best-git-commit-message.svg"
 +++
 
 किसी भी ऐसे प्रोजेक्ट पर `git log` चलाइए जो एक साल से ज़्यादा पुराना है और आपको किसी टीम की सच्चाई दिख जाएगी। आधे messages में लिखा होगा "fix", "update", "wip", "asdf", या मेरा निजी पसंदीदा — "stuff"। और फिर एक दिन production टूट जाता है, आप गड़बड़ करने वाली line पर `git blame` चलाते हैं, और जिस commit ने यह पेश किया था उसमें बस लिखा है "minor changes"। बढ़िया। बहुत मददगार। शुक्रिया, बीते हुए मुझ।

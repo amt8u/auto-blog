@@ -7,7 +7,6 @@ tags          = ["git", "version control", "developer workflow", "best practices
 keywords      = ["git commit message", "how to write a good commit message", "conventional commits", "imperative mood commit", "atomic commits"]
 canonical     = "/mr/posts/how-to-write-the-best-git-commit-message/"
 feature_image = "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1040-how-to-write-the-best-git-commit-message.svg"
 +++
 
 एक वर्षाहून जुन्या असलेल्या कोणत्याही प्रोजेक्टवर `git log` चालवा आणि तुम्हाला एखाद्या टीमबद्दलचे सत्य सापडेल. निम्मे मेसेज म्हणतात "fix", "update", "wip", "asdf", किंवा माझे वैयक्तिक आवडते — "stuff". आणि मग एक दिवस प्रोडक्शन बिघडते, तुम्ही त्या त्रासदायक ओळीवर `git blame` चालवता, आणि ज्या कमिटने ती ओळ आणली त्यात फक्त "minor changes" असे लिहिलेले असते. छान. खूपच उपयुक्त. धन्यवाद, भूतकाळातील मी.

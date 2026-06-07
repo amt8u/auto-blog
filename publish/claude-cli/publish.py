@@ -29,6 +29,9 @@ def load_system_prompt() -> str:
     style = ""
     if STYLE_FILE.exists():
         style = "\n\n" + STYLE_FILE.read_text(encoding="utf-8")
+        log(f"  Loaded writing style: {STYLE_FILE.relative_to(REPO_ROOT)} ({len(style)} chars)")
+    else:
+        log(f"  Writing style file not found: {STYLE_FILE.relative_to(REPO_ROOT)} (using base prompt only)")
     return SYSTEM_PROMPT + style
 POSTS_DIR = REPO_ROOT / "content" / "posts"
 IMAGES_DIR = REPO_ROOT / "static" / "images" / "posts"
@@ -59,6 +62,44 @@ def log(message: str = "", *, file=None) -> None:
         print(line, flush=True, file=file)
     else:
         print(line, flush=True)
+
+
+# Running totals across all Claude calls in this run.
+_usage_totals = {"input": 0, "output": 0, "cache_read": 0, "cache_creation": 0, "cost": 0.0}
+
+
+def log_usage(step: str, result_event: dict) -> None:
+    """Log token usage and cost from a stream-json `result` event, and accumulate totals."""
+    usage = result_event.get("usage") or {}
+    inp = usage.get("input_tokens", 0)
+    out = usage.get("output_tokens", 0)
+    cache_read = usage.get("cache_read_input_tokens", 0)
+    cache_creation = usage.get("cache_creation_input_tokens", 0)
+    cost = result_event.get("total_cost_usd", 0.0) or 0.0
+
+    _usage_totals["input"] += inp
+    _usage_totals["output"] += out
+    _usage_totals["cache_read"] += cache_read
+    _usage_totals["cache_creation"] += cache_creation
+    _usage_totals["cost"] += cost
+
+    parts = [f"in={inp:,}", f"out={out:,}"]
+    if cache_read:
+        parts.append(f"cache_read={cache_read:,}")
+    if cache_creation:
+        parts.append(f"cache_write={cache_creation:,}")
+    parts.append(f"cost=${cost:.4f}")
+    log(f"  Usage [{step}]: {', '.join(parts)}")
+
+
+def log_usage_total() -> None:
+    """Log the accumulated usage across every Claude call in this run."""
+    t = _usage_totals
+    log(
+        f"  Usage [TOTAL]: in={t['input']:,}, out={t['output']:,}, "
+        f"cache_read={t['cache_read']:,}, cache_write={t['cache_creation']:,}, "
+        f"cost=${t['cost']:.4f}"
+    )
 
 
 def find_claude() -> str:
@@ -93,8 +134,12 @@ def slugify(text: str) -> str:
     return text.strip("-")[:80] or "untitled"
 
 
-def _run_claude_blocking(claude_bin: str, prompt: str, extra_flags: list[str], timeout: int) -> str:
-    """Run claude --print and return the result text, or raise RuntimeError."""
+def _run_claude_blocking(claude_bin: str, prompt: str, extra_flags: list[str], timeout: int,
+                         step: str = "") -> str:
+    """Run claude --print and return the result text, or raise RuntimeError.
+
+    If `step` is given, logs token usage / cost from the result event.
+    """
     cmd = [
         claude_bin, "--print", "--verbose",
         "--output-format", "stream-json",
@@ -109,6 +154,8 @@ def _run_claude_blocking(claude_bin: str, prompt: str, extra_flags: list[str], t
         try:
             event = json.loads(line)
             if event.get("type") == "result" and event.get("subtype") == "success":
+                if step:
+                    log_usage(step, event)
                 return event.get("result", "").strip()
         except json.JSONDecodeError:
             continue
@@ -242,6 +289,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
                 if event.get("subtype") == "success":
                     result_text = event.get("result", "")
                     print()
+                    log_usage("article", event)
                 elif event.get("subtype") == "error":
                     raise RuntimeError(f"Claude error: {event.get('result', 'unknown')}")
     finally:
@@ -257,9 +305,91 @@ def generate_article(topic: str, claude_bin: str) -> str:
 
 # ---------- step 2: feature image ----------
 
-def find_feature_image(title: str, claude_bin: str) -> str:
-    """Search for a freely available image and return its URL, or empty string."""
-    log("[2/3] Finding feature image...")
+def generate_feature_image_svg(title: str, slug: str, post_id: str) -> str:
+    """Generate a professional feature image SVG with dark background and title.
+
+    Returns the path to the saved SVG file, or empty string on failure.
+    """
+    try:
+        img_dir = REPO_ROOT / "static" / "images"
+        img_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create filename: POST-1234-slug.svg
+        filename = f"{post_id}-{slug}.svg"
+        svg_path = img_dir / filename
+
+        # Truncate title if too long
+        display_title = title[:60] + "..." if len(title) > 60 else title
+
+        # Generate SVG with dark background
+        svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark gradient background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Accent shapes -->
+  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
+  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
+  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+
+  <!-- Title text -->
+  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
+        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
+        letter-spacing="-0.5">
+    {display_title}
+  </text>
+
+  <!-- Post ID badge -->
+  <g>
+    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
+    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+          font-family="IBM Plex Mono, monospace">
+      {post_id}
+    </text>
+  </g>
+
+  <!-- cloudmato.com watermark -->
+  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+        font-family="Nunito, sans-serif">
+    cloudmato.com
+  </text>
+</svg>'''
+
+        svg_path.write_text(svg_content, encoding="utf-8")
+        relative_path = f"/images/{filename}"
+        log(f"  ✓ Generated feature image: {relative_path}")
+        return relative_path
+    except Exception as e:
+        log(f"  Image generation failed: {e}")
+        return ""
+
+
+def find_feature_image(title: str, slug: str, claude_bin: str, post_id: str) -> str:
+    """Search for a freely available image, or generate one locally as fallback.
+
+    Workflow:
+    1. Search for feature images from free sources (Unsplash, Pexels, etc.)
+    2. If search fails or no image found, generate a custom SVG locally with:
+       - Dark background (black or dark gradient)
+       - Title text and post ID badge
+       - Professional, clean design
+       - Saved to static/images/POST-XXXX-<slug>.svg
+    """
+    log("[2/5] Finding feature image...")
+    log("  Searching for freely available images...")
     prompt = (
         f'Find one freely available, high-quality photo for a blog post titled: "{title}". '
         f'Search Unsplash (images.unsplash.com) for a relevant image. '
@@ -272,16 +402,20 @@ def find_feature_image(title: str, claude_bin: str) -> str:
             claude_bin, prompt,
             extra_flags=["--allowedTools", "WebSearch,WebFetch"],
             timeout=120,
+            step="feature-image",
         )
     except (RuntimeError, subprocess.TimeoutExpired):
-        return ""
+        log("  Image search failed (timeout or error).")
+        log("  Falling back to generating feature image locally...")
+        return generate_feature_image_svg(title, slug, post_id)
 
     # Accept only clean Unsplash or other https image URLs
     url = url.strip().strip('"').strip("'")
     if url == "NONE" or not url.startswith("https://"):
-        log("  No image found, skipping.")
-        return ""
-    log(f"  Image: {url[:70]}")
+        log("  Feature image not found from free sources.")
+        log("  Generating feature image locally...")
+        return generate_feature_image_svg(title, slug, post_id)
+    log(f"  ✓ Found image: {url[:70]}")
     return url
 
 
@@ -302,7 +436,7 @@ def inject_feature_image(body: str, image_url: str) -> str:
 
 def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
     """Translate article to Hindi. Returns translated body or None on failure."""
-    log("[3/3] Translating to Hindi...")
+    log("[3/5] Translating to Hindi...")
     prompt = (
         "Translate this Hugo blog post to Hindi.\n\n"
         "Rules:\n"
@@ -316,7 +450,7 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
         f"{body}"
     )
     try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600)
+        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600, step="translate-hi")
     except (RuntimeError, subprocess.TimeoutExpired) as e:
         log(f"  Translation failed: {e}")
         return None
@@ -336,7 +470,6 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
 
 def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
     """Translate article to Marathi. Returns translated body or None on failure."""
-    log("[5/5] Translating to Marathi...")
     prompt = (
         "Translate this Hugo blog post to Marathi.\n\n"
         "Rules:\n"
@@ -351,7 +484,7 @@ def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
         f"{body}"
     )
     try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600)
+        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600, step="translate-mr")
     except (RuntimeError, subprocess.TimeoutExpired) as e:
         log(f"  Translation failed: {e}")
         return None
@@ -407,37 +540,44 @@ def main() -> None:
     if svg_paths:
         log(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}")
 
+    # Generate post ID early so it's available for feature image naming
+    post_id = next_post_id()
+    log(f"  Assigned: {post_id}")
+
     # Step 3: Feature image
-    log("[2/5] Finding feature image...")
-    image_url = find_feature_image(title, claude_bin)
+    image_url = find_feature_image(title, slug, claude_bin, post_id)
     body = inject_feature_image(body, image_url)
 
     # Step 4: Translate to Hindi
     log("[3/5] Translating to Hindi...")
     hindi_body = translate_to_hindi(body, slug, claude_bin)
+    if not hindi_body:
+        log("\nAborting: Hindi translation failed. Nothing was committed or pushed.", file=sys.stderr)
+        sys.exit(1)
 
     # Step 5: Translate to Marathi
+    log("[4/5] Translating to Marathi...")
     marathi_body = translate_to_marathi(body, slug, claude_bin)
+    if not marathi_body:
+        log("\nAborting: Marathi translation failed. Nothing was committed or pushed.", file=sys.stderr)
+        sys.exit(1)
 
-    # Write files
+    # Step 6: Write files and commit — only reached if all translations succeeded
+    log("[5/5] Writing files and committing...")
     date_prefix = datetime.now().strftime("%Y-%m-%d")
-    post_id = next_post_id()
-    log(f"  Assigned: {post_id}")
     paths: list[Path] = []
 
     path_en = write_post(slug, body, date_prefix, post_id)
     paths.append(path_en)
     log(f"Written: {path_en.relative_to(REPO_ROOT)}")
 
-    if hindi_body:
-        path_hi = write_post(slug, hindi_body, date_prefix, post_id, lang="hi")
-        paths.append(path_hi)
-        log(f"Written: {path_hi.relative_to(REPO_ROOT)}")
+    path_hi = write_post(slug, hindi_body, date_prefix, post_id, lang="hi")
+    paths.append(path_hi)
+    log(f"Written: {path_hi.relative_to(REPO_ROOT)}")
 
-    if marathi_body:
-        path_mr = write_post(slug, marathi_body, date_prefix, post_id, lang="mr")
-        paths.append(path_mr)
-        log(f"Written: {path_mr.relative_to(REPO_ROOT)}")
+    path_mr = write_post(slug, marathi_body, date_prefix, post_id, lang="mr")
+    paths.append(path_mr)
+    log(f"Written: {path_mr.relative_to(REPO_ROOT)}")
 
     # Commit and push everything in one commit
     log("Committing and pushing...")
@@ -448,10 +588,10 @@ def main() -> None:
     else:
         log(f'Done! "{title}" [{post_id}] pushed as commit {sha[:8]}.')
         log(f"  EN: /posts/{slug}/")
-        if hindi_body:
-            log(f"  HI: /hi/posts/{slug}/")
-        if marathi_body:
-            log(f"  MR: /mr/posts/{slug}/")
+        log(f"  HI: /hi/posts/{slug}/")
+        log(f"  MR: /mr/posts/{slug}/")
+
+    log_usage_total()
 
 
 if __name__ == "__main__":

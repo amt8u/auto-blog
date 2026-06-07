@@ -7,7 +7,6 @@ tags          = ["networking", "security", "tls", "load-balancing"]
 keywords      = ["TLS termination", "SSL termination", "is SSL transport layer", "TLS passthrough", "load balancer TLS", "mTLS"]
 canonical     = "/mr/posts/tls-termination-explained/"
 feature_image = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1039-tls-termination-explained.svg"
 +++
 
 दोन प्रश्न सतत एकत्र मिसळले जातात: "TLS टर्मिनेशन म्हणजे काय" आणि "SSL ही ट्रान्सपोर्ट लेयरची गोष्ट आहे का?" लोक गृहीत धरतात की दुसऱ्या प्रश्नाचं उत्तर अर्थातच होय आहे — त्याला अक्षरशः *Transport* Layer Security म्हणतात ना? बरं. या नावाने अनेक हुशार लोकांना फसवलं आहे, आणि हा गोंधळ थेट लोक टर्मिनेशनबद्दल कसा विचार करतात त्यात उतरतो. तर मला दोन्ही उलगडून दाखवू द्या, कारण एकदा लेयरचा प्रश्न नीट समजला की टर्मिनेशन हे जादूसारखं वाटणं थांबतं.

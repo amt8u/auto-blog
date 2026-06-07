@@ -7,7 +7,6 @@ tags          = ["networking", "security", "tls", "load-balancing"]
 keywords      = ["TLS termination", "SSL termination", "is SSL transport layer", "TLS passthrough", "load balancer TLS", "mTLS"]
 canonical     = "/posts/tls-termination-explained/"
 feature_image = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1039-tls-termination-explained.svg"
 +++
 
 Two questions get mashed together constantly: "what is TLS termination" and "is SSL a transport layer thing?" People assume the answer to the second is obviously yes — it's literally called *Transport* Layer Security, right? Well. That naming has fooled a lot of smart people, and the confusion bleeds straight into how folks reason about termination. So let me untangle both, because once the layer question clicks, termination stops feeling like magic.

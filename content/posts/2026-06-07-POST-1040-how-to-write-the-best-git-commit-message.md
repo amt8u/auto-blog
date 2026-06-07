@@ -7,7 +7,6 @@ tags          = ["git", "version control", "developer workflow", "best practices
 keywords      = ["git commit message", "how to write a good commit message", "conventional commits", "imperative mood commit", "atomic commits"]
 canonical     = "/posts/how-to-write-the-best-git-commit-message/"
 feature_image = "https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1040-how-to-write-the-best-git-commit-message.svg"
 +++
 
 Run `git log` on any project that's more than a year old and you'll find the truth about a team. Half the messages say "fix", "update", "wip", "asdf", or my personal favourite — "stuff". And then one day production breaks, you run `git blame` on the offending line, and the commit that introduced it just says "minor changes". Cool. Very helpful. Thanks, past me.
