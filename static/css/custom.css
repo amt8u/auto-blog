@@ -12,7 +12,7 @@ html[data-theme="light"] {
   --pageBackground:   #f7f7f1;
   --pageBackgroundEl: #fff;
   --codeInlineBg:     #dedede;
-  --codeBlockBg:      #ececec;
+  --codeBlockBg:      #222222;
   --tableBorder:      #dfe2e5;
   --mutedText:        #737373;
 
@@ -40,7 +40,7 @@ html[data-theme="dark"] {
   --pageBackground:   #1c1c1c;
   --pageBackgroundEl: #232323;
   --codeInlineBg:     #151515;
-  --codeBlockBg:      #272822;       /* monokai-ish */
+  --codeBlockBg:      #222222;       /* monokai-ish */
   --tableBorder:      #333333;
   --mutedText:        #8a8a8a;
 
