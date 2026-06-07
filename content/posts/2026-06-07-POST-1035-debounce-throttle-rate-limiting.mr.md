@@ -1,11 +1,12 @@
 +++
-title       = "डिबाउन्स vs थ्रॉटल vs रेट लिमिटिंग"
-description = "डिबाउन्सिंग, थ्रॉटलिंग आणि रेट लिमिटिंग यांच्या मुख्य फरकांबद्दल जाणून घ्या. प्रत्येक कधी वापरायचे हे समजून घ्या आणि ते एकत्रितपणे कसे काम करतात."
-date        = "2026-06-07T11:39:53+05:30"
-slug        = "debounce-throttle-rate-limiting"
-tags        = ["performance", "web-development", "optimization"]
-keywords    = ["debouncing", "throttling", "rate limiting", "performance optimization"]
-canonical   = "/mr/posts/debounce-throttle-rate-limiting/"
+title           = "डिबाउन्स vs थ्रॉटल vs रेट लिमिटिंग"
+description     = "डिबाउन्सिंग, थ्रॉटलिंग आणि रेट लिमिटिंग यांच्या मुख्य फरकांबद्दल जाणून घ्या. प्रत्येक कधी वापरायचे हे समजून घ्या आणि ते एकत्रितपणे कसे काम करतात."
+date            = "2026-06-07T11:39:53+05:30"
+slug            = "debounce-throttle-rate-limiting"
+tags            = ["performance", "web-development", "optimization"]
+keywords        = ["debouncing", "throttling", "rate limiting", "performance optimization"]
+canonical       = "/mr/posts/debounce-throttle-rate-limiting/"
+feature_image   = "/images/POST-1035-debounce-throttle.svg"
 +++
 
 हे तीनही संकल्पना लोक एकमेकांत गोंधळून देतात. तुम्ही हे शब्द सतत एकत्रित वापरले जाताना पाहता, लोक या शब्दांचा वापर एकाच अर्थाने करतात, आणि बहुतांश लेख हे गोंधळून देतात किंवा फरक तांत्रिक भाषेत लपवून देतात. येथे ते खरेतर काय आहेत, ते का वेगळे आहेत, आणि कधी वापरायचे हे आहे. [1]

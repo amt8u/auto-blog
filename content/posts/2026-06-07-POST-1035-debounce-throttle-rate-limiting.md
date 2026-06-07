@@ -1,11 +1,12 @@
 +++
-title       = "Debounce vs Throttle vs Rate Limiting"
-description = "Learn the key differences between debouncing, throttling, and rate limiting. Understand when to use each and how they work together."
-date        = "2026-06-07T11:39:53+05:30"
-slug        = "debounce-throttle-rate-limiting"
-tags        = ["performance", "web-development", "optimization"]
-keywords    = ["debouncing", "throttling", "rate limiting", "performance optimization"]
-canonical   = "/posts/debounce-throttle-rate-limiting/"
+title           = "Debounce vs Throttle vs Rate Limiting"
+description     = "Learn the key differences between debouncing, throttling, and rate limiting. Understand when to use each and how they work together."
+date            = "2026-06-07T11:39:53+05:30"
+slug            = "debounce-throttle-rate-limiting"
+tags            = ["performance", "web-development", "optimization"]
+keywords        = ["debouncing", "throttling", "rate limiting", "performance optimization"]
+canonical       = "/posts/debounce-throttle-rate-limiting/"
+feature_image   = "/images/POST-1035-debounce-throttle.svg"
 +++
 
 Everyone conflates these three concepts. You see them mentioned together constantly, people use the words interchangeably, and most articles mix them up or bury the differences in jargon. Here's what they actually are, why they're different, and when to use them. [1]

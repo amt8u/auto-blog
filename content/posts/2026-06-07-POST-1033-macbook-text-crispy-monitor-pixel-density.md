@@ -1,11 +1,12 @@
 +++
-title       = "MacBook Text vs Monitor: Why Resolution Numbers Lie"
-description = "Why text looks crispy on your MacBook but fuzzy on your Full HD monitor, even at similar resolutions. Pixel density and antialiasing matter more than you think."
-date        = "2026-06-07T11:28:20+05:30"
-slug        = "macbook-text-crispy-monitor-pixel-density"
-tags        = ["displays", "macOS", "monitors", "tech-explained"]
-keywords    = ["pixel density", "MacBook retina display", "text rendering", "monitor sharpness", "DPI PPI"]
-canonical   = "/posts/macbook-text-crispy-monitor-pixel-density/"
+title           = "MacBook Text vs Monitor: Why Resolution Numbers Lie"
+description     = "Why text looks crispy on your MacBook but fuzzy on your Full HD monitor, even at similar resolutions. Pixel density and antialiasing matter more than you think."
+date            = "2026-06-07T11:28:20+05:30"
+slug            = "macbook-text-crispy-monitor-pixel-density"
+tags            = ["displays", "macOS", "monitors", "tech-explained"]
+keywords        = ["pixel density", "MacBook retina display", "text rendering", "monitor sharpness", "DPI PPI"]
+canonical       = "/posts/macbook-text-crispy-monitor-pixel-density/"
+feature_image   = "/images/POST-1033-pixel-density.svg"
 +++
 
 You buy a Full HD (1920×1080) monitor and check the specs. Your MacBook also outputs to a similar resolution. Yet when you start working, the text on the monitor looks noticeably softer. Not broken or unreadable — just not as sharp as what you see on your MacBook's built-in screen. What's going on?

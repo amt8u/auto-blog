@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGradient)"/>
+
+  <!-- Input Layer Connections -->
+  <line x1="80" y1="80" x2="250" y2="120" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="80" y1="150" x2="250" y2="120" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="80" y1="220" x2="250" y2="120" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+  <line x1="80" y1="290" x2="250" y2="120" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
+
+  <!-- Hidden Layer Connections -->
+  <line x1="250" y1="80" x2="500" y2="120" stroke="#60a5fa" stroke-width="2.5" opacity="0.7"/>
+  <line x1="250" y1="80" x2="500" y2="200" stroke="#60a5fa" stroke-width="2" opacity="0.5"/>
+  <line x1="250" y1="160" x2="500" y2="120" stroke="#60a5fa" stroke-width="2" opacity="0.5"/>
+  <line x1="250" y1="160" x2="500" y2="200" stroke="#60a5fa" stroke-width="2.5" opacity="0.7"/>
+  <line x1="250" y1="240" x2="500" y2="120" stroke="#60a5fa" stroke-width="2" opacity="0.5"/>
+  <line x1="250" y1="240" x2="500" y2="200" stroke="#60a5fa" stroke-width="2" opacity="0.6"/>
+
+  <!-- Output Layer Connections -->
+  <line x1="500" y1="120" x2="650" y2="160" stroke="#fbbf24" stroke-width="2.5" opacity="0.7"/>
+  <line x1="500" y1="200" x2="650" y2="160" stroke="#fbbf24" stroke-width="2.5" opacity="0.7"/>
+
+  <!-- Input Nodes -->
+  <circle cx="80" cy="80" r="16" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="80" cy="150" r="16" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="80" cy="220" r="16" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="80" cy="290" r="16" fill="url(#nodeGradient)" filter="url(#glow)"/>
+
+  <!-- Input Labels -->
+  <text x="80" y="85" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">x₁</text>
+  <text x="80" y="155" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">x₂</text>
+  <text x="80" y="225" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">x₃</text>
+  <text x="80" y="295" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">x₄</text>
+
+  <!-- Hidden Layer Nodes -->
+  <circle cx="250" cy="80" r="18" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="250" cy="160" r="18" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="250" cy="240" r="18" fill="url(#nodeGradient)" filter="url(#glow)"/>
+
+  <!-- Hidden Layer Labels -->
+  <text x="250" y="85" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">h₁</text>
+  <text x="250" y="165" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">h₂</text>
+  <text x="250" y="245" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">h₃</text>
+
+  <!-- Output Nodes -->
+  <circle cx="500" cy="120" r="18" fill="url(#nodeGradient)" filter="url(#glow)"/>
+  <circle cx="500" cy="200" r="18" fill="url(#nodeGradient)" filter="url(#glow)"/>
+
+  <!-- Output Labels -->
+  <text x="500" y="125" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">o₁</text>
+  <text x="500" y="205" text-anchor="middle" fill="white" font-size="10" font-weight="bold" dominant-baseline="central">o₂</text>
+
+  <!-- Final Output Node (Active) -->
+  <circle cx="650" cy="160" r="20" fill="url(#activeGradient)" filter="url(#glow)"/>
+  <text x="650" y="165" text-anchor="middle" fill="#1e3a8a" font-size="12" font-weight="bold" dominant-baseline="central">OUT</text>
+
+  <!-- Title/Label Area -->
+  <rect x="0" y="320" width="800" height="80" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Article Title -->
+  <text x="400" y="350" text-anchor="middle" fill="white" font-size="28" font-weight="bold" font-family="Space Grotesk, sans-serif">
+    Neurons in AI
+  </text>
+  <text x="400" y="380" text-anchor="middle" fill="#93c5fd" font-size="14" font-family="Nunito, sans-serif">
+    Not Just Functions
+  </text>
+
+  <!-- Mathematical Formula (subtle) -->
+  <text x="650" y="30" text-anchor="end" fill="#60a5fa" font-size="12" font-family="IBM Plex Mono, monospace" opacity="0.7">
+    output = σ(Σ(x·w) + b)
+  </text>
+</svg>

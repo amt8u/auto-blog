@@ -1,11 +1,12 @@
 +++
-title       = "MacBook मजकूर बनाम मॉनिटर: रेजोलिऊशन संख्या का खोट सत्य"
-description = "तुमच्या MacBook वर मजकूर तीक्ष्ण का दिसतो पण तुमच्या Full HD मॉनिटर वर धुंधळा का दिसतो, जरी समान रेजोलिऊशन असेल तरी. पिक्सेल घनता आणि अँटीएलियासिंग याचा महत्त्व आपण विचार करतोच."
-date        = "2026-06-07T11:28:20+05:30"
-slug        = "macbook-text-crispy-monitor-pixel-density"
-tags        = ["displays", "macOS", "monitors", "tech-explained"]
-keywords    = ["pixel density", "MacBook retina display", "text rendering", "monitor sharpness", "DPI PPI"]
-canonical   = "/mr/posts/macbook-text-crispy-monitor-pixel-density/"
+title           = "MacBook मजकूर बनाम मॉनिटर: रेजोलिऊशन संख्या का खोट सत्य"
+description     = "तुमच्या MacBook वर मजकूर तीक्ष्ण का दिसतो पण तुमच्या Full HD मॉनिटर वर धुंधळा का दिसतो, जरी समान रेजोलिऊशन असेल तरी. पिक्सेल घनता आणि अँटीएलियासिंग याचा महत्त्व आपण विचार करतोच."
+date            = "2026-06-07T11:28:20+05:30"
+slug            = "macbook-text-crispy-monitor-pixel-density"
+tags            = ["displays", "macOS", "monitors", "tech-explained"]
+keywords        = ["pixel density", "MacBook retina display", "text rendering", "monitor sharpness", "DPI PPI"]
+canonical       = "/mr/posts/macbook-text-crispy-monitor-pixel-density/"
+feature_image   = "/images/POST-1033-pixel-density.svg"
 +++
 
 तुम्ही एक Full HD (1920×1080) मॉनिटर खरेदी करता आणि विशेषतांची तपासणी करता. तुमचा MacBook देखील समान रेजोलिऊशनमध्ये आउटपुट देतो. तरी देखील जेव्हा तुम्ही काम सुरू करता, तेव्हा मॉनिटरवरचा मजकूर लक्षणीयरित्या नरम दिसतो. खंडित किंवा वाचनीय नसून — फक्त तुमच्या MacBook च्या अंतर्निर्मित स्क्रीनवर दिसणारे जेव्हा तीक्ष्ण असतो तेव्हा तितका तीक्ष्ण नाही. काय चाललंय?

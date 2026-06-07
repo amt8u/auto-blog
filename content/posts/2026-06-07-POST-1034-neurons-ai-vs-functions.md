@@ -1,11 +1,12 @@
 +++
-title       = "Neurons in AI: Not Just Functions"
-description = "What are neurons in AI and how do they differ from regular functions? A beginner programmer's guide to understanding artificial neural networks."
-date        = "2026-06-07T11:35:44+05:30"
-slug        = "neurons-ai-vs-functions"
-tags        = ["ai", "neural-networks", "machine-learning", "beginner"]
-keywords    = ["artificial neurons", "neural networks", "machine learning basics", "neurons vs functions", "weights and bias"]
-canonical   = "/posts/neurons-ai-vs-functions/"
+title           = "Neurons in AI: Not Just Functions"
+description     = "What are neurons in AI and how do they differ from regular functions? A beginner programmer's guide to understanding artificial neural networks."
+date            = "2026-06-07T11:35:44+05:30"
+slug            = "neurons-ai-vs-functions"
+tags            = ["ai", "neural-networks", "machine-learning", "beginner"]
+keywords        = ["artificial neurons", "neural networks", "machine learning basics", "neurons vs functions", "weights and bias"]
+canonical       = "/posts/neurons-ai-vs-functions/"
+feature_image   = "/images/POST-1034-neurons-ai.svg"
 +++
 
 If you've heard "neural network" thrown around in tech circles, you probably imagined something biological. The term **neuron** can make beginners think they need to understand brain biology to work with AI. They don't. But the confusion about what a neuron actually does — and how it differs from a function you'd write in code — is real. And that difference matters [1][2].

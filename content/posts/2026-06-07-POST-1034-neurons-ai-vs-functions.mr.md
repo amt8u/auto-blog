@@ -1,11 +1,12 @@
 +++
-title       = "एआई मध्ये न्यूरॉन्स: फक्त फंक्शन्स नाहीत"
-description = "एआई मध्ये न्यूरॉन्स म्हणजे काय आणि ते नियमित फंक्शन्सपेक्षा कसे वेगळे आहेत? कृत्रिम न्यूरल नेटवर्क्स समजून घेण्यासाठी नवीन प्रोग्रामरच्या मार्गदर्शकाचा"
-date        = "2026-06-07T11:35:44+05:30"
-slug        = "neurons-ai-vs-functions"
-tags        = ["ai", "neural-networks", "machine-learning", "beginner"]
-keywords    = ["artificial neurons", "neural networks", "machine learning basics", "neurons vs functions", "weights and bias"]
-canonical   = "/mr/posts/neurons-ai-vs-functions/"
+title           = "एआई मध्ये न्यूरॉन्स: फक्त फंक्शन्स नाहीत"
+description     = "एआई मध्ये न्यूरॉन्स म्हणजे काय आणि ते नियमित फंक्शन्सपेक्षा कसे वेगळे आहेत? कृत्रिम न्यूरल नेटवर्क्स समजून घेण्यासाठी नवीन प्रोग्रामरच्या मार्गदर्शकाचा"
+date            = "2026-06-07T11:35:44+05:30"
+slug            = "neurons-ai-vs-functions"
+tags            = ["ai", "neural-networks", "machine-learning", "beginner"]
+keywords        = ["artificial neurons", "neural networks", "machine learning basics", "neurons vs functions", "weights and bias"]
+canonical       = "/mr/posts/neurons-ai-vs-functions/"
+feature_image   = "/images/POST-1034-neurons-ai.svg"
 +++
 
 जर तुम्ही टेक क्षेत्रात "न्यूरल नेटवर्क" हा शब्द ऐकला असेल, तर तुम्ही कदाचित काहीतरी जैविक कल्पना केली असेल. **न्यूरॉन** हा शब्द नवीन प्रोग्रामरला एआई सोबत काम करण्यासाठी मेंदूचा जीवशास्त्र समजून घेणे आवश्यक आहे असे वाटू शकते. त्यांना नाही. पण न्यूरॉन खरोखर काय करतो आणि तो तुमच्या कोडमध्ये लिहिलेल्या फंक्शनपेक्षा कसे वेगळा आहे याबद्दल गोंधळ वास्तव आहे. आणि हा फरक महत्त्वाचा आहे [1][2].
