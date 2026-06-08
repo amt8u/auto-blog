@@ -6,8 +6,7 @@ slug          = "websocket-vs-http-one-socket-per-page"
 tags          = ["वेबसॉकेट", "एचटीटीपी", "वेब-डेवलपमेंट", "सिस्टम-डिज़ाइन"]
 keywords      = ["websocket vs http हिंदी में", "स्टेटफुल वेबसॉकेट", "हर जगह वेबसॉकेट क्यों न इस्तेमाल करें", "वेबसॉकेट स्केलेबिलिटी", "REST बनाम वेबसॉकेट", "http requests बनाम websocket connection"]
 canonical     = "/hi/posts/websocket-vs-http-one-socket-per-page/"
-feature_image = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1044-websocket-vs-http-one-socket-per-page.svg"
+feature_image = "/images/POST-1045-websocket-vs-http-one-socket-per-page.svg"
 +++
 
 मुझे समझ आता है कि यह सवाल बार-बार क्यों उठता है। एक WebSocket खुला रहता है, याद रखता है कि आप कौन हैं, और सर्वर को बार-बार पूछे बिना ही आपको डेटा भेजने देता है। तो फिर हम एक ही पेज लोड के लिए सौ अलग-अलग HTTP रिक्वेस्ट क्यों भेजते रहते हैं, जब हम सिर्फ एक परसिस्टेंट पाइप खोलकर काम चला सकते हैं? सच कहूं तो यह सवाल जितना समझदार लगता है, उतनी क्रेडिट लोग इसे नहीं देते — और इसका जवाब "क्योंकि HTTP बेहतर है" नहीं है। मामला इससे कहीं ज़्यादा बारीक है।

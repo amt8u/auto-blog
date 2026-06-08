@@ -204,6 +204,11 @@ def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
         svg_content = m.group(2).strip()
         img_dir.mkdir(parents=True, exist_ok=True)
         out_path = img_dir / filename
+        if out_path.exists():
+            raise FileExistsError(
+                f"Refusing to overwrite existing SVG: {out_path.relative_to(REPO_ROOT)}. "
+                f"Pick a different filename or remove the existing file."
+            )
         out_path.write_text(svg_content, encoding="utf-8")
         saved.append(out_path)
         alt = filename.rsplit(".", 1)[0].replace("-", " ").replace("_", " ")
@@ -216,9 +221,18 @@ def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
 # ---------- file writing ----------
 
 def write_post(slug: str, body: str, date_prefix: str, post_id: str, lang: str = "") -> Path:
+    """Write a new post. Refuses to overwrite an existing file — the publish
+    flow only ever creates new posts; modifying an existing one must be a
+    deliberate edit (not a silent overwrite from a re-run)."""
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     suffix = f".{lang}.md" if lang else ".md"
     path = POSTS_DIR / f"{date_prefix}-{post_id}-{slug}{suffix}"
+    if path.exists():
+        raise FileExistsError(
+            f"Refusing to overwrite existing post: {path.relative_to(REPO_ROOT)}. "
+            f"If you meant to update it, edit the file directly. "
+            f"Otherwise change the slug or post_id and re-run."
+        )
     path.write_text(body, encoding="utf-8")
     return path
 
@@ -368,6 +382,11 @@ def generate_feature_image_svg(title: str, slug: str, post_id: str) -> str:
   </text>
 </svg>'''
 
+        if svg_path.exists():
+            raise FileExistsError(
+                f"Refusing to overwrite existing feature image: "
+                f"{svg_path.relative_to(REPO_ROOT)}."
+            )
         svg_path.write_text(svg_content, encoding="utf-8")
         relative_path = f"/images/{filename}"
         log(f"  ✓ Generated feature image: {relative_path}")
@@ -420,8 +439,16 @@ def find_feature_image(title: str, slug: str, claude_bin: str, post_id: str) -> 
 
 
 def inject_feature_image(body: str, image_url: str) -> str:
-    """Insert feature_image into the TOML front matter if not already present."""
-    if not image_url or "feature_image" in body[:600]:
+    """Insert feature_image into the TOML front matter if not already present.
+
+    Scopes the "already present" check to the entire front matter block (not
+    just body[:600]) — otherwise long front matter can hide an existing
+    feature_image and end up with a duplicate TOML key.
+    """
+    if not image_url:
+        return body
+    front_match = FRONT_MATTER_RE.match(body)
+    if front_match and re.search(r'^\s*feature_image\s*=', front_match.group(1), re.MULTILINE):
         return body
     # Replace the closing +++ of the front matter (first occurrence after opening)
     return re.sub(

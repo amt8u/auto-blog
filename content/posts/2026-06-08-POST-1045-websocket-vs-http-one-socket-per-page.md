@@ -6,8 +6,7 @@ slug          = "websocket-vs-http-one-socket-per-page"
 tags          = ["websockets", "http", "web-development", "system-design"]
 keywords      = ["websocket vs http", "stateful websocket", "why not use websocket for everything", "websocket scalability", "REST vs websocket", "http requests vs websocket connection"]
 canonical     = "/posts/websocket-vs-http-one-socket-per-page/"
-feature_image = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1044-websocket-vs-http-one-socket-per-page.svg"
+feature_image = "/images/POST-1045-websocket-vs-http-one-socket-per-page.svg"
 +++
 
 I get why this question keeps coming up. A WebSocket stays open, remembers who you are, and lets the server push data to you without you asking for it again and again. So why are we still firing off a hundred separate HTTP requests for a single page load when we could just open one persistent pipe and be done with it? Honestly, the question sounds smarter than most people give it credit for — and the answer is not "because HTTP is better." It's a lot more nuanced than that.

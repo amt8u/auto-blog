@@ -101,6 +101,11 @@ def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
         svg_content = m.group(2).strip()
         img_dir.mkdir(parents=True, exist_ok=True)
         out_path = img_dir / filename
+        if out_path.exists():
+            raise FileExistsError(
+                f"Refusing to overwrite existing SVG: {out_path.relative_to(REPO_ROOT)}. "
+                f"Pick a different filename or remove the existing file."
+            )
         out_path.write_text(svg_content, encoding="utf-8")
         saved.append(out_path)
         alt = filename.rsplit(".", 1)[0].replace("-", " ").replace("_", " ")
@@ -169,6 +174,11 @@ def generate_feature_image_svg(title: str, slug: str, post_id: str) -> str:
   </text>
 </svg>'''
 
+        if svg_path.exists():
+            raise FileExistsError(
+                f"Refusing to overwrite existing feature image: "
+                f"{svg_path.relative_to(REPO_ROOT)}."
+            )
         svg_path.write_text(svg_content, encoding="utf-8")
         return f"/images/{filename}"
     except Exception as e:
@@ -192,6 +202,12 @@ def write_post(slug: str, body: str) -> tuple[Path, list[Path]]:
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     body, svg_paths = extract_svgs(body, slug)
     path = POSTS_DIR / f"{datetime.now().strftime('%Y-%m-%d')}-{slug}.md"
+    if path.exists():
+        raise FileExistsError(
+            f"Refusing to overwrite existing post: {path.relative_to(REPO_ROOT)}. "
+            f"If you meant to update it, edit the file directly. "
+            f"Otherwise change the slug and re-run."
+        )
     path.write_text(body, encoding="utf-8")
     return path, svg_paths
 

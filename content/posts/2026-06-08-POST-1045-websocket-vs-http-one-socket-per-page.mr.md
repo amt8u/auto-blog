@@ -6,8 +6,7 @@ slug          = "websocket-vs-http-one-socket-per-page"
 tags          = ["websockets", "http", "web-development", "system-design"]
 keywords      = ["websocket vs http", "stateful websocket", "why not use websocket for everything", "websocket scalability", "REST vs websocket", "http requests vs websocket connection"]
 canonical     = "/mr/posts/websocket-vs-http-one-socket-per-page/"
-feature_image = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
-feature_image = "/images/POST-1044-websocket-vs-http-one-socket-per-page.svg"
+feature_image = "/images/POST-1045-websocket-vs-http-one-socket-per-page.svg"
 +++
 
 हा प्रश्न वारंवार का विचारला जातो हे मला समजतं. WebSocket उघडं राहतं, तुम्ही कोण आहात हे लक्षात ठेवतं, आणि सर्व्हरला तुम्ही पुन्हा पुन्हा विचारल्याशिवाय डेटा पाठवू देतं. मग एकच सतत चालू राहणारी पाईप उघडून काम भागत असताना आपण अजूनही एका पान लोडसाठी शेकडो वेगवेगळे HTTP रिक्वेस्ट का पाठवतो? खरं सांगायचं तर हा प्रश्न लोक समजतात त्यापेक्षा जास्त हुशार आहे — आणि उत्तर "कारण HTTP जास्त चांगलं आहे" असं नाही. ते यापेक्षा बरंच गुंतागुंतीचं आहे.
