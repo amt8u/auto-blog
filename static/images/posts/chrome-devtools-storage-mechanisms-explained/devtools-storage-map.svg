@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430">
+  <rect width="700" height="430" fill="#ffffff"/>
+  <text x="350" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333333">Chrome DevTools → Application → Storage</text>
+
+  <!-- Server-visible column -->
+  <rect x="30" y="60" width="190" height="340" rx="8" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="125" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Sent to server</text>
+  <rect x="50" y="105" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="125" y="135" text-anchor="middle" font-size="13" fill="#333333">Cookies (~4KB)</text>
+  <text x="125" y="172" text-anchor="middle" font-size="11" fill="#333333">auth sessions, CSRF</text>
+  <text x="125" y="188" text-anchor="middle" font-size="11" fill="#333333">tokens, consent flags</text>
+
+  <!-- Client-only small column -->
+  <rect x="255" y="60" width="190" height="340" rx="8" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="350" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Client-only, small &amp; sync</text>
+  <rect x="275" y="105" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="350" y="125" text-anchor="middle" font-size="13" fill="#333333">localStorage</text>
+  <text x="350" y="142" text-anchor="middle" font-size="11" fill="#333333">~5-10MB, persists</text>
+  <rect x="275" y="170" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="350" y="190" text-anchor="middle" font-size="13" fill="#333333">sessionStorage</text>
+  <text x="350" y="207" text-anchor="middle" font-size="11" fill="#333333">~5MB, per-tab</text>
+  <text x="350" y="245" text-anchor="middle" font-size="11" fill="#333333">prefs, theme, drafts,</text>
+  <text x="350" y="261" text-anchor="middle" font-size="11" fill="#333333">wizard / form state</text>
+
+  <!-- Heavy duty column -->
+  <rect x="480" y="60" width="190" height="340" rx="8" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="575" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Client-only, big &amp; async</text>
+  <rect x="500" y="105" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="575" y="125" text-anchor="middle" font-size="13" fill="#333333">IndexedDB</text>
+  <text x="575" y="142" text-anchor="middle" font-size="11" fill="#333333">100s of MBs-GBs</text>
+  <rect x="500" y="170" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="575" y="190" text-anchor="middle" font-size="13" fill="#333333">Cache Storage / SW</text>
+  <text x="575" y="207" text-anchor="middle" font-size="11" fill="#333333">offline assets &amp; APIs</text>
+  <rect x="500" y="235" width="150" height="50" rx="6" fill="white" stroke="#4a90e2"/>
+  <text x="575" y="255" text-anchor="middle" font-size="13" fill="#333333">OPFS</text>
+  <text x="575" y="272" text-anchor="middle" font-size="11" fill="#333333">in-browser SQLite/files</text>
+
+  <!-- arrow -->
+  <line x1="220" y1="230" x2="255" y2="230" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="445" y1="230" x2="480" y2="230" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+  <text x="350" y="415" text-anchor="middle" font-size="12" fill="#333333">Pick by: who needs to read it (server vs. client) and how much you're storing</text>
+</svg>
