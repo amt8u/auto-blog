@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430">
+  <rect width="700" height="430" fill="white"/>
+  <text x="150" y="30" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold">Client</text>
+  <text x="550" y="30" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold">Server</text>
+  <line x1="150" y1="45" x2="150" y2="410" stroke="#333333" stroke-width="2"/>
+  <line x1="550" y1="45" x2="550" y2="410" stroke="#333333" stroke-width="2"/>
+
+  <rect x="190" y="60" width="320" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="350" y="80" font-size="12" fill="#333333" text-anchor="middle">GET /chat HTTP/1.1</text>
+  <text x="350" y="96" font-size="12" fill="#333333" text-anchor="middle">Upgrade: websocket</text>
+  <text x="350" y="111" font-size="12" fill="#333333" text-anchor="middle">Sec-WebSocket-Key: dGhlIHNhbXBsZQ==</text>
+  <line x1="160" y1="135" x2="540" y2="135" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="190" y="155" width="320" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="350" y="175" font-size="12" fill="#333333" text-anchor="middle">HTTP/1.1 101 Switching Protocols</text>
+  <text x="350" y="191" font-size="12" fill="#333333" text-anchor="middle">Upgrade: websocket</text>
+  <text x="350" y="206" font-size="12" fill="#333333" text-anchor="middle">Sec-WebSocket-Accept: s3pPLMBi...</text>
+  <line x1="540" y1="230" x2="160" y2="230" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="350" y="258" font-size="13" fill="#333333" text-anchor="middle" font-weight="bold">--- TCP socket now speaks WebSocket frames, not HTTP ---</text>
+
+  <line x1="160" y1="285" x2="540" y2="285" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="350" y="278" font-size="12" fill="#333333" text-anchor="middle">text frame: "hello"</text>
+
+  <line x1="540" y1="320" x2="160" y2="320" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="350" y="313" font-size="12" fill="#333333" text-anchor="middle">text frame: "hi there"</text>
+
+  <line x1="160" y1="355" x2="540" y2="355" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="350" y="348" font-size="12" fill="#333333" text-anchor="middle">binary frame: [42 bytes]</text>
+
+  <text x="350" y="395" font-size="12" fill="#333333" text-anchor="middle">Either side can send at any time — no request/response pairing</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+</svg>
