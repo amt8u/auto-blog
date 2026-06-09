@@ -109,6 +109,41 @@ Application पैनल बढ़ता ही रहता है क्यो
 
 संभवतः आप इनमें से ज़्यादातर को रोज़मर्रा में नहीं छूएंगे जब तक आप विज्ञापन-तकनीक या भारी ऑफ़लाइन-फर्स्ट ऐप्स नहीं बना रहे — लेकिन यह जानना उपयोगी है कि अगली बार जब आप उस साइडबार में कोई अपरिचित एंट्री देखें और सोचें कि वह वहां क्या कर रही है, तो ये मौजूद हैं।
 
+## Extension Storage — DevTools से chrome.storage को डीबग करना
+
+अगर आप Chrome एक्सटेंशन बनाते या डीबग करते हैं, तो यह एक छिपा हुआ रत्न है। **Application → Storage → Extension Storage** के तहत, DevTools हर इंस्टॉल किए गए एक्सटेंशन को उसके `chrome.storage.local` और `chrome.storage.sync` डेटा के साथ निरीक्षण योग्य, संपादन योग्य की-वैल्यू पेयर्स के रूप में सूचीबद्ध करता है [17]।
+
+दोनों स्टोरेज क्षेत्र बहुत अलग तरह से व्यवहार करते हैं। `chrome.storage.local` वर्तमान मशीन पर डेटा स्टोर करता है — तेज़, कोई आकार सीमा नहीं। `chrome.storage.sync` ऐसा डेटा लिखता है जिसे Chrome उन सभी डिवाइसों में चुपचाप सिंक कर देता है जहां यूज़र साइन इन है [18]। DevTools पैनल का असली फायदा: आप किसी भी की में क्लिक करके वैल्यू को लाइव एडिट कर सकते हैं और तुरंत देख सकते हैं कि आपका एक्सटेंशन अलग-अलग स्टोर्ड स्टेट्स पर कैसे रिस्पॉन्ड करता है।
+
+## Storage Buckets — ब्राउज़र को बताना कि पहले क्या हटाना है
+
+Storage Buckets API एक असली प्रोडक्शन समस्या का Chromium का जवाब है: स्टोरेज प्रेशर इवेक्शन ओरिजिन के हिसाब से all-or-nothing होता है। Storage Buckets इसे ठीक करते हैं: आप स्टोरेज को अलग-अलग कोटा सीमाओं, इवेक्शन प्राथमिकता और परसिस्टेंस फ्लैग्स के साथ नामांकित बकेट्स में विभाजित कर सकते हैं [14]।
+
+```js
+const criticalBucket = await navigator.storageBuckets.open("user-docs", {
+  durability: "strict",
+  persisted: true,
+});
+const cacheBucket = await navigator.storageBuckets.open("temp-cache", {
+  durability: "relaxed",
+  persisted: false,
+});
+```
+
+`user-docs` बकेट `strict` + `persisted: true` के साथ चिह्नित है — ब्राउज़र इसे दबाव में नहीं छूएगा। `temp-cache` `relaxed` + `persisted: false` है — इवेक्शन के लिए उचित खेल। **Application → Storage → Storage Buckets** में आप हर नामांकित बकेट का निरीक्षण कर सकते हैं और सत्यापित कर सकते हैं कि आपकी परसिस्टेंस सेटिंग्स वही हैं जो आप सोचते हैं [14]।
+
+## Private State Tokens — निगरानी के बिना एंटी-फ्रॉड
+
+Private State Tokens (पहले Trust Tokens कहा जाता था) एक Privacy Sandbox API है जो एक जारीकर्ता — जैसे कि एक साइट जो पहले से जानती है कि आप एक वास्तविक इंसान हैं — को किसी अन्य साइट पर आपके लिए बिना आपकी पहचान जोड़े या क्रॉस-साइट ट्रैकिंग सक्षम किए गारंटी देने देता है [19]।
+
+**Application → Storage → Private State Tokens** में, DevTools दिखाता है कि किन जारीकर्ताओं ने वर्तमान ब्राउज़र प्रोफाइल में टोकन स्टोर किए हैं और हर जारीकर्ता के लिए कितने टोकन बचे हैं। नेटवर्क पैनल व्यक्तिगत जारी करने और रिडेम्पशन अनुरोधों को भी लॉग करता है ताकि आप पूरे फ्लो को ट्रेस कर सकें [19]। आप इनसे मिलेंगे अगर आप कोई एंटी-फ्रॉड या बॉट-डिटेक्शन सेवा एकीकृत कर रहे हैं जो थर्ड-पार्टी कुकीज़ से दूर चली गई है।
+
+## Interest Groups — ब्राउज़र खुद का विज्ञापन नीलामी कैसे चलाता है
+
+Interest Groups Protected Audience API (पहले FLEDGE) का हिस्सा हैं। तीसरे पक्ष की कुकीज़ के बजाय, *ब्राउज़र खुद* आपको स्थानीय रूप से रुचि समूहों में जोड़ता है और डिवाइस पर बोली लगाने की नीलामी चलाता है [20]। आपका ब्राउज़िंग इतिहास कभी आपकी मशीन नहीं छोड़ता।
+
+**Application → Storage → Interest Groups** में DevTools हर रुचि समूह दिखाता है जिसमें वर्तमान पेज ने आपके ब्राउज़र को जोड़ने के लिए कहा है, जिसमें मालिक, बिडिंग लॉजिक URL और उस समूह से जुड़े विज्ञापनों की सूची शामिल है [20]। इवेंट टाइमलाइन `joined`, `bid`, `win`, और `leave` इवेंट लॉग करती है। एक व्यावहारिक नोट: अगर आप पेज लोड होने के *बाद* Application पैनल खोलते हैं, तो आपको join इवेंट नहीं दिखेंगे — DevTools पहले से खुला रखकर पेज रिफ्रेश करें [20]।
+
 ## कोटा, बेदखली, और आपका डेटा कभी-कभी क्यों... गायब हो जाता है
 
 क्या कभी किसी यूज़र ने रिपोर्ट किया है कि "मेरा डेटा गायब हो गया" और आपको इसका कोई अंदाज़ा नहीं था कि क्यों? आमतौर पर इसका जवाब यही है: **स्टोरेज अनंत नहीं है, और ब्राउज़र वह डेटा बेदखल कर देगा जिसे वह ज़रूरी नहीं समझता।**
@@ -136,6 +171,9 @@ Chromium-आधारित ब्राउज़र आम तौर पर क
 - **क्या आप ऑफ़लाइन इस्तेमाल के लिए नेटवर्क रिस्पॉन्स कैश कर रहे हैं?** → Cache Storage, सर्विस वर्कर द्वारा संचालित।
 - **क्या आपको असली फ़ाइल सिस्टम या ब्राउज़र-इन SQL डेटाबेस चाहिए?** → OPFS, संभवतः SQLite-WASM के साथ जोड़ा हुआ [6][11]।
 - **क्या आप यूज़र की प्राइवेसी का उल्लंघन किए बिना क्रॉस-साइट मेज़रमेंट करने की कोशिश कर रहे हैं?** → Shared Storage [13]।
+- **क्या आपके पास महत्वपूर्ण डेटा है जो स्टोरेज इवेक्शन से बचना चाहिए?** → `persisted: true` के साथ Storage Buckets [14]।
+- **Chrome एक्सटेंशन बना या डीबग कर रहे हैं?** → Extension Storage (`chrome.storage.local` / `chrome.storage.sync`) [17][18]।
+- **Privacy Sandbox के साथ एड-टेक काम कर रहे हैं?** → Private State Tokens (एंटी-फ्रॉड सिग्नल) और Interest Groups (ऑन-डिवाइस विज्ञापन नीलामी) [19][20]।
 
 | परिदृश्य | यह चुनें | क्यों |
 |---|---|---|
@@ -146,6 +184,10 @@ Chromium-आधारित ब्राउज़र आम तौर पर क
 | सबवे में पढ़ी जा सकने वाली न्यूज़ साइट | Service Worker + Cache Storage | लेखों को पहले से कैश करें, ऑफ़लाइन होने पर कैश से परोसें |
 | ब्राउज़र-इन स्प्रेडशीट/SQL टूल | OPFS + SQLite-WASM | असली फ़ाइल I/O और रिलेशनल क्वेरीज़ चाहिए |
 | प्राइवेसी-सुरक्षित विज्ञापन पहुंच मापन | Shared Storage | कच्ची पहचान उजागर किए बिना क्रॉस-साइट अंतर्दृष्टि |
+| महत्वपूर्ण डेटा जो बेदखल न हो | Storage Buckets (`persisted: true`) | स्टोरेज दबाव से बचता है; डिस्पोज़ेबल डेटा पहले बेदखल होता है |
+| डिवाइसों में सिंक एक्सटेंशन प्रेफरेंस | `chrome.storage.sync` | Chrome इसे अपने आप सिंक करता है; Extension Storage में देखें |
+| कुकीज़ के बिना बॉट/धोखाधड़ी डिटेक्शन | Private State Tokens | ब्राउज़र-जारी एंटी-फ्रॉड सिग्नल, प्राइवेसी-संरक्षित |
+| ट्रैकिंग के बिना रुचि-आधारित विज्ञापन | Interest Groups (Protected Audience) | ऑन-डिवाइस नीलामी; ब्राउज़िंग इतिहास ब्राउज़र नहीं छोड़ता |
 
 वैसे, इनमें से कोई भी एक-दूसरे को बाहर नहीं करता — ज़्यादातर गंभीर वेब ऐप्स इनमें से *कई* को एक साथ इस्तेमाल करते हैं। एक PWA ऑथ के लिए कुकीज़, थीम प्रेफरेंस के लिए `localStorage`, ऑफ़लाइन कंटेंट के लिए IndexedDB, और ऐप शेल के लिए Cache Storage — सब एक साथ इस्तेमाल कर सकता है। Application पैनल वही टूल है जो आपको यह सब एक साथ, एक ही जगह पर, बिना एक भी डीबग `console.log` लिखे काम करते (या न करते) देखने देता है।
 
@@ -168,3 +210,7 @@ Chromium-आधारित ब्राउज़र आम तौर पर क
 14. [Not all storage is created equal: introducing Storage Buckets | Blog | Chrome for Developers](https://developer.chrome.com/docs/web-platform/storage-buckets)
 15. [Storage quotas and eviction criteria - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)
 16. [Estimating Available Storage Space | Blog | Chrome for Developers](https://developer.chrome.com/blog/estimating-available-storage-space/)
+17. [View and edit extension storage | Chrome DevTools | Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/extensionstorage)
+18. [chrome.storage API Reference | Chrome for Developers](https://developer.chrome.com/docs/extensions/reference/api/storage)
+19. [Private State Tokens | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/trust-tokens/)
+20. [Protected Audience API overview | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/fledge/)

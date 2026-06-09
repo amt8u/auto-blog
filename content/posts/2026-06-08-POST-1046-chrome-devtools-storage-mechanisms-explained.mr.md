@@ -109,6 +109,41 @@ Application पॅनेल वाढतच चाललं आहे, कार
 
 ad-tech किंवा जड ऑफलाइन-फर्स्ट अ‍ॅप्स बनवत नसाल, तर यापैकी बहुतेक गोष्टींना तुम्ही रोजच्या रोज हात लावणार नाही — पण साइडबारमध्ये एखादी अनोळखी एंट्री दिसून ती काय करते असा प्रश्न पडल्यास, या गोष्टी अस्तित्वात आहेत हे माहीत असणं उपयोगी ठरतं.
 
+## Extension Storage — DevTools मधून chrome.storage डीबग करणं
+
+जर तुम्ही Chrome एक्स्टेंशन बनवत किंवा डीबग करत असाल, तर ही एक लपलेली सुविधा आहे. **Application → Storage → Extension Storage** अंतर्गत, DevTools प्रत्येक इन्स्टॉल केलेल्या एक्स्टेंशनला त्याच्या `chrome.storage.local` आणि `chrome.storage.sync` डेटासह तपासण्यायोग्य, संपादन करता येण्याजोग्या की-व्हॅल्यू जोड्या म्हणून सूचीबद्ध करतो [17].
+
+दोन स्टोरेज क्षेत्रे खूप वेगळ्या प्रकारे वागतात. `chrome.storage.local` सध्याच्या मशीनवर डेटा साठवतो. `chrome.storage.sync` असा डेटा लिहितो जो Chrome वापरकर्ता साइन इन असलेल्या प्रत्येक डिव्हाइसवर आपोआप सिंक करतो [18]. DevTools पॅनेलचा खरा फायदा: कोणत्याही की वर क्लिक करून व्हॅल्यू थेट संपादित करा आणि तुमचं एक्स्टेंशन वेगळ्या साठवलेल्या स्थितींना कसा प्रतिसाद देतो हे लगेच तपासा.
+
+## Storage Buckets — ब्राउझरला आधी काय फेकायचं ते सांगणं
+
+Storage Buckets API हे Chromium चं एका वास्तविक प्रोडक्शन समस्येवरील उत्तर आहे: स्टोरेज प्रेशरमुळे होणारी हकालपट्टी ओरिजिनसाठी all-or-nothing असते. Storage Buckets हे वेगळ्या कोटा मर्यादा, हकालपट्टीची प्राथमिकता आणि टिकण्याचे फ्लॅग असलेल्या नामांकित buckets मध्ये स्टोरेजचं विभाजन करून हे ठीक करतात [14].
+
+```js
+const criticalBucket = await navigator.storageBuckets.open("user-docs", {
+  durability: "strict",
+  persisted: true,
+});
+const cacheBucket = await navigator.storageBuckets.open("temp-cache", {
+  durability: "relaxed",
+  persisted: false,
+});
+```
+
+`user-docs` bucket `strict` + `persisted: true` म्हणून चिन्हांकित आहे — ब्राउझर दबावाखाली त्याला हात लावणार नाही. `temp-cache` `relaxed` + `persisted: false` आहे — हकालपट्टीसाठी उचित. **Application → Storage → Storage Buckets** मध्ये तुम्ही प्रत्येक नामांकित bucket तपासू शकता आणि तुमच्या टिकण्याच्या सेटिंग्ज अपेक्षेप्रमाणे आहेत का ते पाहू शकता [14].
+
+## Private State Tokens — पाळत न ठेवता फसवणूकविरोधी
+
+Private State Tokens (पूर्वी Trust Tokens) एक Privacy Sandbox API आहे जे एखाद्या जारीकर्त्याला — उदाहरणार्थ, एखादी साइट जी आधीच जाणते की तुम्ही खरी व्यक्ती आहात — तुमच्या ओळखी जोडल्याशिवाय किंवा क्रॉस-साइट ट्रॅकिंग न करता दुसऱ्या साइटवर तुमची हमी देऊ देते [19].
+
+**Application → Storage → Private State Tokens** मध्ये, DevTools दाखवतो की कोणत्या जारीकर्त्यांनी सध्याच्या ब्राउझर प्रोफाइलमध्ये टोकन साठवले आहेत आणि प्रत्येक जारीकर्त्याकडे किती टोकन शिल्लक आहेत. Network पॅनेल वैयक्तिक जारी करणे आणि रिडेम्पशन विनंत्याही नोंद करतो [19]. थर्ड-पार्टी कुकीजपासून दूर गेलेली एखादी फसवणूकविरोधी किंवा बॉट-डिटेक्शन सेवा एकत्रित करताना तुम्हाला या गोष्टी भेटतील.
+
+## Interest Groups — ब्राउझर स्वतःची जाहिरात लिलाव कशी चालवतो
+
+Interest Groups हे Protected Audience API (पूर्वी FLEDGE) चा भाग आहेत. थर्ड-पार्टी कुकीजऐवजी, *ब्राउझर स्वतः* तुम्हाला स्थानिक पातळीवर interest groups मध्ये सामील करतो आणि डिव्हाइसवर बोली लावण्याची लिलाव चालवतो [20]. तुमचा ब्राउझिंग इतिहास कधीच तुमच्या मशीनबाहेर जात नाही.
+
+**Application → Storage → Interest Groups** मध्ये DevTools सध्याच्या पेजने तुमच्या ब्राउझरला सामील होण्यास सांगितलेल्या प्रत्येक interest group दाखवतो, ज्यात मालक, बिडिंग लॉजिक URL आणि त्या गटाशी संबंधित जाहिरातींची यादी समाविष्ट आहे [20]. इव्हेंट टाइमलाइन `joined`, `bid`, `win`, आणि `leave` इव्हेंट नोंद करते. एक व्यावहारिक टीप: पेज लोड झाल्यानंतर Application पॅनेल उघडल्यास join इव्हेंट दिसणार नाहीत — DevTools आधीच उघडे ठेवून पेज रिफ्रेश करा [20].
+
 ## कोटा, हकालपट्टी, आणि तुमचा डेटा कधीकधी का... नाहीसा होतो
 
 कधी एखाद्या वापरकर्त्याने "माझा डेटा गायब झाला" अशी तक्रार केली आणि तुम्हाला कारण कळलं नाही? सहसा याचं उत्तर हे आहे: **स्टोरेज अमर्याद नसते, आणि ब्राउझरला जो डेटा आवश्यक नाही असं वाटतं, तो तो काढून टाकतो.**
@@ -136,6 +171,9 @@ Chromium-आधारित ब्राउझर्स साधारणपण
 - **तुम्ही ऑफलाइन वापरासाठी नेटवर्क रिस्पॉन्सेस कॅश करत आहात का?** → service worker द्वारे चालवली जाणारी Cache Storage.
 - **तुम्हाला खरीखुरी फाइल सिस्टम किंवा ब्राउझर-आतला SQL डेटाबेस हवा आहे का?** → OPFS, बहुधा SQLite-WASM सोबत [6][11].
 - **वापरकर्त्याच्या गोपनीयतेला धक्का न लावता क्रॉस-साइट मोजमाप करायचं आहे का?** → Shared Storage [13].
+- **स्टोरेज हकालपट्टीतून वाचायला हवा असा महत्त्वाचा डेटा आहे का?** → `persisted: true` सह Storage Buckets [14].
+- **Chrome एक्स्टेंशन बनवत किंवा डीबग करत आहात का?** → Extension Storage (`chrome.storage.local` / `chrome.storage.sync`) [17][18].
+- **Privacy Sandbox सोबत ad-tech काम करत आहात का?** → Private State Tokens (फसवणूकविरोधी सिग्नल) आणि Interest Groups (ऑन-डिव्हाइस जाहिरात लिलाव) [19][20].
 
 | परिस्थिती | हे निवडा | का |
 |---|---|---|
@@ -146,6 +184,10 @@ Chromium-आधारित ब्राउझर्स साधारणपण
 | मेट्रोमध्ये वाचता येणारी न्यूज साइट | Service Worker + Cache Storage | लेख आधीच कॅश करा, ऑफलाइन असताना कॅशेमधून दाखवा |
 | ब्राउझर-आतलं स्प्रेडशीट/SQL टूल | OPFS + SQLite-WASM | खरी फाइल I/O आणि रिलेशनल क्वेरीजची गरज |
 | गोपनीयता-सुरक्षित जाहिरात पोहोच मोजमाप | Shared Storage | कच्च्या ओळखी उघड न करता क्रॉस-साइट अंतर्दृष्टी |
+| हकालपट्टीतून वाचायला हवा असा महत्त्वाचा डेटा | Storage Buckets (`persisted: true`) | स्टोरेज दबाव सहन करतो; टाकाऊ डेटा आधी जातो |
+| डिव्हाइसांमध्ये सिंक एक्स्टेंशन प्राधान्ये | `chrome.storage.sync` | Chrome आपोआप सिंक करतो; Extension Storage मध्ये पाहा |
+| कुकीजशिवाय बॉट/फसवणूक शोध | Private State Tokens | ब्राउझर-जारी फसवणूकविरोधी सिग्नल, गोपनीयता-संरक्षित |
+| ट्रॅकिंगशिवाय रुचि-आधारित जाहिराती | Interest Groups (Protected Audience) | ऑन-डिव्हाइस लिलाव; ब्राउझिंग इतिहास ब्राउझर सोडत नाही |
 
 बाय द वे, हे एकमेकांना वगळणारे पर्याय नाहीत — बहुतेक गंभीर वेब अ‍ॅप्स यापैकी *अनेक* एकाच वेळी वापरतात. एखादं PWA ऑथसाठी कुकीज, थीम प्राधान्यांसाठी `localStorage`, ऑफलाइन कंटेंटसाठी IndexedDB, आणि अ‍ॅप शेलसाठी Cache Storage — हे सगळं एकाच वेळी वापरू शकतं. Application पॅनेल हेच ते टूल आहे जे तुम्हाला हे सगळं एकाच जागी, एकत्र, एकही डीबग `console.log` न लिहिता काम करताना (किंवा न करताना) पाहू देतं.
 
@@ -168,3 +210,7 @@ Chromium-आधारित ब्राउझर्स साधारणपण
 14. [Not all storage is created equal: introducing Storage Buckets | Blog | Chrome for Developers](https://developer.chrome.com/docs/web-platform/storage-buckets)
 15. [Storage quotas and eviction criteria - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)
 16. [Estimating Available Storage Space | Blog | Chrome for Developers](https://developer.chrome.com/blog/estimating-available-storage-space/)
+17. [View and edit extension storage | Chrome DevTools | Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/extensionstorage)
+18. [chrome.storage API Reference | Chrome for Developers](https://developer.chrome.com/docs/extensions/reference/api/storage)
+19. [Private State Tokens | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/trust-tokens/)
+20. [Protected Audience API overview | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/fledge/)

@@ -109,6 +109,55 @@ The Application panel keeps growing because the web platform keeps growing. A fe
 
 You probably won't touch most of these day-to-day unless you're building ad-tech or heavy offline-first apps — but it's worth knowing they exist next time you see an unfamiliar entry in that sidebar and wonder what it's doing there.
 
+## Extension Storage — debugging chrome.storage from DevTools
+
+If you build or debug Chrome extensions, this one's a hidden gem. Under **Application → Storage → Extension Storage**, DevTools lists every installed extension alongside its `chrome.storage.local` and `chrome.storage.sync` data as inspectable, editable key-value pairs [17].
+
+The two storage areas behave very differently. `chrome.storage.local` stores data on the current machine — fast, no size limit beyond the overall extension quota. `chrome.storage.sync` writes data that Chrome silently syncs across every device where the user is signed in [18]. From a user's perspective that sounds magical. From a debugging perspective it means a value you cleared on your dev machine might reappear seconds later because Chrome synced it back from another device — a genuinely confusing situation if you don't know to look here.
+
+What makes the DevTools panel actually useful: you can click into any key, edit the value live, and immediately test how your extension responds to different stored states — without needing to write a content script or open the extension's background page. It also auto-refreshes, so you can watch `chrome.storage.onChanged` events land in real time as your extension writes new values.
+
+## Storage Buckets — telling the browser what to throw away first
+
+The Storage Buckets API is Chromium's answer to a very real production problem: storage pressure eviction is all-or-nothing by origin. If the browser decides it needs space, it clears your entire origin's best-effort storage, regardless of whether it's throwing away a 200 KB user preference file or a 50 MB document the user spent an hour editing [14].
+
+Storage Buckets fix this by letting you partition storage into named buckets with independent quota limits, eviction priority, and persistence flags [14]. The mental model:
+
+```js
+const criticalBucket = await navigator.storageBuckets.open("user-docs", {
+  durability: "strict",
+  persisted: true,
+});
+const cacheBucket = await navigator.storageBuckets.open("temp-cache", {
+  durability: "relaxed",
+  persisted: false,
+});
+```
+
+The `user-docs` bucket is marked `strict` + `persisted: true` — the browser won't touch it under pressure. `temp-cache` is `relaxed` + `persisted: false` — fair game for eviction. Each bucket gets its own IndexedDB, Cache Storage, and file handles, completely isolated from the default bucket [14].
+
+In **Application → Storage → Storage Buckets** you can inspect each named bucket, see what's inside it (which IndexedDB databases, which cache entries live in it), and verify that your persistence settings are what you think they are before you assume critical data is safe.
+
+## Private State Tokens — anti-fraud without the surveillance
+
+Private State Tokens (previously called Trust Tokens) are a Privacy Sandbox API designed to let an issuer — say, a site that already knows you're a real human — vouch for you on a different site, without linking your identities or enabling cross-site tracking [19].
+
+The basic flow: a trusted issuer (perhaps your bank, a CAPTCHA provider, or Google itself) issues you cryptographically signed tokens stored by the browser. When you visit a third-party site that partners with that issuer, the site can redeem one token as a signal that the browser trusts you're a real person — without learning *who* you are or *where* you came from [19]. The token proves authenticity, not identity.
+
+In **Application → Storage → Private State Tokens**, DevTools shows you which issuers have stored tokens in the current browser profile and how many tokens remain for each issuer. Tokens are issued in batches and are single-use on redemption, so a depleted count doesn't necessarily mean something went wrong — it means the site successfully used them. The Network panel also logs individual issuance and redemption requests so you can trace the full flow [19].
+
+As a developer you're likely to encounter these if you're integrating an anti-fraud or bot-detection service that has moved off third-party cookies, or if you're building a Chrome extension that works with issuers like Google's reCAPTCHA v4.
+
+## Interest Groups — how the browser runs its own ad auction
+
+This one is the deepest Privacy Sandbox concept in the Application panel, and it only makes sense if you understand what problem it's solving. Currently, when you visit a product page, the retailer drops a third-party cookie so that ad networks can follow you around the web and retarget you. That model is being killed by third-party cookie deprecation.
+
+Interest Groups (part of the Protected Audience API, formerly FLEDGE) replace it: instead of the ad network tracking you externally, the *browser itself* joins you to interest groups locally and runs the bidding auction on-device [20]. Your browsing history never leaves your machine. The advertiser knows the ad was served to "someone who visited running shoes pages" — but they don't know *who* or *when*, and they can't link it to you across other sites.
+
+In **Application → Storage → Interest Groups**, DevTools shows you every interest group the current page has asked your browser to join, including the owner, the bidding logic URL, and the list of ads associated with that group [20]. The event timeline at the top logs `joined`, `bid`, `win`, and `leave` events, which is indispensable when you're debugging why a Protected Audience auction isn't serving the expected creative.
+
+A practical note: if you open the Application panel *after* loading a page, you won't see the join events because they already fired. Refresh the page with DevTools already open to capture the full sequence [20].
+
 ## Quotas, eviction, and why your data sometimes just... vanishes
 
 Ever had a user report "my data disappeared" and had no idea why? This is usually the answer: **storage isn't infinite, and the browser will evict data it decides it doesn't need.**
@@ -136,6 +185,9 @@ Here's the decision framework I actually use when starting a new feature that ne
 - **Are you caching network responses for offline use?** → Cache Storage, driven by a service worker.
 - **Do you need a real file system or an in-browser SQL database?** → OPFS, likely paired with SQLite-WASM [6][11].
 - **Are you trying to do cross-site measurement without violating user privacy?** → Shared Storage [13].
+- **Do you have critical data that must survive storage eviction?** → Storage Buckets with `persisted: true` [14].
+- **Building or debugging a Chrome extension?** → Extension Storage (`chrome.storage.local` / `chrome.storage.sync`) [17][18].
+- **Doing ad-tech work with the Privacy Sandbox?** → Private State Tokens (anti-fraud signals) and Interest Groups (on-device ad auctions) [19][20].
 
 | Scenario | Pick this | Why |
 |---|---|---|
@@ -146,6 +198,10 @@ Here's the decision framework I actually use when starting a new feature that ne
 | News site readable on the subway | Service Worker + Cache Storage | Pre-cache articles, serve from cache when offline |
 | In-browser spreadsheet/SQL tool | OPFS + SQLite-WASM | Needs real file I/O and relational queries |
 | Privacy-safe ad reach measurement | Shared Storage | Cross-site insight without exposing raw identifiers |
+| Critical data that can't be evicted | Storage Buckets (`persisted: true`) | Survives storage pressure; disposable data evicted first |
+| Extension prefs synced across devices | `chrome.storage.sync` | Chrome syncs it automatically; inspect in Extension Storage |
+| Bot/fraud detection without cookies | Private State Tokens | Browser-issued anti-fraud signals, privacy-preserving |
+| Interest-based ads without tracking | Interest Groups (Protected Audience) | On-device auction; browsing history never leaves the browser |
 
 None of these are mutually exclusive, by the way — most serious web apps use *several* of these together. A PWA might use cookies for auth, `localStorage` for theme prefs, IndexedDB for offline content, and Cache Storage for the app shell, all at once. The Application panel is exactly the tool that lets you see all of that working (or not working) side by side, in one place, without writing a single debug `console.log`.
 
@@ -168,3 +224,7 @@ Next time something "just isn't saving," skip the guesswork — open DevTools, c
 14. [Not all storage is created equal: introducing Storage Buckets | Blog | Chrome for Developers](https://developer.chrome.com/docs/web-platform/storage-buckets)
 15. [Storage quotas and eviction criteria - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria)
 16. [Estimating Available Storage Space | Blog | Chrome for Developers](https://developer.chrome.com/blog/estimating-available-storage-space/)
+17. [View and edit extension storage | Chrome DevTools | Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/extensionstorage)
+18. [chrome.storage API Reference | Chrome for Developers](https://developer.chrome.com/docs/extensions/reference/api/storage)
+19. [Private State Tokens | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/trust-tokens/)
+20. [Protected Audience API overview | Privacy Sandbox | Chrome for Developers](https://developer.chrome.com/en/docs/privacy-sandbox/fledge/)
