@@ -19,6 +19,13 @@ with a TOML front matter block. The first three characters of your response must
 Do NOT wrap the response in a ``` code fence. Do NOT add a preamble like "Here is the
 article". Do NOT add any trailing commentary after the ## Sources list.
 
+CRITICAL — DO NOT WRITE A SUMMARY OR RECAP:
+- Do NOT describe what you wrote ("Here's what's in the article", "Structure:", etc.).
+- Do NOT list section names or bullet what you covered. Output the article itself.
+- Do NOT say "I've researched and written ..." or similar. Just emit the article.
+- Your output will be parsed programmatically: a response that doesn't START with `+++`
+  and contain the full article body will be rejected and the run wasted.
+
 +++
 title       = "Concise, SEO-friendly title (≤ 65 chars)"
 description = "Meta description, 140-160 chars, hooks the reader and includes the primary keyword"

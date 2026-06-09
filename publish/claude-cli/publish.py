@@ -556,10 +556,26 @@ def main() -> None:
         log(f"\nGeneration failed: {e}", file=sys.stderr)
         sys.exit(1)
 
+    # Always persist the raw response before parsing — if parse fails (e.g. Claude
+    # returned a summary instead of the article), the user can recover manually
+    # rather than losing whatever the API call cost.
+    recovery_path = REPO_ROOT / "publish" / ".last-raw.md"
+    try:
+        recovery_path.write_text(raw, encoding="utf-8")
+        log(f"  Raw response saved: {recovery_path.relative_to(REPO_ROOT)} ({len(raw):,} chars)")
+    except OSError as e:
+        log(f"  Warning: could not save raw response: {e}")
+
     try:
         slug, title, body = parse_article(raw)
     except ValueError as e:
         log(f"\nParse failed: {e}", file=sys.stderr)
+        log(
+            f"\nThe raw model output was saved to {recovery_path.relative_to(REPO_ROOT)}. "
+            f"You can edit it by hand (prepend the +++ front matter block) and then move "
+            f"it into content/posts/ to recover the generation.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     # Step 2: Extract SVG diagrams

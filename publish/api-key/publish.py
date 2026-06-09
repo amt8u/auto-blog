@@ -343,11 +343,31 @@ def stream_generation(topic: str) -> Iterator[str]:
         yield sse("error", message="Claude returned no text content.")
         return
 
+    # Persist the raw response before parsing — if parse fails (e.g. Claude
+    # returned a summary instead of the article), the user can recover manually
+    # rather than losing the API spend.
+    recovery_path = REPO_ROOT / "publish" / ".last-raw.md"
+    try:
+        recovery_path.write_text(raw, encoding="utf-8")
+        yield sse(
+            "log",
+            message=f"Raw response saved: {recovery_path.relative_to(REPO_ROOT)} ({len(raw):,} chars)",
+        )
+    except OSError as e:
+        yield sse("log", message=f"Warning: could not save raw response: {e}")
+
     yield sse("log", message=f"Parsing response ({text_chars} chars)…")
     try:
         slug, title, body = parse_article(raw)
     except ValueError as e:
-        yield sse("error", message=str(e))
+        yield sse(
+            "error",
+            message=(
+                f"{e}\n\nThe raw model output was saved to "
+                f"{recovery_path.relative_to(REPO_ROOT)}. Edit by hand (prepend "
+                f"+++ front matter) and move into content/posts/ to recover."
+            ),
+        )
         return
 
     path, svg_paths = write_post(slug, body)
