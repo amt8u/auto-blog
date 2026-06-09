@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420">
+  <!-- Background -->
+  <rect width="700" height="420" fill="white"/>
+  <!-- Title -->
+  <text x="350" y="30" font-family="monospace" font-size="15" font-weight="bold" fill="#333333" text-anchor="middle">Chrome DevTools — Application Panel: Background Services</text>
+  <!-- Panel sidebar box -->
+  <rect x="30" y="50" width="180" height="340" rx="6" fill="#f0f4f8" stroke="#333333" stroke-width="1.5"/>
+  <text x="120" y="72" font-family="monospace" font-size="11" font-weight="bold" fill="#333333" text-anchor="middle">Application Sidebar</text>
+  <!-- Sidebar items -->
+  <rect x="40" y="82" width="160" height="22" rx="3" fill="#4a90e2"/>
+  <text x="120" y="97" font-family="monospace" font-size="10" fill="white" text-anchor="middle">▶ Background Services</text>
+  <text x="120" y="120" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Back/forward cache</text>
+  <text x="120" y="137" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Background fetch</text>
+  <text x="120" y="154" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Background sync</text>
+  <text x="120" y="171" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Bounce tracking mitigations</text>
+  <text x="120" y="188" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Notifications</text>
+  <text x="120" y="205" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Payment handler</text>
+  <text x="120" y="222" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Periodic background sync</text>
+  <text x="120" y="239" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Push messaging</text>
+  <text x="120" y="256" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Reporting API</text>
+  <text x="120" y="273" font-family="monospace" font-size="9.5" fill="#555555" text-anchor="middle">Device bound sessions</text>
+  <!-- Feature boxes -->
+  <!-- bfcache -->
+  <rect x="240" y="55" width="200" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="340" y="75" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Back/Forward Cache</text>
+  <text x="340" y="91" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Test bfcache eligibility</text>
+  <text x="340" y="103" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">notRestoredReasons API</text>
+  <!-- Speculative Loads -->
+  <rect x="460" y="55" width="210" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="565" y="75" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Speculative Loads</text>
+  <text x="565" y="91" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Rules / Speculations / Status</text>
+  <text x="565" y="103" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Prefetch + Prerender debug</text>
+  <!-- Bg Fetch -->
+  <rect x="240" y="130" width="200" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="340" y="150" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Background Fetch</text>
+  <text x="340" y="166" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Large file downloads</text>
+  <text x="340" y="178" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Records 3 days of events</text>
+  <!-- Bg Sync -->
+  <rect x="460" y="130" width="210" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="565" y="150" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Background Sync</text>
+  <text x="565" y="166" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Offline request queue</text>
+  <text x="565" y="178" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Records 3 days of events</text>
+  <!-- Push/Notif -->
+  <rect x="240" y="205" width="200" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="340" y="225" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Push + Notifications</text>
+  <text x="340" y="241" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Log push delivery events</text>
+  <text x="340" y="253" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Simulate push from DevTools</text>
+  <!-- Payment Handler -->
+  <rect x="460" y="205" width="210" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="565" y="225" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Payment Handler</text>
+  <text x="565" y="241" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">canmakepayment / paymentrequest</text>
+  <text x="565" y="253" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Service worker payment events</text>
+  <!-- Bounce Tracking -->
+  <rect x="240" y="280" width="200" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="340" y="300" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Bounce Tracking</text>
+  <text x="340" y="316" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Cross-site tracker detection</text>
+  <text x="340" y="328" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Force-run state deletion</text>
+  <!-- Reporting + DBSC -->
+  <rect x="460" y="280" width="210" height="55" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="1.5"/>
+  <text x="565" y="300" font-family="monospace" font-size="10" font-weight="bold" fill="#333333" text-anchor="middle">Reporting API + DBSC</text>
+  <text x="565" y="316" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">CSP / deprecation reports</text>
+  <text x="565" y="328" font-family="monospace" font-size="9" fill="#555555" text-anchor="middle">Hardware-bound sessions</text>
+  <!-- Connector lines from sidebar to boxes -->
+  <line x1="210" y1="82" x2="240" y2="82" stroke="#4a90e2" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="210" y1="82" x2="240" y2="355" stroke="#4a90e2" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Footer note -->
+  <text x="350" y="390" font-family="monospace" font-size="9" fill="#888888" text-anchor="middle">Most tabs record events for 3 days — even when DevTools is closed</text>
+</svg>
