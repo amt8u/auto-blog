@@ -6,7 +6,7 @@ slug        = "session-vs-jwt-tokens-core-difference"
 tags        = ["प्रमाणीकरण", "jwt", "वेब-सुरक्षा", "एपीआई-डिज़ाइन"]
 keywords    = ["session बनाम jwt", "jwt प्रमाणीकरण", "सेशन-आधारित प्रमाणीकरण", "स्टेटलेस प्रमाणीकरण", "jwt बनाम session टोकन"]
 canonical   = "/hi/posts/session-vs-jwt-tokens-core-difference/"
-feature_image = "/images/POST-1050-session-vs-jwt-tokens-core-difference.svg"
+feature_image = "/images/posts/session-vs-jwt-tokens-core-difference/jwt-cover.png"
 +++
 
 जब भी कोई मुझसे पूछता है, "क्या मुझे सेशन इस्तेमाल करना चाहिए या JWT?", मुझे पता होता है कि असल में इस सवाल के पीछे क्या है। उन्होंने कुछ ब्लॉग पोस्ट पढ़ी होंगी, "stateless" शब्द को इस तरह उछलते देखा होगा जैसे यह अपने आप में बेहतर हो, और अब वे उलझन में फँस गए हैं। तो चलिए इसे ठीक से सुलझाते हैं - buzzwords से नहीं, बल्कि यह देखकर कि वायर पर और आपके सर्वर पर असल में क्या हो रहा है।

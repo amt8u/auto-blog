@@ -6,7 +6,7 @@ slug        = "session-vs-jwt-tokens-core-difference"
 tags        = ["authentication", "jwt", "web security", "api design"]
 keywords    = ["session vs jwt", "jwt authentication", "session-based authentication", "stateless authentication", "jwt vs session tokens"]
 canonical   = "/posts/session-vs-jwt-tokens-core-difference/"
-feature_image = "/images/POST-1050-session-vs-jwt-tokens-core-difference.svg"
+feature_image = "/images/posts/session-vs-jwt-tokens-core-difference/jwt-cover.png"
 +++
 
 Every time someone asks me "should I use sessions or JWTs?", I know what's actually behind the question. They've read a few blog posts, seen the word "stateless" thrown around like it's automatically better, and now they're stuck. So let's settle this properly - not with buzzwords, but with what's actually happening on the wire and on your server.

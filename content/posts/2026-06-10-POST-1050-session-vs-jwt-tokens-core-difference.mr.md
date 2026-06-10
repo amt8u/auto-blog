@@ -6,7 +6,7 @@ slug        = "session-vs-jwt-tokens-core-difference"
 tags        = ["authentication", "jwt", "web security", "api design"]
 keywords    = ["session विरुद्ध jwt", "jwt authentication", "session-based authentication", "stateless authentication", "jwt विरुद्ध session tokens"]
 canonical   = "/mr/posts/session-vs-jwt-tokens-core-difference/"
-feature_image = "/images/POST-1050-session-vs-jwt-tokens-core-difference.svg"
+feature_image = "/images/posts/session-vs-jwt-tokens-core-difference/jwt-cover.png"
 +++
 
 जेव्हा कोणी मला विचारतं "मी session वापरू की JWT?", तेव्हा या प्रश्नामागे नेमकं काय आहे ते मला माहीत असतं. त्यांनी काही blog posts वाचलेले असतात, "stateless" हा शब्द जणू आपोआप चांगला असतो असा वापरला जाताना पाहिलेला असतो, आणि आता ते गोंधळलेले असतात. तर चला, हे नीट समजून घेऊया - buzzwords ने नाही, तर wire वर आणि तुमच्या सर्व्हरवर प्रत्यक्षात काय घडतं त्याद्वारे.
