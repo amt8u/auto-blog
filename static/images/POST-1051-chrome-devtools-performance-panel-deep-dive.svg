@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark gradient background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Accent shapes -->
+  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
+  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
+  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+
+  <!-- Title text -->
+  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
+        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
+        letter-spacing="-0.5">
+    Chrome DevTools Performance Panel: Analyzing Code Execution
+  </text>
+
+  <!-- Post ID badge -->
+  <g>
+    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
+    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+          font-family="IBM Plex Mono, monospace">
+      POST-1051
+    </text>
+  </g>
+
+  <!-- cloudmato.com watermark -->
+  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+        font-family="Nunito, sans-serif">
+    cloudmato.com
+  </text>
+</svg>

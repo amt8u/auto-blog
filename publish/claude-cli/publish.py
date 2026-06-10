@@ -477,7 +477,7 @@ def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
         f"{body}"
     )
     try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600, step="translate-hi")
+        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=1500, step="translate-hi")
     except (RuntimeError, subprocess.TimeoutExpired) as e:
         log(f"  Translation failed: {e}")
         return None
@@ -511,7 +511,7 @@ def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
         f"{body}"
     )
     try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=600, step="translate-mr")
+        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=1500, step="translate-mr")
     except (RuntimeError, subprocess.TimeoutExpired) as e:
         log(f"  Translation failed: {e}")
         return None
