@@ -6,7 +6,7 @@ slug          = "why-use-redis-history-alternatives"
 tags          = ["redis", "databases", "caching", "backend", "system-design"]
 keywords      = ["redis", "redis चे पर्याय", "redis चा इतिहास", "इन-मेमरी डेटाबेस", "redis चे वापर", "valkey", "dragonfly", "memcached", "redis विरुद्ध valkey"]
 canonical     = "/mr/posts/why-use-redis-history-alternatives/"
-feature_image = "/images/POST-1049-why-use-redis-history-alternatives.svg"
+feature_image = "/images/posts/why-use-redis-history-alternatives/redis-cover.jpg"
 +++
 
 "हे फक्त Redis मध्ये कॅश करा" — हे तुम्ही कोड रिव्ह्यूमध्ये, सिस्टम डिझाइन इंटरव्ह्यूमध्ये किंवा Stack Overflow च्या कमेंटमध्ये नक्कीच ऐकलं असेल. आता हे जवळपास एक प्रतिक्षिप्त क्रिया बनली आहे. पण Redis च का? चांगल्या इंडेक्ससह एखाद्या सामान्य डेटाबेसने का नाही, किंवा इतर कोणत्याही इन-मेमरी स्टोअरने? मी त्याचा इतिहास, आर्किटेक्चर आणि पर्यायांचं सध्याचं चित्र खोलवर तपासलं — आणि ही गोष्ट खरोखरच मेमपेक्षा कितीतरी जास्त रंजक आहे.

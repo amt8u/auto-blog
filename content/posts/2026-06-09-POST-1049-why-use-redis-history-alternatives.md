@@ -6,7 +6,7 @@ slug          = "why-use-redis-history-alternatives"
 tags          = ["redis", "databases", "caching", "backend", "system-design"]
 keywords      = ["redis", "redis alternatives", "redis history", "in-memory database", "redis use cases", "valkey", "dragonfly", "memcached", "redis vs valkey"]
 canonical     = "/posts/why-use-redis-history-alternatives/"
-feature_image = "/images/POST-1049-why-use-redis-history-alternatives.svg"
+feature_image = "/images/posts/why-use-redis-history-alternatives/redis-cover.jpg"
 +++
 
 "Just cache it in Redis" — you've probably heard that in a code review, a system design interview, or a Stack Overflow comment. It's almost a reflex at this point. But why Redis specifically? Why not a regular database with a good index, or any other in-memory store? I dug into the history, the architecture, and the current landscape of alternatives, and the story is genuinely more interesting than the meme lets on.
