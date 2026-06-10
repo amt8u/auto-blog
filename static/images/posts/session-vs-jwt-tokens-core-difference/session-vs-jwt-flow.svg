@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430">
+  <rect width="700" height="430" fill="#ffffff"/>
+  <text x="350" y="28" font-family="Arial" font-size="16" font-weight="bold" fill="#333333" text-anchor="middle">Where does the "truth" live?</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L6,3 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: Session -->
+  <text x="170" y="58" font-family="Arial" font-size="14" font-weight="bold" fill="#4a90e2" text-anchor="middle">Session-based (stateful)</text>
+
+  <rect x="100" y="80" width="140" height="50" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="170" y="110" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Browser</text>
+  <text x="170" y="124" font-family="Arial" font-size="9" fill="#333333" text-anchor="middle">Cookie: session_id=ab12</text>
+
+  <line x1="170" y1="130" x2="170" y2="180" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="100" y="185" width="140" height="50" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="170" y="215" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">App Server</text>
+
+  <line x1="170" y1="235" x2="170" y2="285" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="195" y="265" font-family="Arial" font-size="9" fill="#333333" text-anchor="start">"who is ab12?"</text>
+
+  <rect x="100" y="290" width="140" height="55" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="170" y="315" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Session Store</text>
+  <text x="170" y="330" font-family="Arial" font-size="10" fill="#333333" text-anchor="middle">(Redis / DB)</text>
+
+  <text x="170" y="385" font-family="Arial" font-size="11" fill="#333333" text-anchor="middle">Truth = stored on the server</text>
+  <text x="170" y="403" font-family="Arial" font-size="11" fill="#333333" text-anchor="middle">Cookie is just a pointer</text>
+
+  <!-- DIVIDER -->
+  <line x1="350" y1="50" x2="350" y2="410" stroke="#333333" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- RIGHT: JWT -->
+  <text x="530" y="58" font-family="Arial" font-size="14" font-weight="bold" fill="#4a90e2" text-anchor="middle">JWT-based (mostly stateless)</text>
+
+  <rect x="460" y="80" width="140" height="60" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="530" y="105" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">Browser</text>
+  <text x="530" y="120" font-family="Arial" font-size="9" fill="#333333" text-anchor="middle">Authorization: Bearer</text>
+  <text x="530" y="132" font-family="Arial" font-size="9" fill="#333333" text-anchor="middle">eyJhbGciOi...signed</text>
+
+  <line x1="530" y1="140" x2="530" y2="200" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="460" y="205" width="140" height="60" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="530" y="230" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">App Server</text>
+  <text x="530" y="247" font-family="Arial" font-size="9" fill="#333333" text-anchor="middle">verifies signature only</text>
+
+  <text x="530" y="385" font-family="Arial" font-size="11" fill="#333333" text-anchor="middle">Truth = inside the token</text>
+  <text x="530" y="403" font-family="Arial" font-size="11" fill="#333333" text-anchor="middle">No DB lookup needed</text>
+</svg>
