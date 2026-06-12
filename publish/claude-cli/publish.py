@@ -42,6 +42,8 @@ FRONT_MATTER_RE = re.compile(r"\+\+\+\s*\n(.*?)\n\+\+\+\s*\n", re.DOTALL)
 CODE_FENCE_RE = re.compile(r"\A```(?:[\w-]+)?\s*\n(.*?)\n```\s*\Z", re.DOTALL)
 SLUG_RE = re.compile(r'^\s*slug\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
 TITLE_RE = re.compile(r'^\s*title\s*=\s*"([^"]+)"\s*$', re.MULTILINE)
+DESCRIPTION_RE = re.compile(r'^\s*description\s*=\s*"([^"]*)"\s*$', re.MULTILINE)
+TAGS_RE = re.compile(r'^\s*tags\s*=\s*\[([^\]]*)\]\s*$', re.MULTILINE)
 SVG_BLOCK_RE = re.compile(
     r'<!-- SVG_FILE: ([^\n]+?\.svg) -->\s*\n(<svg[\s\S]+?</svg>)\s*\n<!-- /SVG_FILE -->',
     re.DOTALL,
@@ -190,6 +192,19 @@ def parse_article(raw: str) -> tuple[str, str, str]:
     return slug, title, article
 
 
+def extract_meta(body: str) -> tuple[str, list[str]]:
+    """Pull description and tags out of the front matter, for feature image design."""
+    front_match = FRONT_MATTER_RE.match(body)
+    front = front_match.group(1) if front_match else body
+    desc_m = DESCRIPTION_RE.search(front)
+    description = desc_m.group(1) if desc_m else ""
+    tags_m = TAGS_RE.search(front)
+    tags: list[str] = []
+    if tags_m:
+        tags = [t.strip().strip('"') for t in tags_m.group(1).split(",") if t.strip()]
+    return description, tags
+
+
 # ---------- SVG extraction ----------
 
 def extract_svgs(body: str, slug: str) -> tuple[str, list[Path]]:
@@ -319,125 +334,79 @@ def generate_article(topic: str, claude_bin: str) -> str:
     return result_text.strip()
 
 
-# ---------- step 2: feature image ----------
+# ---------- step: feature image ----------
 
-def generate_feature_image_svg(title: str, slug: str, post_id: str) -> str:
-    """Generate a professional feature image SVG with dark background and title.
+SVG_FENCE_RE = re.compile(r"```(?:svg|xml)?\s*\n(.*?)\n```", re.DOTALL)
+SVG_DOC_RE = re.compile(r"<svg[\s\S]*</svg>", re.IGNORECASE)
 
-    Returns the path to the saved SVG file, or empty string on failure.
+
+def design_feature_image_svg(title: str, description: str, tags: list[str], slug: str,
+                              post_id: str, claude_bin: str) -> str:
+    """Ask Claude to design an original, content-themed feature image SVG.
+
+    Rather than a generic template, Claude designs a visual metaphor specific
+    to the article's subject (e.g. a flame chart for a profiling post, a price
+    tag + receipts for a pricing comparison, a DNS "phonebook" globe for a DNS
+    post). Returns the path to the saved SVG (relative to site root), or "" on
+    failure so the caller can proceed without a feature image.
     """
-    try:
-        img_dir = REPO_ROOT / "static" / "images"
-        img_dir.mkdir(parents=True, exist_ok=True)
-
-        # Create filename: POST-1234-slug.svg
-        filename = f"{post_id}-{slug}.svg"
-        svg_path = img_dir / filename
-
-        # Truncate title if too long
-        display_title = title[:60] + "..." if len(title) > 60 else title
-
-        # Generate SVG with dark background
-        svg_content = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- Dark gradient background -->
-  <rect width="1200" height="630" fill="url(#bgGrad)"/>
-
-  <!-- Accent shapes -->
-  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
-  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
-  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
-
-  <!-- Title text -->
-  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
-        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
-        letter-spacing="-0.5">
-    {display_title}
-  </text>
-
-  <!-- Post ID badge -->
-  <g>
-    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
-    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
-          font-family="IBM Plex Mono, monospace">
-      {post_id}
-    </text>
-  </g>
-
-  <!-- cloudmato.com watermark -->
-  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
-        font-family="Nunito, sans-serif">
-    cloudmato.com
-  </text>
-</svg>'''
-
-        if svg_path.exists():
-            raise FileExistsError(
-                f"Refusing to overwrite existing feature image: "
-                f"{svg_path.relative_to(REPO_ROOT)}."
-            )
-        svg_path.write_text(svg_content, encoding="utf-8")
-        relative_path = f"/images/{filename}"
-        log(f"  ✓ Generated feature image: {relative_path}")
-        return relative_path
-    except Exception as e:
-        log(f"  Image generation failed: {e}")
-        return ""
-
-
-def find_feature_image(title: str, slug: str, claude_bin: str, post_id: str) -> str:
-    """Search for a freely available image, or generate one locally as fallback.
-
-    Workflow:
-    1. Search for feature images from free sources (Unsplash, Pexels, etc.)
-    2. If search fails or no image found, generate a custom SVG locally with:
-       - Dark background (black or dark gradient)
-       - Title text and post ID badge
-       - Professional, clean design
-       - Saved to static/images/POST-XXXX-<slug>.svg
-    """
-    log("[2/4] Finding feature image...")
-    log("  Searching for freely available images...")
+    log("  Designing feature image...")
+    tags_str = ", ".join(tags)
     prompt = (
-        f'Find one freely available, high-quality photo for a blog post titled: "{title}". '
-        f'Search Unsplash (images.unsplash.com) for a relevant image. '
-        f'Return ONLY the direct image URL starting with https://images.unsplash.com/photo-, '
-        f'with ?w=1200 appended. Nothing else — no explanation, no markdown. '
-        f'If no suitable image is found, return exactly: NONE'
+        "Design an original feature image for a blog post, as a single SVG document.\n\n"
+        f'Title: "{title}"\n'
+        f"Description: {description}\n"
+        f"Tags: {tags_str}\n\n"
+        "Requirements:\n"
+        "- viewBox=\"0 0 1200 630\", no external assets/fonts beyond common families "
+        "(Space Grotesk, IBM Plex Mono, Nunito, or generic sans-serif)\n"
+        "- Design ONE original visual metaphor that represents the article's core idea "
+        "(e.g. a flame chart for a profiling tool, a price tag with receipts for a pricing "
+        "comparison, a globe of record cards for a DNS article). Do not use a generic "
+        "'dark background with big title text' template.\n"
+        "- Do NOT render the post title or any long sentences as text in the image - "
+        "small labels (1-3 words, e.g. record types, function names, provider names, "
+        "price figures) are fine if they fit the metaphor\n"
+        "- Pick a color palette that fits the topic (it does not need to be dark)\n"
+        f'- Include a small badge near the bottom with the text "{post_id}" '
+        "(e.g. a rounded rect with monospace text)\n"
+        "- Include a small \"cloudmato.com\" watermark in a corner\n"
+        "- Return ONLY the raw <svg>...</svg> document, no markdown fence, no explanation"
     )
     try:
-        url = _run_claude_blocking(
+        result = _run_claude_blocking(
             claude_bin, prompt,
-            extra_flags=["--allowedTools", "WebSearch,WebFetch"],
-            timeout=120,
+            extra_flags=[],
+            timeout=900,
             step="feature-image",
         )
-    except (RuntimeError, subprocess.TimeoutExpired):
-        log("  Image search failed (timeout or error).")
-        log("  Falling back to generating feature image locally...")
-        return generate_feature_image_svg(title, slug, post_id)
+    except (RuntimeError, subprocess.TimeoutExpired) as e:
+        log(f"  Feature image design failed: {e}")
+        return ""
 
-    # Accept only clean Unsplash or other https image URLs
-    url = url.strip().strip('"').strip("'")
-    if url == "NONE" or not url.startswith("https://"):
-        log("  Feature image not found from free sources.")
-        log("  Generating feature image locally...")
-        return generate_feature_image_svg(title, slug, post_id)
-    log(f"  ✓ Found image: {url[:70]}")
-    return url
+    svg_content = result.strip()
+    fence_m = SVG_FENCE_RE.search(svg_content)
+    if fence_m:
+        svg_content = fence_m.group(1).strip()
+
+    doc_m = SVG_DOC_RE.search(svg_content)
+    if not doc_m:
+        log("  Feature image design returned no <svg> document, skipping.")
+        return ""
+    svg_content = doc_m.group(0)
+
+    img_dir = REPO_ROOT / "static" / "images"
+    img_dir.mkdir(parents=True, exist_ok=True)
+    filename = f"{post_id}-{slug}.svg"
+    svg_path = img_dir / filename
+    if svg_path.exists():
+        log(f"  Feature image already exists, skipping: {svg_path.relative_to(REPO_ROOT)}")
+        return f"/images/{filename}"
+
+    svg_path.write_text(svg_content, encoding="utf-8")
+    relative_path = f"/images/{filename}"
+    log(f"  ✓ Generated feature image: {relative_path}")
+    return relative_path
 
 
 def inject_feature_image(body: str, image_url: str) -> str:
@@ -512,28 +481,38 @@ def main() -> None:
         sys.exit(1)
 
     # Step 2: Extract SVG diagrams
+    log("[2/4] Extracting diagrams...")
     body, svg_paths = extract_svgs(body, slug)
     if svg_paths:
         log(f"  Extracted {len(svg_paths)} diagram(s): {[p.name for p in svg_paths]}")
+    else:
+        log("  No diagrams found.")
 
-    # Generate post ID early so it's available for feature image naming
     post_id = next_post_id()
     log(f"  Assigned: {post_id}")
 
-    # Step 3: Feature image
-    image_url = find_feature_image(title, slug, claude_bin, post_id)
-    body = inject_feature_image(body, image_url)
-
-    # Step 4: Write file and commit
-    log("[4/4] Writing file and committing...")
+    # Step 3: Write the post file
+    log("[3/4] Writing file...")
     date_prefix = datetime.now().strftime("%Y-%m-%d")
 
     path_en = write_post(slug, body, date_prefix, post_id)
     log(f"Written: {path_en.relative_to(REPO_ROOT)}")
 
+    # Step 4: Generate feature image, then inject it into the post just written
+    log("[4/4] Generating feature image...")
+    description, tags = extract_meta(body)
+    image_url = design_feature_image_svg(title, description, tags, slug, post_id, claude_bin)
+    if image_url:
+        body = inject_feature_image(body, image_url)
+        path_en.write_text(body, encoding="utf-8")
+
     log("Committing and pushing...")
     img_dir = IMAGES_DIR / slug if svg_paths else None
-    sha, push_err = git_publish([path_en], title, extra_dirs=[img_dir] if img_dir else None)
+    extra_dirs = [img_dir] if img_dir else None
+    paths = [path_en]
+    if image_url:
+        paths.append(REPO_ROOT / "static" / image_url.lstrip("/"))
+    sha, push_err = git_publish(paths, title, extra_dirs=extra_dirs)
     if push_err:
         log(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
     else:
