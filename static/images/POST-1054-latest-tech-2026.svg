@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d6fd6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4fa3e8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Blue gradient background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Binary digit texture, faint -->
+  <g font-family="IBM Plex Mono, monospace" font-size="26" fill="#ffffff" opacity="0.10">
+    <text x="40"  y="60">10110 10010 00101 10101</text>
+    <text x="40"  y="110">01101 10110 10010 01100</text>
+    <text x="40"  y="160">10010 00101 10110 10101</text>
+    <text x="700" y="60">10101 00101 10010 01101</text>
+    <text x="700" y="110">10110 10010 01101 10101</text>
+    <text x="40"  y="480">10110 10010 00101 10101</text>
+    <text x="40"  y="530">01101 10110 10010 01100</text>
+    <text x="40"  y="580">10010 00101 10110 10101</text>
+    <text x="700" y="480">10101 00101 10010 01101</text>
+    <text x="700" y="530">10110 10010 01101 10101</text>
+    <text x="700" y="580">10010 00101 10110 10101</text>
+  </g>
+
+  <!-- Dark diagonal accent shape, bottom-left -->
+  <polygon points="0,630 0,300 480,630" fill="#0f4c9c" opacity="0.55"/>
+  <polygon points="0,630 0,420 320,630" fill="#0b3a78" opacity="0.55"/>
+
+  <!-- Code editor panel -->
+  <rect x="120" y="90" width="700" height="430" rx="14" fill="#16213a"/>
+  <circle cx="155" cy="125" r="7" fill="#5d6b89"/>
+  <circle cx="180" cy="125" r="7" fill="#5d6b89"/>
+  <circle cx="205" cy="125" r="7" fill="#5d6b89"/>
+
+  <!-- Code lines (bar style) -->
+  <g fill="#5fb4e8">
+    <rect x="150" y="165" width="160" height="14" rx="3"/>
+    <rect x="150" y="195" width="240" height="14" rx="3"/>
+    <rect x="150" y="225" width="120" height="14" rx="3"/>
+    <rect x="150" y="255" width="200" height="14" rx="3"/>
+    <rect x="150" y="285" width="90"  height="14" rx="3"/>
+  </g>
+  <g fill="#9ab6d6">
+    <rect x="320" y="165" width="60" height="14" rx="3"/>
+    <rect x="400" y="195" width="50" height="14" rx="3"/>
+    <rect x="280" y="225" width="70" height="14" rx="3"/>
+  </g>
+  <g fill="#7ddc8c">
+    <rect x="500" y="165" width="40" height="14" rx="3"/>
+    <rect x="460" y="195" width="40" height="14" rx="3"/>
+    <rect x="360" y="255" width="40" height="14" rx="3"/>
+  </g>
+
+  <!-- Central icon badge -->
+  <rect x="430" y="280" width="220" height="220" rx="24" fill="#f4f7fb" stroke="#dbe6f4" stroke-width="4"/>
+  <text x="540" y="425" text-anchor="middle" fill="#1d6fd6" font-size="120" font-weight="bold"
+        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif">
+    AI
+  </text>
+
+  <!-- Post ID badge -->
+  <g>
+    <rect x="860" y="540" width="160" height="50" rx="8" fill="#0b3a78" opacity="0.85"/>
+    <text x="940" y="572" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+          font-family="IBM Plex Mono, monospace">
+      POST-1054
+    </text>
+  </g>
+
+  <!-- cloudmato.com watermark -->
+  <text x="1160" y="610" text-anchor="end" fill="#e6f0fb" font-size="14" opacity="0.8"
+        font-family="Nunito, sans-serif">
+    cloudmato.com
+  </text>
+</svg>

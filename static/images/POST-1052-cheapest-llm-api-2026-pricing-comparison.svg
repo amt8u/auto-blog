@@ -1,44 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#0f2027;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1c3b4a;stop-opacity:1" />
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="tagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
   </defs>
 
-  <!-- Dark gradient background -->
+  <!-- Dark teal background -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
 
-  <!-- Accent shapes -->
-  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
-  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
-  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+  <!-- Background bar chart, representing the wide price spread across providers -->
+  <g fill="#2f5566" opacity="0.6">
+    <rect x="760" y="430" width="50" height="160"/>
+    <rect x="830" y="370" width="50" height="220"/>
+    <rect x="900" y="300" width="50" height="290"/>
+    <rect x="970" y="220" width="50" height="370"/>
+    <rect x="1040" y="120" width="50" height="470"/>
+    <rect x="1110" y="60"  width="50" height="530"/>
+  </g>
+  <g stroke="#5a8a9c" stroke-width="2" stroke-dasharray="6,6" opacity="0.5">
+    <line x1="740" y1="590" x2="1170" y2="590"/>
+  </g>
 
-  <!-- Title text -->
-  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
-        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
-        letter-spacing="-0.5">
-    Cheapest LLM API in 2026: Claude vs GPT vs AWS vs OCI
-  </text>
+  <!-- Large price tag shape -->
+  <g transform="translate(150,120)">
+    <path d="M0 60 L160 60 L320 220 L160 380 L0 380 Z" fill="url(#tagGrad)"/>
+    <circle cx="60" cy="120" r="18" fill="#0f2027"/>
+    <text x="170" y="245" text-anchor="middle" fill="#ffffff" font-size="100" font-weight="800"
+          font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif">
+      $
+    </text>
+  </g>
+
+  <!-- Receipt-style provider cards -->
+  <g font-family="IBM Plex Mono, monospace" font-weight="700" font-size="22">
+    <!-- Claude -->
+    <rect x="540" y="90"  width="380" height="60" rx="10" fill="#16313d"/>
+    <text x="566" y="129" fill="#facc15">Claude</text>
+    <text x="900" y="129" text-anchor="end" fill="#cdeede" font-family="Nunito, sans-serif" font-weight="700" font-size="20">$3 / $15</text>
+
+    <!-- GPT -->
+    <rect x="540" y="165" width="380" height="60" rx="10" fill="#16313d"/>
+    <text x="566" y="204" fill="#9ecbff">GPT</text>
+    <text x="900" y="204" text-anchor="end" fill="#cdeede" font-family="Nunito, sans-serif" font-weight="700" font-size="20">$2.50 / $15</text>
+
+    <!-- Gemini -->
+    <rect x="540" y="240" width="380" height="60" rx="10" fill="#16313d"/>
+    <text x="566" y="279" fill="#7ddc8c">Gemini</text>
+    <text x="900" y="279" text-anchor="end" fill="#cdeede" font-family="Nunito, sans-serif" font-weight="700" font-size="20">$2 / $12</text>
+
+    <!-- DeepSeek -->
+    <rect x="540" y="315" width="380" height="60" rx="10" fill="#16313d"/>
+    <text x="566" y="354" fill="#ff9f6b">DeepSeek</text>
+    <text x="900" y="354" text-anchor="end" fill="#cdeede" font-family="Nunito, sans-serif" font-weight="700" font-size="20">$0.14 / $0.28</text>
+
+    <!-- AWS / OCI -->
+    <rect x="540" y="390" width="380" height="60" rx="10" fill="#16313d"/>
+    <text x="566" y="429" fill="#c9a7ff">AWS · OCI</text>
+    <text x="900" y="429" text-anchor="end" fill="#cdeede" font-family="Nunito, sans-serif" font-weight="700" font-size="20">varies</text>
+  </g>
 
   <!-- Post ID badge -->
   <g>
-    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
-    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+    <rect x="540" y="540" width="160" height="50" rx="8" fill="#10b981" opacity="0.85"/>
+    <text x="620" y="572" text-anchor="middle" fill="#0f2027" font-size="16" font-weight="700"
           font-family="IBM Plex Mono, monospace">
       POST-1052
     </text>
   </g>
 
   <!-- cloudmato.com watermark -->
-  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+  <text x="1160" y="610" text-anchor="end" fill="#7fa8b3" font-size="14"
         font-family="Nunito, sans-serif">
     cloudmato.com
   </text>

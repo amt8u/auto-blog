@@ -1,44 +1,76 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#1a1625;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d1f3d;stop-opacity:1" />
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
 
-  <!-- Dark gradient background -->
+  <!-- Dark purple background -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
 
-  <!-- Accent shapes -->
-  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
-  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
-  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+  <!-- Faint grid lines, like a timeline ruler -->
+  <g stroke="#3f3556" stroke-width="1" opacity="0.6">
+    <line x1="100" y1="100" x2="100" y2="540"/>
+    <line x1="280" y1="100" x2="280" y2="540"/>
+    <line x1="460" y1="100" x2="460" y2="540"/>
+    <line x1="640" y1="100" x2="640" y2="540"/>
+    <line x1="820" y1="100" x2="820" y2="540"/>
+    <line x1="1000" y1="100" x2="1000" y2="540"/>
+    <line x1="1160" y1="100" x2="1160" y2="540"/>
+  </g>
 
-  <!-- Title text -->
-  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
-        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
-        letter-spacing="-0.5">
-    Chrome DevTools Performance Panel: Analyzing Code Execution
-  </text>
+  <!-- Flame chart bars: depth 0 (top) to depth 3 (bottom) -->
+  <!-- Depth 0: full-width handler -->
+  <rect x="100" y="120" width="900" height="46" rx="4" fill="#3a3450"/>
+  <text x="130" y="150" fill="#cbd5e1" font-size="20" font-family="IBM Plex Mono, monospace" font-weight="600">onClick handler</text>
+
+  <!-- Depth 1: two children -->
+  <rect x="100" y="178" width="340" height="46" rx="4" fill="#f4c542"/>
+  <text x="130" y="208" fill="#3a2e05" font-size="20" font-family="IBM Plex Mono, monospace" font-weight="700">processData()</text>
+
+  <rect x="460" y="178" width="540" height="46" rx="4" fill="#f4c542"/>
+  <text x="490" y="208" fill="#3a2e05" font-size="20" font-family="IBM Plex Mono, monospace" font-weight="700">renderList()</text>
+
+  <!-- Depth 2: three children -->
+  <rect x="100" y="236" width="180" height="46" rx="4" fill="#f4c542"/>
+  <text x="130" y="266" fill="#3a2e05" font-size="18" font-family="IBM Plex Mono, monospace" font-weight="700">JSON.parse()</text>
+
+  <rect x="460" y="236" width="260" height="46" rx="4" fill="#a78bfa"/>
+  <text x="490" y="266" fill="#2c1a4d" font-size="18" font-family="IBM Plex Mono, monospace" font-weight="700">calculateLayout()</text>
+
+  <rect x="740" y="236" width="260" height="46" rx="4" fill="#a78bfa"/>
+  <text x="770" y="266" fill="#2c1a4d" font-size="18" font-family="IBM Plex Mono, monospace" font-weight="700">updateDOM()</text>
+
+  <!-- Depth 3: long task, flagged red -->
+  <rect x="740" y="294" width="260" height="46" rx="4" fill="#4ade80"/>
+  <text x="770" y="324" fill="#0f2e1a" font-size="18" font-family="IBM Plex Mono, monospace" font-weight="700">Layout (reflow)</text>
+
+  <!-- Long task marker -->
+  <g>
+    <line x1="100" y1="100" x2="1000" y2="100" stroke="#f87171" stroke-width="3"/>
+    <polygon points="980,108 1000,108 1000,118" fill="#f87171"/>
+    <text x="550" y="90" text-anchor="middle" fill="#f87171" font-size="22" font-weight="700"
+          font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif">
+      Long task &gt; 50ms — blocks input
+    </text>
+  </g>
+
+  <!-- 50ms threshold dashed line -->
+  <line x1="280" y1="95" x2="280" y2="545" stroke="#f87171" stroke-width="2" stroke-dasharray="6,6" opacity="0.7"/>
+  <text x="280" y="565" text-anchor="middle" fill="#f87171" font-size="16" font-family="IBM Plex Mono, monospace">50ms</text>
 
   <!-- Post ID badge -->
   <g>
-    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
-    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+    <rect x="1000" y="540" width="160" height="50" rx="8" fill="#a78bfa" opacity="0.85"/>
+    <text x="1080" y="572" text-anchor="middle" fill="#2c1a4d" font-size="16" font-weight="700"
           font-family="IBM Plex Mono, monospace">
       POST-1051
     </text>
   </g>
 
   <!-- cloudmato.com watermark -->
-  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+  <text x="100" y="600" fill="#8b81a3" font-size="14"
         font-family="Nunito, sans-serif">
     cloudmato.com
   </text>
