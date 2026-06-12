@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
+  <rect width="700" height="360" fill="#ffffff"/>
+  <line x1="40" y1="180" x2="660" y2="180" stroke="#4a90e2" stroke-width="3"/>
+
+  <circle cx="40" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="40" y1="174" x2="40" y2="150" stroke="#4a90e2" stroke-width="1"/>
+  <text x="40" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">1983</text>
+  <text x="40" y="124" text-anchor="middle" font-size="10" fill="#333333">DNS invented</text>
+  <text x="40" y="111" text-anchor="middle" font-size="10" fill="#333333">(RFC 882/883)</text>
+
+  <circle cx="130" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="130" y1="186" x2="130" y2="210" stroke="#4a90e2" stroke-width="1"/>
+  <text x="130" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">1987</text>
+  <text x="130" y="241" text-anchor="middle" font-size="10" fill="#333333">A, NS, MX, SOA,</text>
+  <text x="130" y="254" text-anchor="middle" font-size="10" fill="#333333">CNAME, PTR, TXT</text>
+
+  <circle cx="225" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="225" y1="174" x2="225" y2="150" stroke="#4a90e2" stroke-width="1"/>
+  <text x="225" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">1995/2003</text>
+  <text x="225" y="124" text-anchor="middle" font-size="10" fill="#333333">AAAA record</text>
+  <text x="225" y="111" text-anchor="middle" font-size="10" fill="#333333">for IPv6</text>
+
+  <circle cx="320" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="320" y1="186" x2="320" y2="210" stroke="#4a90e2" stroke-width="1"/>
+  <text x="320" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">2000</text>
+  <text x="320" y="241" text-anchor="middle" font-size="10" fill="#333333">SRV &amp; NAPTR -</text>
+  <text x="320" y="254" text-anchor="middle" font-size="10" fill="#333333">services &amp; VoIP</text>
+
+  <circle cx="415" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="415" y1="174" x2="415" y2="150" stroke="#4a90e2" stroke-width="1"/>
+  <text x="415" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">2005</text>
+  <text x="415" y="124" text-anchor="middle" font-size="10" fill="#333333">DNSSEC: DNSKEY,</text>
+  <text x="415" y="111" text-anchor="middle" font-size="10" fill="#333333">RRSIG, DS, NSEC</text>
+
+  <circle cx="495" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="495" y1="186" x2="495" y2="210" stroke="#4a90e2" stroke-width="1"/>
+  <text x="495" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">2006-2015</text>
+  <text x="495" y="241" text-anchor="middle" font-size="10" fill="#333333">SPF, DKIM, DMARC</text>
+  <text x="495" y="254" text-anchor="middle" font-size="10" fill="#333333">(email anti-spoof)</text>
+
+  <circle cx="580" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="580" y1="174" x2="580" y2="150" stroke="#4a90e2" stroke-width="1"/>
+  <text x="580" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">2012-2013</text>
+  <text x="580" y="124" text-anchor="middle" font-size="10" fill="#333333">TLSA &amp; CAA -</text>
+  <text x="580" y="111" text-anchor="middle" font-size="10" fill="#333333">certificate trust</text>
+
+  <circle cx="660" cy="180" r="6" fill="#4a90e2"/>
+  <line x1="660" y1="186" x2="660" y2="210" stroke="#4a90e2" stroke-width="1"/>
+  <text x="660" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#333333">2023</text>
+  <text x="660" y="241" text-anchor="middle" font-size="10" fill="#333333">HTTPS / SVCB -</text>
+  <text x="660" y="254" text-anchor="middle" font-size="10" fill="#333333">faster connections</text>
+</svg>

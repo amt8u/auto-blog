@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""CLI publisher: topic -> research -> article -> feature image -> Hindi translation -> git push.
+"""CLI publisher: topic -> research -> article -> feature image -> git push.
 
 Usage:
     python3 publish/claude-cli/publish.py "Your topic here"
     python3 publish/claude-cli/publish.py   # prompts interactively
+
+Run translate.py afterwards to add Hindi/Marathi translations.
 
 Requires the Claude Code CLI (claude) authenticated with your claude.ai subscription.
 """
@@ -269,7 +271,7 @@ def generate_article(topic: str, claude_bin: str) -> str:
         prompt,
     ]
 
-    log(f"[1/5] Researching: {topic[:80]}")
+    log(f"[1/4] Researching: {topic[:80]}")
 
     proc = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=REPO_ROOT,
@@ -407,7 +409,7 @@ def find_feature_image(title: str, slug: str, claude_bin: str, post_id: str) -> 
        - Professional, clean design
        - Saved to static/images/POST-XXXX-<slug>.svg
     """
-    log("[2/5] Finding feature image...")
+    log("[2/4] Finding feature image...")
     log("  Searching for freely available images...")
     prompt = (
         f'Find one freely available, high-quality photo for a blog post titled: "{title}". '
@@ -457,75 +459,6 @@ def inject_feature_image(body: str, image_url: str) -> str:
         body,
         count=1,
     )
-
-
-# ---------- step 3: translate ----------
-
-def translate_to_hindi(body: str, slug: str, claude_bin: str) -> str | None:
-    """Translate article to Hindi. Returns translated body or None on failure."""
-    log("[3/5] Translating to Hindi...")
-    prompt = (
-        "Translate this Hugo blog post to Hindi.\n\n"
-        "Rules:\n"
-        f'- Keep slug exactly as: "{slug}"\n'
-        f'- Change canonical to "/hi/posts/{slug}/"\n'
-        "- Translate title, description, tags, keywords, and all body text to Hindi\n"
-        "- Keep date, feature_image, and all other non-text front matter fields unchanged\n"
-        "- Keep all Markdown formatting intact (## headings, **bold**, links, tables, `code`)\n"
-        "- Do NOT add an H1 heading in the body\n"
-        "- Return ONLY the translated document starting with +++, no preamble or explanation\n\n"
-        f"{body}"
-    )
-    try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=1500, step="translate-hi")
-    except (RuntimeError, subprocess.TimeoutExpired) as e:
-        log(f"  Translation failed: {e}")
-        return None
-
-    # Strip accidental code fence
-    if result.startswith("```"):
-        lines = result.split("\n")
-        result = "\n".join(lines[1:-1]).strip()
-
-    if not result.startswith("+++"):
-        log("  Translation returned unexpected format, skipping.")
-        return None
-
-    log("  Done.")
-    return result
-
-
-def translate_to_marathi(body: str, slug: str, claude_bin: str) -> str | None:
-    """Translate article to Marathi. Returns translated body or None on failure."""
-    prompt = (
-        "Translate this Hugo blog post to Marathi.\n\n"
-        "Rules:\n"
-        f'- Keep slug exactly as: "{slug}"\n'
-        f'- Change canonical to "/mr/posts/{slug}/"\n'
-        "- Translate title, description, and all body text to Marathi\n"
-        "- Keep tags in English (same values as the original)\n"
-        "- Keep date, feature_image, and all other non-text front matter fields unchanged\n"
-        "- Keep all Markdown formatting intact (## headings, **bold**, links, tables, `code`)\n"
-        "- Do NOT add an H1 heading in the body\n"
-        "- Return ONLY the translated document starting with +++, no preamble or explanation\n\n"
-        f"{body}"
-    )
-    try:
-        result = _run_claude_blocking(claude_bin, prompt, extra_flags=[], timeout=1500, step="translate-mr")
-    except (RuntimeError, subprocess.TimeoutExpired) as e:
-        log(f"  Translation failed: {e}")
-        return None
-
-    if result.startswith("```"):
-        lines = result.split("\n")
-        result = "\n".join(lines[1:-1]).strip()
-
-    if not result.startswith("+++"):
-        log("  Translation returned unexpected format, skipping.")
-        return None
-
-    log("  Done.")
-    return result
 
 
 # ---------- main ----------
@@ -591,48 +524,22 @@ def main() -> None:
     image_url = find_feature_image(title, slug, claude_bin, post_id)
     body = inject_feature_image(body, image_url)
 
-    # Step 4: Translate to Hindi
-    log("[3/5] Translating to Hindi...")
-    hindi_body = translate_to_hindi(body, slug, claude_bin)
-    if not hindi_body:
-        log("\nAborting: Hindi translation failed. Nothing was committed or pushed.", file=sys.stderr)
-        sys.exit(1)
-
-    # Step 5: Translate to Marathi
-    log("[4/5] Translating to Marathi...")
-    marathi_body = translate_to_marathi(body, slug, claude_bin)
-    if not marathi_body:
-        log("\nAborting: Marathi translation failed. Nothing was committed or pushed.", file=sys.stderr)
-        sys.exit(1)
-
-    # Step 6: Write files and commit — only reached if all translations succeeded
-    log("[5/5] Writing files and committing...")
+    # Step 4: Write file and commit
+    log("[4/4] Writing file and committing...")
     date_prefix = datetime.now().strftime("%Y-%m-%d")
-    paths: list[Path] = []
 
     path_en = write_post(slug, body, date_prefix, post_id)
-    paths.append(path_en)
     log(f"Written: {path_en.relative_to(REPO_ROOT)}")
 
-    path_hi = write_post(slug, hindi_body, date_prefix, post_id, lang="hi")
-    paths.append(path_hi)
-    log(f"Written: {path_hi.relative_to(REPO_ROOT)}")
-
-    path_mr = write_post(slug, marathi_body, date_prefix, post_id, lang="mr")
-    paths.append(path_mr)
-    log(f"Written: {path_mr.relative_to(REPO_ROOT)}")
-
-    # Commit and push everything in one commit
     log("Committing and pushing...")
     img_dir = IMAGES_DIR / slug if svg_paths else None
-    sha, push_err = git_publish(paths, title, extra_dirs=[img_dir] if img_dir else None)
+    sha, push_err = git_publish([path_en], title, extra_dirs=[img_dir] if img_dir else None)
     if push_err:
         log(f"Committed {sha[:8]} locally. Push failed:\n  {push_err}")
     else:
         log(f'Done! "{title}" [{post_id}] pushed as commit {sha[:8]}.')
         log(f"  EN: /posts/{slug}/")
-        log(f"  HI: /hi/posts/{slug}/")
-        log(f"  MR: /mr/posts/{slug}/")
+        log("  Run translate.py to add Hindi/Marathi translations.")
 
     log_usage_total()
 
