@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="520" viewBox="0 0 700 520">
+  <rect width="700" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+
+  <text x="350" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333333">The 2026 AI Stack</text>
+
+  <!-- Layer 1: Hardware -->
+  <rect x="100" y="50" width="500" height="70" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Hardware</text>
+  <text x="350" y="98" text-anchor="middle" font-size="12" fill="#333333">Nvidia Vera Rubin platform — 6 chips, full production H2 2026</text>
+
+  <!-- Arrow 1 -->
+  <line x1="350" y1="120" x2="350" y2="155" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 2: Foundation Models -->
+  <rect x="100" y="160" width="500" height="70" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="185" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Foundation Models</text>
+  <text x="350" y="208" text-anchor="middle" font-size="12" fill="#333333">GPT-5.5 · Gemini 3.1 Pro · Claude Opus 4.8 · Grok 4.3</text>
+
+  <!-- Arrow 2 -->
+  <line x1="350" y1="230" x2="350" y2="265" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 3: Agents & Browsers -->
+  <rect x="100" y="270" width="500" height="70" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="295" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Agents &amp; Browsers</text>
+  <text x="350" y="318" text-anchor="middle" font-size="12" fill="#333333">ChatGPT Atlas · Perplexity Comet · Gemini in Chrome</text>
+
+  <!-- Arrow 3 -->
+  <line x1="350" y1="340" x2="350" y2="375" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 4: Physical World -->
+  <rect x="100" y="380" width="500" height="70" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="405" text-anchor="middle" font-size="14" font-weight="bold" fill="#333333">Physical World</text>
+  <text x="350" y="428" text-anchor="middle" font-size="12" fill="#333333">Cosmos 3 world models → Figure 03, Optimus, Apptronik Apollo</text>
+
+  <!-- Feedback loop -->
+  <path d="M610,415 C 680,415 680,75 610,75" fill="none" stroke="#4a90e2" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="635" y="245" text-anchor="middle" font-size="11" fill="#333333" transform="rotate(90 635 245)">real-world data trains next-gen chips</text>
+</svg>
