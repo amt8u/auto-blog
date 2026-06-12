@@ -6,7 +6,7 @@ slug        = "chrome-devtools-background-services"
 tags        = ["Chrome DevTools", "web development", "debugging", "PWA", "performance", "service workers", "security"]
 keywords    = ["Chrome DevTools background services", "bfcache debugging", "speculative loads DevTools", "background fetch API", "background sync debugging", "push messaging DevTools", "Reporting API Chrome", "Device Bound Session Credentials DBSC", "bounce tracking mitigations", "payment handler API debug"]
 canonical   = "/mr/posts/chrome-devtools-background-services/"
-feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80"
+feature_image = "/images/POST-1047-chrome-devtools-background-services.svg"
 +++
 
 तुमचे वेब अॅप कदाचित अशा गोष्टी करत आहे ज्या तुम्ही कधी प्रत्यक्षात डीबग केल्या नाहीत. वापरकर्त्याने काही क्लिक करण्यापूर्वीच पेजेस प्री-रेंडर होत आहेत, ऑफलाइन असताना फॉर्म सबमिशन्स शांतपणे रांगेत लावल्या जात आहेत, झोपलेल्या सर्व्हिस वर्कर कडे पुश नोटिफिकेशन्स येत आहेत, सेशन्स हार्डवेअर कीजना क्रिप्टोग्राफिकली बांधल्या जात आहेत — हे सर्व Chrome च्या background service APIs द्वारे होते, पूर्णपणे अदृश्यपणे. Chrome DevTools मधील Background Services पॅनेल म्हणजे तुम्हाला हे सर्व शेवटी पाहता येण्याची जागा.

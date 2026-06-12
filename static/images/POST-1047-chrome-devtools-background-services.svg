@@ -1,44 +1,110 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#10212e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1b3a4b;stop-opacity:1" />
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#5eead4;stop-opacity:0" />
+    </radialGradient>
   </defs>
 
-  <!-- Dark gradient background -->
+  <!-- Dark teal background -->
   <rect width="1200" height="630" fill="url(#bgGrad)"/>
 
-  <!-- Accent shapes -->
-  <circle cx="100" cy="100" r="80" fill="#3b82f6" opacity="0.1" filter="url(#glow)"/>
-  <circle cx="1100" cy="530" r="100" fill="#10b981" opacity="0.1" filter="url(#glow)"/>
-  <rect x="50" y="450" width="300" height="2" fill="#3b82f6" opacity="0.3"/>
+  <!-- Faint radar rings, like a "scanning the page" sweep -->
+  <g stroke="#2f5468" stroke-width="2" fill="none" opacity="0.6">
+    <circle cx="600" cy="300" r="90"/>
+    <circle cx="600" cy="300" r="160"/>
+    <circle cx="600" cy="300" r="230"/>
+  </g>
 
-  <!-- Title text -->
-  <text x="600" y="280" text-anchor="middle" fill="white" font-size="52" font-weight="bold"
-        font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif"
-        letter-spacing="-0.5">
-    Chrome DevTools Background Services: Complete Guide
-  </text>
+  <!-- Glow behind the central tab -->
+  <circle cx="600" cy="300" r="140" fill="url(#coreGlow)" opacity="0.35"/>
+
+  <!-- Connecting lines from center to each service tile -->
+  <g stroke="#3f6a80" stroke-width="2" fill="none" opacity="0.8">
+    <line x1="600" y1="300" x2="270" y2="120"/>
+    <line x1="600" y1="300" x2="600" y2="90"/>
+    <line x1="600" y1="300" x2="930" y2="120"/>
+    <line x1="600" y1="300" x2="990" y2="300"/>
+    <line x1="600" y1="300" x2="930" y2="480"/>
+    <line x1="600" y1="300" x2="600" y2="520"/>
+    <line x1="600" y1="300" x2="270" y2="480"/>
+    <line x1="600" y1="300" x2="210" y2="300"/>
+  </g>
+
+  <!-- Small pulse dots along the lines, suggesting events firing -->
+  <g fill="#5eead4">
+    <circle cx="430" cy="205" r="5"/>
+    <circle cx="600" cy="195" r="5"/>
+    <circle cx="770" cy="205" r="5"/>
+    <circle cx="800" cy="300" r="5"/>
+    <circle cx="770" cy="395" r="5"/>
+    <circle cx="430" cy="395" r="5"/>
+  </g>
+
+  <!-- Central browser tab icon -->
+  <g>
+    <rect x="520" y="240" width="160" height="120" rx="14" fill="#0d2129" stroke="#5eead4" stroke-width="3"/>
+    <rect x="520" y="240" width="160" height="28" rx="14" fill="#16313d"/>
+    <circle cx="540" cy="254" r="5" fill="#f87171"/>
+    <circle cx="558" cy="254" r="5" fill="#fbbf24"/>
+    <circle cx="576" cy="254" r="5" fill="#5eead4"/>
+    <!-- sleeping "zzz" to suggest the page is backgrounded -->
+    <text x="600" y="320" text-anchor="middle" fill="#5eead4" font-size="34" font-weight="700"
+          font-family="Space Grotesk, -apple-system, BlinkMacSystemFont, sans-serif">
+      Zzz
+    </text>
+  </g>
+
+  <!-- Service tiles around the tab -->
+  <g font-family="IBM Plex Mono, monospace" font-weight="700" font-size="20">
+    <!-- bfcache -->
+    <rect x="160" y="80"  width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="186" y="118" fill="#5eead4">bfcache</text>
+
+    <!-- Push messaging -->
+    <rect x="490" y="40" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="516" y="78" fill="#facc15">Push</text>
+
+    <!-- Reporting API -->
+    <rect x="820" y="80" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="846" y="118" fill="#9ecbff">Reporting</text>
+
+    <!-- Background Fetch -->
+    <rect x="940" y="270" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="966" y="308" fill="#7ddc8c">Bg Fetch</text>
+
+    <!-- DBSC -->
+    <rect x="820" y="450" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="846" y="488" fill="#ff9f6b">DBSC</text>
+
+    <!-- Background Sync -->
+    <rect x="490" y="490" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="516" y="528" fill="#c9a7ff">Bg Sync</text>
+
+    <!-- Speculative loads -->
+    <rect x="160" y="450" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="186" y="488" fill="#5eead4">Prerender</text>
+
+    <!-- Notifications -->
+    <rect x="40" y="270" width="220" height="60" rx="10" fill="#16313d"/>
+    <text x="66" y="308" fill="#facc15">Notifications</text>
+  </g>
 
   <!-- Post ID badge -->
   <g>
-    <rect x="50" y="550" width="140" height="50" rx="8" fill="#3b82f6" opacity="0.8"/>
-    <text x="120" y="582" text-anchor="middle" fill="white" font-size="16" font-weight="600"
+    <rect x="1000" y="540" width="160" height="50" rx="8" fill="#5eead4" opacity="0.9"/>
+    <text x="1080" y="572" text-anchor="middle" fill="#0d2129" font-size="16" font-weight="700"
           font-family="IBM Plex Mono, monospace">
       POST-1047
     </text>
   </g>
 
   <!-- cloudmato.com watermark -->
-  <text x="600" y="600" text-anchor="middle" fill="#64748b" font-size="14"
+  <text x="40" y="600" fill="#7fa8b3" font-size="14"
         font-family="Nunito, sans-serif">
     cloudmato.com
   </text>

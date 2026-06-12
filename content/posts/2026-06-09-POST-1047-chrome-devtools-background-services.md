@@ -6,7 +6,7 @@ slug        = "chrome-devtools-background-services"
 tags        = ["Chrome DevTools", "web development", "debugging", "PWA", "performance", "service workers", "security"]
 keywords    = ["Chrome DevTools background services", "bfcache debugging", "speculative loads DevTools", "background fetch API", "background sync debugging", "push messaging DevTools", "Reporting API Chrome", "Device Bound Session Credentials DBSC", "bounce tracking mitigations", "payment handler API debug"]
 canonical   = "/posts/chrome-devtools-background-services/"
-feature_image = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&q=80"
+feature_image = "/images/POST-1047-chrome-devtools-background-services.svg"
 +++
 
 Your web app is probably doing things you've never actually debugged. Pages being prerendered before the user clicks anything, form submissions silently queued while offline, push notifications arriving at a sleeping service worker, sessions cryptographically bound to hardware keys — all of this happens through Chrome's background service APIs, running completely invisibly. The Background Services panel in Chrome DevTools is where you finally get to watch all of it.
