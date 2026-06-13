@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320">
+  <rect width="700" height="320" fill="#ffffff"/>
+  <text x="350" y="28" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333333">Batching Inside a setTimeout: Before vs. After React 18</text>
+
+  <!-- Left column -->
+  <text x="170" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">React ≤ 17 (legacy root)</text>
+  <rect x="40" y="80" width="260" height="46" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="170" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">setCount(c =&gt; c+1) → render #1</text>
+  <line x1="170" y1="126" x2="170" y2="146" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="40" y="150" width="260" height="46" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="170" y="178" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">setFlag(f =&gt; !f) → render #2</text>
+  <line x1="170" y1="196" x2="170" y2="216" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="40" y="220" width="260" height="46" rx="6" fill="#ffffff" stroke="#333333" stroke-dasharray="4,3"/>
+  <text x="170" y="248" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">2 renders, 2 commits to the DOM</text>
+
+  <!-- Right column -->
+  <text x="530" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">React 18+ (createRoot)</text>
+  <rect x="400" y="80" width="260" height="46" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="530" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">setCount(c =&gt; c+1) queued</text>
+  <line x1="530" y1="126" x2="530" y2="146" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="400" y="150" width="260" height="46" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="530" y="178" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">setFlag(f =&gt; !f) queued</text>
+  <line x1="530" y1="196" x2="530" y2="216" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="400" y="220" width="260" height="46" rx="6" fill="#ffffff" stroke="#333333" stroke-dasharray="4,3"/>
+  <text x="530" y="248" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">1 render, 1 commit to the DOM</text>
+
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+</svg>
