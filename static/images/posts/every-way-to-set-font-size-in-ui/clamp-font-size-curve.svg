@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320">
+  <rect width="700" height="320" fill="#ffffff"/>
+
+  <!-- axes -->
+  <line x1="60" y1="30" x2="60" y2="270" stroke="#333333" stroke-width="2"/>
+  <line x1="60" y1="270" x2="650" y2="270" stroke="#333333" stroke-width="2"/>
+  <polygon points="60,24 54,36 66,36" fill="#333333"/>
+  <polygon points="656,270 644,264 644,276" fill="#333333"/>
+  <text x="660" y="290" font-size="13" fill="#333333">viewport width</text>
+  <text x="30" y="20" font-size="13" fill="#333333">font-size</text>
+
+  <!-- clamp curve -->
+  <polyline points="60,230 200,230 480,80 650,80" fill="none" stroke="#4a90e2" stroke-width="3"/>
+
+  <!-- dashed reference lines -->
+  <line x1="60" y1="230" x2="200" y2="230" stroke="#4a90e2" stroke-width="3"/>
+  <line x1="60" y1="80" x2="650" y2="80" stroke="#333333" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="60" y1="230" x2="650" y2="230" stroke="#333333" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- labels -->
+  <rect x="70" y="195" width="150" height="42" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="80" y="212" font-size="12" fill="#333333">min:</text>
+  <text x="80" y="228" font-size="12" fill="#333333">1rem (16px)</text>
+
+  <rect x="280" y="125" width="170" height="42" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="290" y="142" font-size="12" fill="#333333">preferred:</text>
+  <text x="290" y="158" font-size="12" fill="#333333">1rem + 3vw (fluid)</text>
+
+  <rect x="470" y="40" width="160" height="42" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="480" y="57" font-size="12" fill="#333333">max:</text>
+  <text x="480" y="73" font-size="12" fill="#333333">3rem (48px)</text>
+</svg>

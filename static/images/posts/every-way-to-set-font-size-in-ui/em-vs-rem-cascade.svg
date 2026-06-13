@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
+  <rect width="700" height="360" fill="#ffffff"/>
+  <text x="185" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#333333">em — sizes compound with nesting</text>
+  <text x="515" y="25" text-anchor="middle" font-size="15" font-weight="bold" fill="#333333">rem — always relative to the root</text>
+
+  <!-- em column -->
+  <text x="20" y="71" font-size="13" fill="#333333">html — 16px (root = 1rem)</text>
+  <rect x="180" y="63" width="48" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="235" y="79" font-size="13" fill="#333333">16px</text>
+
+  <text x="20" y="141" font-size="13" fill="#333333">section { font-size: 1.25em }</text>
+  <rect x="180" y="133" width="60" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="247" y="149" font-size="13" fill="#333333">20px</text>
+
+  <text x="20" y="211" font-size="13" fill="#333333">article { font-size: 1.25em }</text>
+  <rect x="180" y="203" width="75" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="262" y="219" font-size="13" fill="#333333">25px</text>
+
+  <text x="20" y="281" font-size="13" fill="#333333">p { font-size: 1.25em }</text>
+  <rect x="180" y="273" width="94" height="24" fill="#4a90e2" stroke="#4a90e2"/>
+  <text x="281" y="289" font-size="13" fill="#333333">31.25px</text>
+
+  <!-- rem column -->
+  <text x="370" y="71" font-size="13" fill="#333333">html — 16px (root = 1rem)</text>
+  <rect x="530" y="63" width="48" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="585" y="79" font-size="13" fill="#333333">16px</text>
+
+  <text x="370" y="141" font-size="13" fill="#333333">section { font-size: 1.25rem }</text>
+  <rect x="530" y="133" width="60" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="597" y="149" font-size="13" fill="#333333">20px</text>
+
+  <text x="370" y="211" font-size="13" fill="#333333">article { font-size: 1.25rem }</text>
+  <rect x="530" y="203" width="60" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="597" y="219" font-size="13" fill="#333333">20px</text>
+
+  <text x="370" y="281" font-size="13" fill="#333333">p { font-size: 1.25rem }</text>
+  <rect x="530" y="273" width="60" height="24" fill="#f0f4f8" stroke="#4a90e2"/>
+  <text x="597" y="289" font-size="13" fill="#333333">20px</text>
+</svg>
