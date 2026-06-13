@@ -129,7 +129,11 @@ def find_post(post_number: str) -> tuple[Path, str, str, str]:
     Returns (path, date_prefix, post_id, slug).
     """
     pattern = re.compile(rf"^\d{{4}}-\d{{2}}-\d{{2}}-POST-{post_number}-.+\.md$", re.IGNORECASE)
-    matches = [p for p in POSTS_DIR.iterdir() if pattern.match(p.name)]
+    lang_suffixes = tuple(f".{lang['code']}.md" for lang in LANGUAGES.values())
+    matches = [
+        p for p in POSTS_DIR.iterdir()
+        if pattern.match(p.name) and not p.name.lower().endswith(lang_suffixes)
+    ]
     if not matches:
         raise FileNotFoundError(f"No English post found for POST-{post_number} in {POSTS_DIR}")
     if len(matches) > 1:
