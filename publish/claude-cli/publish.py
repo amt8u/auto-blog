@@ -143,6 +143,12 @@ def _run_claude_blocking(claude_bin: str, prompt: str, extra_flags: list[str], t
     """Run claude --print and return the result text, or raise RuntimeError.
 
     If `step` is given, logs token usage / cost from the result event.
+
+    For long responses, the final `result` event can reflect only the last
+    assistant turn (e.g. if the model's reply spanned multiple turns), while
+    `usage.output_tokens` covers all of them. To avoid silently returning a
+    truncated tail, we also accumulate text across every `assistant` message
+    and prefer whichever of the two is longer.
     """
     cmd = [
         claude_bin, "--print", "--verbose",
@@ -154,18 +160,32 @@ def _run_claude_blocking(claude_bin: str, prompt: str, extra_flags: list[str], t
     result = subprocess.run(
         cmd, capture_output=True, text=True, cwd=REPO_ROOT, timeout=timeout,
     )
+    accumulated = []
+    result_text = None
     for line in result.stdout.splitlines():
         try:
             event = json.loads(line)
-            if event.get("type") == "result" and event.get("subtype") == "success":
-                if step:
-                    log_usage(step, event)
-                return event.get("result", "").strip()
         except json.JSONDecodeError:
             continue
-    if result.returncode != 0:
-        raise RuntimeError(result.stderr[:300] or "no output")
-    return ""
+        etype = event.get("type")
+        if etype == "assistant":
+            for block in event.get("message", {}).get("content", []):
+                if block.get("type") == "text":
+                    accumulated.append(block.get("text", ""))
+        elif etype == "result" and event.get("subtype") == "success":
+            if step:
+                log_usage(step, event)
+            result_text = event.get("result", "").strip()
+
+    accumulated_text = "".join(accumulated).strip()
+    if result_text is None:
+        if result.returncode != 0:
+            raise RuntimeError(result.stderr[:300] or "no output")
+        return accumulated_text
+
+    if len(accumulated_text) > len(result_text):
+        return accumulated_text
+    return result_text
 
 
 # ---------- parsing ----------
