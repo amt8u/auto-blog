@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'Space Grotesk','Nunito',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1020"/>
+      <stop offset="0.55" stop-color="#101935"/>
+      <stop offset="1" stop-color="#0d1428"/>
+    </linearGradient>
+    <linearGradient id="rackFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#172445"/>
+      <stop offset="1" stop-color="#101a33"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34e0c4"/>
+      <stop offset="0.5" stop-color="#fbbf66"/>
+      <stop offset="1" stop-color="#f87171"/>
+    </linearGradient>
+    <radialGradient id="modelGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="0.5" stop-color="#fb923c"/>
+      <stop offset="1" stop-color="#fb923c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- faint grid -->
+  <g stroke="#2a3a66" stroke-width="1" opacity="0.18">
+    <path d="M0 210 H1200 M0 410 H1200 M300 0 V630 M600 0 V630 M900 0 V630"/>
+  </g>
+
+  <!-- ===== PIPELINE (top) ===== -->
+  <!-- provider source chips -->
+  <g font-family="'IBM Plex Mono',monospace" font-size="15">
+    <g>
+      <rect x="46" y="48" width="138" height="40" rx="11" fill="#0f1d38" stroke="#2dd4bf" stroke-width="1.6"/>
+      <circle cx="68" cy="68" r="6" fill="#2dd4bf"/>
+      <text x="86" y="73" fill="#cfe9e4">OpenAI</text>
+    </g>
+    <g>
+      <rect x="46" y="100" width="138" height="40" rx="11" fill="#1d1530" stroke="#f59e6b" stroke-width="1.6"/>
+      <circle cx="68" cy="120" r="6" fill="#f59e6b"/>
+      <text x="86" y="125" fill="#f3d8c5">Anthropic</text>
+    </g>
+  </g>
+
+  <!-- merge lines into pipeline -->
+  <g fill="none" stroke="#3a4d80" stroke-width="2">
+    <path d="M184 68 C212 68 212 95 236 95"/>
+    <path d="M184 120 C212 120 212 95 236 95"/>
+  </g>
+
+  <!-- stage chips -->
+  <g font-family="'IBM Plex Mono',monospace" font-size="14" text-anchor="middle">
+    <g>
+      <rect x="236" y="72" width="118" height="46" rx="12" fill="#13213f" stroke="#3f5da0" stroke-width="1.6"/>
+      <text x="295" y="100" fill="#dbe6ff">DATA</text>
+    </g>
+    <path d="M354 95 H386" stroke="#5b6ea8" stroke-width="2" marker-end="url(#ah)"/>
+    <g>
+      <rect x="386" y="72" width="134" height="46" rx="12" fill="#13213f" stroke="#2dd4bf" stroke-width="1.6"/>
+      <text x="453" y="100" fill="#dbe6ff">PRETRAIN</text>
+    </g>
+    <path d="M520 95 H552" stroke="#5b6ea8" stroke-width="2" marker-end="url(#ah)"/>
+    <g>
+      <rect x="552" y="72" width="110" height="46" rx="12" fill="#13213f" stroke="#a78bfa" stroke-width="1.6"/>
+      <text x="607" y="100" fill="#dbe6ff">RLHF</text>
+    </g>
+    <path d="M662 95 H694" stroke="#5b6ea8" stroke-width="2" marker-end="url(#ah)"/>
+    <g>
+      <rect x="694" y="72" width="110" height="46" rx="12" fill="#13213f" stroke="#f59e6b" stroke-width="1.6"/>
+      <text x="749" y="100" fill="#dbe6ff">EVAL</text>
+    </g>
+  </g>
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6 Z" fill="#7c8ec9"/>
+    </marker>
+  </defs>
+
+  <!-- feed line from pipeline down into rack -->
+  <path d="M295 118 C295 165 200 165 200 200" fill="none" stroke="#3a4d80" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <!-- ===== GPU CLUSTER (centerpiece) ===== -->
+  <rect x="74" y="200" width="640" height="338" rx="18" fill="url(#rackFill)" stroke="#34406b" stroke-width="2"/>
+  <!-- rack rails -->
+  <rect x="74" y="200" width="640" height="34" rx="18" fill="#1b2a52" opacity="0.7"/>
+  <circle cx="96" cy="217" r="4" fill="#2dd4bf"/>
+  <circle cx="110" cy="217" r="4" fill="#f59e6b"/>
+  <circle cx="124" cy="217" r="4" fill="#a78bfa"/>
+
+  <!-- GPU cards grid 5x4 -->
+  <g>
+    <!-- generate via explicit cards -->
+    <g>
+      <!-- row template repeated -->
+    </g>
+  </g>
+  <g font-family="'IBM Plex Mono',monospace" font-size="9" fill="#7f93c9">
+    <!-- Cards -->
+    <!-- Use a group with translate per card -->
+    <g transform="translate(98,250)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <text x="74" y="44">H100</text>
+    </g>
+    <g transform="translate(218,250)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <text x="74" y="44">H100</text>
+    </g>
+    <g transform="translate(338,250)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <text x="74" y="44">H100</text>
+    </g>
+    <g transform="translate(458,250)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <text x="74" y="44">H100</text>
+    </g>
+    <g transform="translate(578,250)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <text x="74" y="44">H100</text>
+    </g>
+
+    <g transform="translate(98,318)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(218,318)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(338,318)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(458,318)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(578,318)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(98,386)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(218,386)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(338,386)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(458,386)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(578,386)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(98,454)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(218,454)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(338,454)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(458,454)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+    <g transform="translate(578,454)">
+      <rect width="104" height="58" rx="8" fill="#0c1631" stroke="#2c3c66"/>
+      <rect x="12" y="14" width="80" height="6" rx="3" fill="url(#core)" filter="url(#glow)"/>
+      <circle cx="28" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+      <circle cx="52" cy="40" r="8" fill="none" stroke="#3a4d80" stroke-width="2"/>
+    </g>
+  </g>
+
+  <text x="394" y="225" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#9fb1e0" letter-spacing="3">GPU CLUSTER · 25,000 NODES</text>
+
+  <!-- output: model emerges -->
+  <path d="M714 369 C744 369 744 400 776 400" fill="none" stroke="url(#heat)" stroke-width="3"/>
+
+  <!-- ===== RIGHT PANEL: cost + time ===== -->
+  <!-- COST card -->
+  <g>
+    <rect x="776" y="248" width="350" height="120" rx="16" fill="#11203c" stroke="#34406b" stroke-width="1.6"/>
+    <circle cx="826" cy="308" r="26" fill="#0c1730" stroke="#fbbf66" stroke-width="2"/>
+    <text x="826" y="316" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="26" font-weight="700" fill="#fbbf66">$</text>
+    <text x="872" y="296" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8aa0d4" letter-spacing="2">COMPUTE COST</text>
+    <text x="872" y="338" font-family="'Space Grotesk',sans-serif" font-size="38" font-weight="700" fill="#fde7c0">$100M+</text>
+  </g>
+
+  <!-- TIME card -->
+  <g>
+    <rect x="776" y="388" width="350" height="120" rx="16" fill="#11203c" stroke="#34406b" stroke-width="1.6"/>
+    <circle cx="826" cy="448" r="26" fill="#0c1730" stroke="#2dd4bf" stroke-width="2"/>
+    <g stroke="#2dd4bf" stroke-width="2.4" stroke-linecap="round" fill="none">
+      <path d="M826 434 V448 L836 456"/>
+    </g>
+    <text x="872" y="436" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#8aa0d4" letter-spacing="2">TRAINING TIME</text>
+    <text x="872" y="478" font-family="'Space Grotesk',sans-serif" font-size="38" font-weight="700" fill="#cdeee8">3–6 MONTHS</text>
+  </g>
+
+  <!-- model output star near panel top right corner of rack flow -->
+  <g transform="translate(820,200)">
+    <circle r="0" />
+  </g>
+
+  <!-- ===== badge + watermark ===== -->
+  <g>
+    <rect x="74" y="560" width="124" height="34" rx="10" fill="#0c1730" stroke="#2dd4bf" stroke-width="1.4"/>
+    <text x="136" y="582" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#7fe9d8" letter-spacing="1">POST-1059</text>
+  </g>
+  <text x="1126" y="600" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#5f72a8">cloudmato.com</text>
+</svg>

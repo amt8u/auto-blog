@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <rect width="700" height="240" fill="white"/>
+  <text x="350" y="35" font-family="sans-serif" font-size="16" fill="#333333" text-anchor="middle" font-weight="bold">One 100,000-GPU cluster, by the numbers</text>
+  <rect x="40" y="70" width="190" height="120" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="135" y="115" font-family="sans-serif" font-size="28" fill="#4a90e2" text-anchor="middle" font-weight="bold">150 MW</text>
+  <text x="135" y="150" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">power draw</text>
+  <rect x="255" y="70" width="190" height="120" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="115" font-family="sans-serif" font-size="28" fill="#4a90e2" text-anchor="middle" font-weight="bold">$4B</text>
+  <text x="350" y="150" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">server hardware</text>
+  <rect x="470" y="70" width="190" height="120" rx="8" fill="#f0f4f8" stroke="#333333"/>
+  <text x="565" y="115" font-family="sans-serif" font-size="28" fill="#4a90e2" text-anchor="middle" font-weight="bold">1.59 TWh</text>
+  <text x="565" y="150" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">electricity / year</text>
+</svg>
