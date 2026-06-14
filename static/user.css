@@ -156,6 +156,18 @@ footer article {
   border-radius: .375rem 0 0 .375rem;
 }
 
+/* While the Zooming library has an image open it applies an inline transform.
+   Drop the card's cropping constraints so the zoomed image shows at its
+   natural size (matching the article-page zoom) instead of staying cropped
+   to the card height. The library positions the zoomed image with a fixed
+   transform, so it must be position: fixed to escape the card's flex box —
+   otherwise it stays clipped inside the card and the zoom appears broken. */
+.postcard-image img[style*="transform"] {
+  position: fixed !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
 .postcard-body {
   flex: 1;
   min-width: 0;
