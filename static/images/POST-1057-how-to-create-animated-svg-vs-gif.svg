@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fdf4ff"/>
+      <stop offset="55%" stop-color="#eef2ff"/>
+      <stop offset="100%" stop-color="#ecfeff"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 0 H40 V40" fill="none" stroke="#c7d2fe" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="glowGrad">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="blob4Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <path id="blob" d="M0,-52 C28,-53 52,-29 52,-1 C53,27 30,53 1,52 C-28,52 -53,28 -52,-1 C-52,-29 -28,-52 0,-52 Z"/>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="4" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#a78bfa"/>
+    </marker>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1e1b4b" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1180" cy="20" r="260" fill="#a78bfa" opacity="0.10"/>
+  <circle cx="10" cy="630" r="220" fill="#67e8f9" opacity="0.12"/>
+
+  <!-- motion-trail glow + rings -->
+  <circle cx="610" cy="195" r="150" fill="url(#glowGrad)"/>
+  <circle cx="610" cy="195" r="85" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 7" opacity="0.4"/>
+  <circle cx="610" cy="195" r="112" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 7" opacity="0.25"/>
+
+  <!-- animation / easing path -->
+  <path d="M225,478 C290,455 315,430 345,402 C405,358 440,330 475,300 C535,250 565,225 590,205"
+        fill="none" stroke="#a78bfa" stroke-width="3" stroke-dasharray="2 10" opacity="0.55" marker-end="url(#arrowhead)"/>
+
+  <!-- morphing shape trail (small -> large = the SVG "animating") -->
+  <use href="#blob" transform="translate(220,480) rotate(12) scale(0.42)" fill="#a78bfa" opacity="0.45"/>
+  <use href="#blob" transform="translate(350,400) rotate(-12) scale(0.62)" fill="#60a5fa" opacity="0.6"/>
+  <use href="#blob" transform="translate(480,300) rotate(16) scale(0.85)" fill="#22d3ee" opacity="0.8"/>
+  <use href="#blob" transform="translate(610,195) rotate(-10) scale(1.25)" fill="url(#blob4Grad)" filter="url(#softShadow)"/>
+
+  <!-- play icon on final shape -->
+  <path d="M598,176 L598,214 L628,195 Z" fill="#ffffff" opacity="0.85"/>
+
+  <!-- connector sparks to animation-technique badges -->
+  <path d="M635,150 L562,106" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="4 5" opacity="0.6"/>
+  <path d="M650,138 L660,80" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="4 5" opacity="0.6"/>
+  <path d="M668,158 L722,126" fill="none" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="4 5" opacity="0.6"/>
+
+  <!-- technique badges: CSS, SMIL/markup, JS -->
+  <g transform="translate(560,80) rotate(-6)" filter="url(#softShadow)">
+    <rect x="-43" y="-24" width="86" height="48" rx="12" fill="#3b82f6"/>
+    <text x="0" y="8" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="22" font-weight="700" fill="#ffffff">{ }</text>
+  </g>
+  <g transform="translate(660,55) rotate(4)" filter="url(#softShadow)">
+    <rect x="-43" y="-24" width="86" height="48" rx="12" fill="#8b5cf6"/>
+    <text x="0" y="8" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="22" font-weight="700" fill="#ffffff">&lt;&gt;</text>
+  </g>
+  <g transform="translate(750,100) rotate(-3)" filter="url(#softShadow)">
+    <rect x="-43" y="-24" width="86" height="48" rx="12" fill="#f59e0b"/>
+    <text x="0" y="8" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="22" font-weight="700" fill="#1e1b4b">JS</text>
+  </g>
+
+  <!-- GIF filmstrip stack -->
+  <rect x="940" y="235" width="190" height="190" rx="18" transform="rotate(6 1035 330)" fill="#cbd5e1"/>
+  <rect x="925" y="220" width="190" height="190" rx="18" transform="rotate(-3 1020 315)" fill="#e2e8f0"/>
+  <circle cx="915" cy="225" r="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="915" cy="290" r="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="915" cy="355" r="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="905" y="195" width="190" height="190" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2.5" filter="url(#softShadow)"/>
+
+  <!-- pixel-art circle = one GIF frame -->
+  <rect x="955" y="222" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="978" y="222" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1001" y="222" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1024" y="222" width="20" height="20" rx="3" fill="#94a3b8"/>
+
+  <rect x="932" y="245" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="955" y="245" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="978" y="245" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1001" y="245" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1024" y="245" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1047" y="245" width="20" height="20" rx="3" fill="#94a3b8"/>
+
+  <rect x="932" y="268" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="955" y="268" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="978" y="268" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1001" y="268" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1024" y="268" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1047" y="268" width="20" height="20" rx="3" fill="#64748b"/>
+
+  <rect x="932" y="291" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="955" y="291" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="978" y="291" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1001" y="291" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1024" y="291" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1047" y="291" width="20" height="20" rx="3" fill="#94a3b8"/>
+
+  <rect x="932" y="314" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="955" y="314" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="978" y="314" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1001" y="314" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1024" y="314" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1047" y="314" width="20" height="20" rx="3" fill="#64748b"/>
+
+  <rect x="955" y="337" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="978" y="337" width="20" height="20" rx="3" fill="#64748b"/>
+  <rect x="1001" y="337" width="20" height="20" rx="3" fill="#94a3b8"/>
+  <rect x="1024" y="337" width="20" height="20" rx="3" fill="#64748b"/>
+
+  <!-- format pills + size comparison -->
+  <g filter="url(#softShadow)">
+    <rect x="185" y="535" width="110" height="42" rx="21" fill="#1e1b4b"/>
+  </g>
+  <text x="240" y="562" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="2">SVG</text>
+  <text x="315" y="563" font-family="'Space Grotesk', sans-serif" font-size="30" font-weight="700" fill="#1e1b4b">8 KB</text>
+
+  <g filter="url(#softShadow)">
+    <rect x="900" y="535" width="110" height="42" rx="21" fill="#64748b"/>
+  </g>
+  <text x="955" y="562" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="2">GIF</text>
+  <text x="1025" y="563" font-family="'Space Grotesk', sans-serif" font-size="30" font-weight="700" fill="#475569">2.1 MB</text>
+
+  <!-- post badge -->
+  <rect x="40" y="580" width="158" height="36" rx="8" fill="#1e1b4b"/>
+  <text x="119" y="604" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="17" font-weight="600" fill="#a5f3fc" letter-spacing="1.5">POST-1057</text>
+
+  <!-- watermark -->
+  <text x="1160" y="608" text-anchor="end" font-family="'Space Grotesk', sans-serif" font-size="17" fill="#94a3b8" opacity="0.8">cloudmato.com</text>
+</svg>
