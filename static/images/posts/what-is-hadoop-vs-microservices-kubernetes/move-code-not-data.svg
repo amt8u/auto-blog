@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300">
+  <rect width="700" height="300" fill="white"/>
+  <text x="350" y="28" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333333">Two ways to do distributed work</text>
+
+  <text x="175" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">Hadoop way</text>
+  <rect x="60" y="80" width="100" height="70" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="110" y="110" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333333">Node holds</text>
+  <text x="110" y="126" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333333">128MB data</text>
+  <rect x="200" y="95" width="80" height="40" rx="6" fill="#4a90e2" stroke="#333333"/>
+  <text x="240" y="119" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">tiny code</text>
+  <path d="M200 115 L165 115" stroke="#4a90e2" stroke-width="2" marker-end="url(#a)"/>
+  <text x="180" y="175" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333333">code travels (small)</text>
+
+  <text x="520" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">Ship-the-data way</text>
+  <rect x="400" y="80" width="100" height="70" rx="6" fill="#f0f4f8" stroke="#333333"/>
+  <text x="450" y="110" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333333">Storage</text>
+  <text x="450" y="126" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#333333">128MB data</text>
+  <rect x="560" y="95" width="80" height="40" rx="6" fill="#4a90e2" stroke="#333333"/>
+  <text x="600" y="119" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white">compute</text>
+  <path d="M500 115 L560 115" stroke="#4a90e2" stroke-width="4" marker-end="url(#a)"/>
+  <text x="530" y="175" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333333">data travels (huge)</text>
+
+  <text x="350" y="240" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">Network cost is dominated by what crosses it.</text>
+  <text x="350" y="262" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333333">Move the kilobytes, not the gigabytes.</text>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#4a90e2"/></marker>
+  </defs>
+</svg>
