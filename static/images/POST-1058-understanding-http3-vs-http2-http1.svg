@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'Space Grotesk','Nunito',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2fb"/>
+      <stop offset="1" stop-color="#e0e7f4"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#1e293b" flood-opacity="0.10"/>
+    </filter>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#ef4444" fill-opacity="0.08"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#ef4444" stroke-opacity="0.35" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- eyebrow -->
+  <text x="600" y="58" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="15" letter-spacing="5" fill="#94a3b8">HEAD-OF-LINE BLOCKING</text>
+
+  <!-- ===================== PANELS ===================== -->
+  <rect x="70" y="150" width="500" height="380" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#soft)"/>
+  <rect x="630" y="150" width="500" height="380" rx="20" fill="#ffffff" stroke="#e2e8f0" filter="url(#soft)"/>
+
+  <!-- headers -->
+  <text x="320" y="116" text-anchor="middle" font-size="36" font-weight="700" fill="#1e293b">HTTP/2</text>
+  <text x="320" y="138" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#3b82f6">over TCP</text>
+  <text x="880" y="116" text-anchor="middle" font-size="36" font-weight="700" fill="#1e293b">HTTP/3</text>
+  <text x="880" y="138" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#7c3aed">over QUIC</text>
+
+  <!-- vs badge -->
+  <circle cx="600" cy="118" r="26" fill="#1e293b"/>
+  <text x="600" y="124" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">vs</text>
+
+  <!-- ===================== LEFT: single TCP pipe ===================== -->
+  <!-- server -->
+  <rect x="86" y="262" width="44" height="156" rx="8" fill="#334155"/>
+  <line x1="86" y1="314" x2="130" y2="314" stroke="#475569" stroke-width="2"/>
+  <line x1="86" y1="366" x2="130" y2="366" stroke="#475569" stroke-width="2"/>
+  <circle cx="98" cy="288" r="4" fill="#38bdf8"/>
+  <circle cx="98" cy="340" r="4" fill="#38bdf8"/>
+  <circle cx="98" cy="392" r="4" fill="#38bdf8"/>
+
+  <!-- one big ordered tube (all streams share it) -->
+  <rect x="150" y="252" width="372" height="176" rx="20" fill="#f1f5f9" stroke="#e2e8f0"/>
+
+  <!-- delivered packets (arrived before the loss, near client) -->
+  <!-- top row blue / mid teal / bottom violet -->
+  <g>
+    <rect x="360" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="400" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="440" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="480" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="360" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="400" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="440" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="480" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="360" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="400" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="440" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="480" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+  </g>
+
+  <!-- blocked zone (everything queued behind the loss, ALL streams) -->
+  <rect x="158" y="258" width="190" height="164" rx="12" fill="url(#hatch)"/>
+  <line x1="352" y1="258" x2="352" y2="422" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <g opacity="0.4">
+    <rect x="170" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="210" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="250" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="290" y="268" width="30" height="24" rx="6" fill="#3b82f6"/>
+    <rect x="170" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="210" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="250" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="290" y="388" width="30" height="24" rx="6" fill="#8b5cf6"/>
+    <rect x="170" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="210" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+    <rect x="250" y="328" width="30" height="24" rx="6" fill="#14b8a6"/>
+  </g>
+  <!-- the one lost packet -->
+  <rect x="292" y="328" width="30" height="24" rx="6" fill="#ef4444"/>
+  <text x="307" y="346" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">!</text>
+  <text x="307" y="372" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#ef4444">lost</text>
+
+  <!-- client monitor + waiting status -->
+  <rect x="522" y="320" width="44" height="32" rx="5" fill="#1e293b"/>
+  <rect x="528" y="326" width="32" height="20" rx="2" fill="#f59e0b"/>
+  <circle cx="536" cy="336" r="2.2" fill="#1e293b"/>
+  <circle cx="544" cy="336" r="2.2" fill="#1e293b"/>
+  <circle cx="552" cy="336" r="2.2" fill="#1e293b"/>
+
+  <text x="320" y="500" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="17" font-weight="600" fill="#ef4444">all streams wait</text>
+
+  <!-- ===================== RIGHT: independent QUIC streams ===================== -->
+  <rect x="648" y="185" width="44" height="266" rx="8" fill="#334155"/>
+  <line x1="648" y1="271" x2="692" y2="271" stroke="#475569" stroke-width="2"/>
+  <line x1="648" y1="365" x2="692" y2="365" stroke="#475569" stroke-width="2"/>
+  <circle cx="660" cy="213" r="4" fill="#a78bfa"/>
+  <circle cx="660" cy="318" r="4" fill="#a78bfa"/>
+  <circle cx="660" cy="423" r="4" fill="#a78bfa"/>
+
+  <!-- three separate pill tubes -->
+  <rect x="700" y="185" width="362" height="56" rx="28" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <rect x="700" y="290" width="362" height="56" rx="28" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <rect x="700" y="395" width="362" height="56" rx="28" fill="#f1f5f9" stroke="#e2e8f0"/>
+
+  <!-- tube 1: flows fully -->
+  <g fill="#3b82f6">
+    <rect x="712" y="201" width="30" height="24" rx="6"/>
+    <rect x="752" y="201" width="30" height="24" rx="6"/>
+    <rect x="792" y="201" width="30" height="24" rx="6"/>
+    <rect x="832" y="201" width="30" height="24" rx="6"/>
+    <rect x="872" y="201" width="30" height="24" rx="6"/>
+    <rect x="912" y="201" width="30" height="24" rx="6"/>
+    <rect x="952" y="201" width="30" height="24" rx="6"/>
+    <rect x="992" y="201" width="30" height="24" rx="6"/>
+  </g>
+
+  <!-- tube 3: flows fully -->
+  <g fill="#8b5cf6">
+    <rect x="712" y="411" width="30" height="24" rx="6"/>
+    <rect x="752" y="411" width="30" height="24" rx="6"/>
+    <rect x="792" y="411" width="30" height="24" rx="6"/>
+    <rect x="832" y="411" width="30" height="24" rx="6"/>
+    <rect x="872" y="411" width="30" height="24" rx="6"/>
+    <rect x="912" y="411" width="30" height="24" rx="6"/>
+    <rect x="952" y="411" width="30" height="24" rx="6"/>
+    <rect x="992" y="411" width="30" height="24" rx="6"/>
+  </g>
+
+  <!-- tube 2: ONE loss, only THIS stream waits -->
+  <g fill="#14b8a6">
+    <rect x="912" y="306" width="30" height="24" rx="6"/>
+    <rect x="952" y="306" width="30" height="24" rx="6"/>
+    <rect x="992" y="306" width="30" height="24" rx="6"/>
+  </g>
+  <rect x="704" y="294" width="160" height="48" rx="22" fill="url(#hatch)"/>
+  <line x1="866" y1="296" x2="866" y2="340" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <g fill="#14b8a6" opacity="0.4">
+    <rect x="712" y="306" width="30" height="24" rx="6"/>
+    <rect x="752" y="306" width="30" height="24" rx="6"/>
+    <rect x="792" y="306" width="30" height="24" rx="6"/>
+    <rect x="832" y="306" width="30" height="24" rx="6"/>
+  </g>
+  <rect x="872" y="306" width="30" height="24" rx="6" fill="#ef4444"/>
+  <text x="887" y="324" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">!</text>
+
+  <!-- per-stream status icons -->
+  <g>
+    <circle cx="1045" cy="213" r="11" fill="#16a34a"/>
+    <polyline points="1040,213 1044,218 1051,209" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="1045" cy="423" r="11" fill="#16a34a"/>
+    <polyline points="1040,423 1044,428 1051,419" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="1045" cy="318" r="11" fill="#f59e0b"/>
+    <line x1="1045" y1="318" x2="1045" y2="312" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="1045" y1="318" x2="1050" y2="321" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+
+  <text x="880" y="500" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="17" font-weight="600" fill="#16a34a">others keep flowing</text>
+
+  <!-- ===================== footer ===================== -->
+  <rect x="70" y="582" width="118" height="30" rx="8" fill="#1e293b"/>
+  <text x="129" y="602" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#7dd3fc">POST-1058</text>
+
+  <text x="1130" y="604" text-anchor="end" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#94a3b8">cloudmato.com</text>
+</svg>

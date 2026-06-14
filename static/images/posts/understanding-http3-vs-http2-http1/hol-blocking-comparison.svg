@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320">
+  <rect width="700" height="320" fill="white"/>
+  <text x="350" y="28" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333333">One lost packet, two very different outcomes</text>
+
+  <text x="20" y="70" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">HTTP/2 over TCP</text>
+  <rect x="20" y="80" width="90" height="34" fill="#f0f4f8" stroke="#333333"/>
+  <text x="65" y="102" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">CSS</text>
+  <rect x="115" y="80" width="90" height="34" fill="#4a90e2" stroke="#333333"/>
+  <text x="160" y="102" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">LOST</text>
+  <rect x="210" y="80" width="90" height="34" fill="#f0f4f8" stroke="#333333" stroke-dasharray="4"/>
+  <text x="255" y="102" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">JS (waits)</text>
+  <rect x="305" y="80" width="90" height="34" fill="#f0f4f8" stroke="#333333" stroke-dasharray="4"/>
+  <text x="350" y="102" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">IMG (waits)</text>
+  <text x="410" y="102" font-family="sans-serif" font-size="12" fill="#333333">← everything stalls</text>
+
+  <text x="20" y="180" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333333">HTTP/3 over QUIC</text>
+  <rect x="20" y="190" width="90" height="34" fill="#f0f4f8" stroke="#333333"/>
+  <text x="65" y="212" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">CSS</text>
+  <rect x="115" y="190" width="90" height="34" fill="#4a90e2" stroke="#333333"/>
+  <text x="160" y="212" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white">LOST</text>
+  <rect x="210" y="190" width="90" height="34" fill="#f0f4f8" stroke="#333333"/>
+  <text x="255" y="212" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">JS (ok)</text>
+  <rect x="305" y="190" width="90" height="34" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="212" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333333">IMG (ok)</text>
+  <text x="410" y="212" font-family="sans-serif" font-size="12" fill="#333333">← only CSS waits</text>
+
+  <text x="20" y="280" font-family="sans-serif" font-size="12" fill="#333333">QUIC streams are independent. A lost packet stalls only its own stream;</text>
+  <text x="20" y="298" font-family="sans-serif" font-size="12" fill="#333333">the rest keep flowing.</text>
+</svg>
