@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'IBM Plex Mono','Space Grotesk',monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1b29"/>
+      <stop offset="1" stop-color="#1d3a52"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#3a6b8a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#3a6b8a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bellGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d57f"/>
+      <stop offset="1" stop-color="#c8923c"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 0 H40 V40" fill="none" stroke="#2d4f6b" stroke-width="1" opacity="0.3"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000814" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="10" y="10" width="1180" height="610" rx="6" fill="none" stroke="#2d4f6b" stroke-width="1.5" opacity="0.5"/>
+
+  <circle cx="600" cy="305" r="115" fill="url(#glow)"/>
+
+  <g stroke="#355374" stroke-width="2" opacity="0.7" fill="none">
+    <line x1="600" y1="305" x2="733" y2="119"/>
+    <line x1="600" y1="305" x2="948" y2="188"/>
+    <line x1="600" y1="305" x2="948" y2="188"/>
+    <line x1="600" y1="305" x2="1030" y2="300"/>
+    <line x1="600" y1="305" x2="948" y2="412"/>
+    <line x1="600" y1="305" x2="733" y2="481"/>
+    <line x1="600" y1="305" x2="467" y2="481"/>
+    <line x1="600" y1="305" x2="252" y2="412"/>
+    <line x1="600" y1="305" x2="170" y2="300"/>
+    <line x1="600" y1="305" x2="252" y2="188"/>
+    <line x1="600" y1="305" x2="467" y2="119"/>
+  </g>
+  <g fill="#8fe3cf" opacity="0.85">
+    <circle cx="667" cy="212" r="4"/>
+    <circle cx="774" cy="247" r="4"/>
+    <circle cx="815" cy="303" r="4"/>
+    <circle cx="774" cy="359" r="4"/>
+    <circle cx="667" cy="393" r="4"/>
+    <circle cx="534" cy="393" r="4"/>
+    <circle cx="426" cy="359" r="4"/>
+    <circle cx="385" cy="303" r="4"/>
+    <circle cx="426" cy="247" r="4"/>
+    <circle cx="534" cy="212" r="4"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="593" y="212" width="14" height="14" rx="4" fill="none" stroke="#c8923c" stroke-width="4"/>
+    <path d="M600 232 C572 232 560 256 560 286 L560 330 C545 345 545 365 600 368 C655 365 655 345 640 330 L640 286 C640 256 628 232 600 232 Z" fill="url(#bellGrad)" stroke="#8a5d22" stroke-width="2"/>
+    <ellipse cx="600" cy="368" rx="58" ry="10" fill="url(#bellGrad)" stroke="#8a5d22" stroke-width="2"/>
+    <line x1="600" y1="368" x2="600" y2="383" stroke="#8a5d22" stroke-width="3"/>
+    <circle cx="600" cy="390" r="7" fill="#8a5d22"/>
+  </g>
+  <text x="600" y="422" text-anchor="middle" font-size="20" font-weight="700" fill="#f5e6c8">Bell Labs</text>
+
+  <g filter="url(#shadow)">
+    <rect x="673" y="91" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="667" y="105" width="6" height="6" fill="#d99a4e"/><rect x="667" y="127" width="6" height="6" fill="#d99a4e"/>
+    <rect x="793" y="105" width="6" height="6" fill="#d99a4e"/><rect x="793" y="127" width="6" height="6" fill="#d99a4e"/>
+    <text x="733" y="127" text-anchor="middle" font-size="24" font-weight="700" fill="#f5e6c8">ls</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="888" y="160" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="882" y="174" width="6" height="6" fill="#d99a4e"/><rect x="882" y="196" width="6" height="6" fill="#d99a4e"/>
+    <rect x="1008" y="174" width="6" height="6" fill="#d99a4e"/><rect x="1008" y="196" width="6" height="6" fill="#d99a4e"/>
+    <text x="948" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#8fe3cf">grep</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="970" y="272" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="964" y="286" width="6" height="6" fill="#d99a4e"/><rect x="964" y="308" width="6" height="6" fill="#d99a4e"/>
+    <rect x="1090" y="286" width="6" height="6" fill="#d99a4e"/><rect x="1090" y="308" width="6" height="6" fill="#d99a4e"/>
+    <text x="1030" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#f5e6c8">awk</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="888" y="384" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="882" y="398" width="6" height="6" fill="#d99a4e"/><rect x="882" y="420" width="6" height="6" fill="#d99a4e"/>
+    <rect x="1008" y="398" width="6" height="6" fill="#d99a4e"/><rect x="1008" y="420" width="6" height="6" fill="#d99a4e"/>
+    <text x="948" y="420" text-anchor="middle" font-size="24" font-weight="700" fill="#8fe3cf">sed</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="673" y="453" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="667" y="467" width="6" height="6" fill="#d99a4e"/><rect x="667" y="489" width="6" height="6" fill="#d99a4e"/>
+    <rect x="793" y="467" width="6" height="6" fill="#d99a4e"/><rect x="793" y="489" width="6" height="6" fill="#d99a4e"/>
+    <text x="733" y="489" text-anchor="middle" font-size="24" font-weight="700" fill="#f5e6c8">chmod</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="407" y="453" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="401" y="467" width="6" height="6" fill="#d99a4e"/><rect x="401" y="489" width="6" height="6" fill="#d99a4e"/>
+    <rect x="527" y="467" width="6" height="6" fill="#d99a4e"/><rect x="527" y="489" width="6" height="6" fill="#d99a4e"/>
+    <text x="467" y="489" text-anchor="middle" font-size="24" font-weight="700" fill="#8fe3cf">cat</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="192" y="384" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="186" y="398" width="6" height="6" fill="#d99a4e"/><rect x="186" y="420" width="6" height="6" fill="#d99a4e"/>
+    <rect x="312" y="398" width="6" height="6" fill="#d99a4e"/><rect x="312" y="420" width="6" height="6" fill="#d99a4e"/>
+    <text x="252" y="420" text-anchor="middle" font-size="24" font-weight="700" fill="#f5e6c8">chown</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="110" y="272" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="104" y="286" width="6" height="6" fill="#d99a4e"/><rect x="104" y="308" width="6" height="6" fill="#d99a4e"/>
+    <rect x="230" y="286" width="6" height="6" fill="#d99a4e"/><rect x="230" y="308" width="6" height="6" fill="#d99a4e"/>
+    <text x="170" y="308" text-anchor="middle" font-size="24" font-weight="700" fill="#8fe3cf">kill</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="192" y="160" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="186" y="174" width="6" height="6" fill="#d99a4e"/><rect x="186" y="196" width="6" height="6" fill="#d99a4e"/>
+    <rect x="312" y="174" width="6" height="6" fill="#d99a4e"/><rect x="312" y="196" width="6" height="6" fill="#d99a4e"/>
+    <text x="252" y="196" text-anchor="middle" font-size="24" font-weight="700" fill="#f5e6c8">ps</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="407" y="91" width="120" height="56" rx="10" fill="#16222e" stroke="#e8c587" stroke-width="2"/>
+    <rect x="401" y="105" width="6" height="6" fill="#d99a4e"/><rect x="401" y="127" width="6" height="6" fill="#d99a4e"/>
+    <rect x="527" y="105" width="6" height="6" fill="#d99a4e"/><rect x="527" y="127" width="6" height="6" fill="#d99a4e"/>
+    <text x="467" y="127" text-anchor="middle" font-size="24" font-weight="700" fill="#8fe3cf">tar</text>
+  </g>
+
+  <g transform="translate(20,20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="200" height="110" rx="10" fill="#0a1620" stroke="#2d4f6b" stroke-width="1.5"/>
+    <path d="M0 10 A10 10 0 0 1 10 0 L190 0 A10 10 0 0 1 200 10 L200 26 L0 26 Z" fill="#14283a"/>
+    <circle cx="16" cy="13" r="4" fill="#e2685a"/>
+    <circle cx="32" cy="13" r="4" fill="#ecc35a"/>
+    <circle cx="48" cy="13" r="4" fill="#5ec98c"/>
+    <path d="M16 50 L28 58 L16 66" fill="none" stroke="#8fe3cf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="34" y="50" width="10" height="16" fill="#f5e6c8" opacity="0.85"/>
+    <rect x="16" y="78" width="120" height="8" rx="2" fill="#25404f"/>
+    <rect x="16" y="92" width="80" height="8" rx="2" fill="#25404f"/>
+  </g>
+
+  <g transform="translate(1000,30) rotate(6 85 47)" filter="url(#shadow)">
+    <path d="M14 0 L166 0 Q170 0 170 4 L170 91 Q170 95 166 95 L4 95 Q0 95 0 91 L0 14 Z" fill="#ece3cf" stroke="#b8a87d" stroke-width="1.5"/>
+    <g fill="#16222e" opacity="0.55">
+      <ellipse cx="16" cy="14" rx="3" ry="4"/><ellipse cx="42" cy="14" rx="3" ry="4"/><ellipse cx="68" cy="14" rx="3" ry="4"/><ellipse cx="94" cy="14" rx="3" ry="4"/><ellipse cx="120" cy="14" rx="3" ry="4"/><ellipse cx="146" cy="14" rx="3" ry="4"/>
+      <ellipse cx="16" cy="38" rx="3" ry="4"/><ellipse cx="42" cy="38" rx="3" ry="4"/><ellipse cx="68" cy="38" rx="3" ry="4"/><ellipse cx="94" cy="38" rx="3" ry="4"/><ellipse cx="120" cy="38" rx="3" ry="4"/><ellipse cx="146" cy="38" rx="3" ry="4"/>
+      <ellipse cx="16" cy="62" rx="3" ry="4"/><ellipse cx="42" cy="62" rx="3" ry="4"/><ellipse cx="68" cy="62" rx="3" ry="4"/><ellipse cx="94" cy="62" rx="3" ry="4"/><ellipse cx="120" cy="62" rx="3" ry="4"/><ellipse cx="146" cy="62" rx="3" ry="4"/>
+    </g>
+  </g>
+
+  <line x1="90" y1="592" x2="1110" y2="592" stroke="#355374" stroke-width="2"/>
+  <circle cx="90" cy="592" r="4" fill="#e8c587"/>
+  <circle cx="1110" cy="592" r="4" fill="#e8c587"/>
+  <g stroke="#355374" stroke-width="2" opacity="0.6">
+    <line x1="192" y1="588" x2="192" y2="596"/>
+    <line x1="294" y1="588" x2="294" y2="596"/>
+    <line x1="396" y1="588" x2="396" y2="596"/>
+    <line x1="498" y1="588" x2="498" y2="596"/>
+    <line x1="600" y1="588" x2="600" y2="596"/>
+    <line x1="702" y1="588" x2="702" y2="596"/>
+    <line x1="804" y1="588" x2="804" y2="596"/>
+    <line x1="906" y1="588" x2="906" y2="596"/>
+    <line x1="1008" y1="588" x2="1008" y2="596"/>
+  </g>
+  <text x="90" y="575" font-size="16" fill="#cfe3ee" opacity="0.85">1969</text>
+  <text x="1110" y="575" text-anchor="end" font-size="16" fill="#cfe3ee" opacity="0.85">now</text>
+
+  <rect x="525" y="578" width="150" height="34" rx="17" fill="#0e1c29" stroke="#e8c587" stroke-width="1.5"/>
+  <text x="600" y="600" text-anchor="middle" font-size="16" font-weight="700" fill="#f5e6c8" letter-spacing="1">POST-1061</text>
+
+  <text x="1110" y="615" text-anchor="end" font-size="14" fill="#cfe3ee" opacity="0.4" font-family="'Nunito',sans-serif">cloudmato.com</text>
+</svg>
