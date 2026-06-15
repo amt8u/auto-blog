@@ -6,7 +6,7 @@ slug          = "how-to-test-and-benchmark-llm-models"
 tags          = ["AI", "LLM Benchmarks", "Machine Learning", "AI Tools"]
 keywords      = ["LLM benchmarks", "how to test an LLM", "compare AI models", "MMLU GPQA benchmark", "Chatbot Arena LMArena", "LLM evaluation tools", "benchmark software for AI models"]
 canonical     = "/posts/how-to-test-and-benchmark-llm-models/"
-feature_image = "/images/POST-1058-how-to-test-and-benchmark-llm-models.svg"
+feature_image = "/images/POST-1061-how-to-test-and-benchmark-llm-models.svg"
 +++
 
 Every couple of weeks some AI lab drops a new model and immediately claims it's the smartest thing on the planet. Then another lab does the same thing a week later. If you've ever tried to figure out which one is *actually* better, you've probably stared at a wall of charts with names like MMLU, GPQA, and SWE-bench and felt your eyes glaze over. I went down this rabbit hole recently, and here's the short version: there's no single scoreboard. There are at least four completely different ways people measure "better," and once you know what each one is actually doing, the whole AI leaderboard circus starts to make a lot more sense.
