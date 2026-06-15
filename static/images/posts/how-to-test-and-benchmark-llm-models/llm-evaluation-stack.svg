@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="520" viewBox="0 0 700 520">
+  <rect width="700" height="520" fill="#ffffff"/>
+  <text x="350" y="28" font-size="18" font-weight="bold" fill="#333333" text-anchor="middle">The LLM Evaluation Stack</text>
+
+  <!-- Box 5 - top, narrowest: Vibe test -->
+  <rect x="200" y="50" width="300" height="60" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="350" y="74" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">Your Own Vibe Test</text>
+  <text x="350" y="93" font-size="11" fill="#333333" text-anchor="middle">Does it work for YOUR specific task?</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="145" x2="350" y2="115" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Box 4: Human Arenas -->
+  <rect x="170" y="145" width="360" height="60" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="350" y="169" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">Human Preference Arenas</text>
+  <text x="350" y="188" font-size="11" fill="#333333" text-anchor="middle">LMArena blind votes turned into Elo-style rankings</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="240" x2="350" y2="210" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Box 3: LLM-as-judge -->
+  <rect x="140" y="240" width="420" height="60" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="350" y="264" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">LLM-as-Judge Evals</text>
+  <text x="350" y="283" font-size="11" fill="#333333" text-anchor="middle">Custom prompts scored by another model (promptfoo, DeepEval)</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="335" x2="350" y2="305" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Box 2: Agentic / Live benchmarks -->
+  <rect x="110" y="335" width="480" height="60" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="350" y="359" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">Live / Agentic Benchmarks</text>
+  <text x="350" y="378" font-size="11" fill="#333333" text-anchor="middle">SWE-bench, ARC-AGI-2, LiveBench — graded by execution</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="430" x2="350" y2="400" stroke="#4a90e2" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Box 1: Static benchmarks -->
+  <rect x="80" y="430" width="540" height="60" rx="6" fill="#f0f4f8" stroke="#4a90e2" stroke-width="2"/>
+  <text x="350" y="454" font-size="13" font-weight="bold" fill="#333333" text-anchor="middle">Static Academic Benchmarks</text>
+  <text x="350" y="473" font-size="11" fill="#333333" text-anchor="middle">MMLU, GPQA, AIME — multiple-choice, auto-graded, run in bulk</text>
+
+  <!-- Side labels -->
+  <text x="660" y="470" font-size="11" fill="#4a90e2" text-anchor="middle" transform="rotate(-90 660 470)">CHEAP &amp; SCALABLE</text>
+  <text x="660" y="90" font-size="11" fill="#4a90e2" text-anchor="middle" transform="rotate(-90 660 90)">REALISTIC &amp; EXPENSIVE</text>
+
+  <defs>
+    <marker id="arrowUp" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,8 L4,0 L8,8 z" fill="#4a90e2"/>
+    </marker>
+  </defs>
+</svg>
