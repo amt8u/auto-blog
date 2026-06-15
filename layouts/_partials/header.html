@@ -39,14 +39,6 @@
                             <strong>{{ $postCount }}</strong>
                             <span>{{ i18n "sb_posts_count" }}</span>
                         </div>
-                        <div class="sb-stat">
-                            <strong>{{ .Site.Params.stats.views | default "1M+" }}</strong>
-                            <span>{{ i18n "sb_views" }}</span>
-                        </div>
-                        <div class="sb-stat">
-                            <strong>{{ .Site.Params.stats.impressions | default "1.5M+" }}</strong>
-                            <span>{{ i18n "sb_impressions" }}</span>
-                        </div>
                     </div>
 
                     {{/* Pages section */}}
@@ -55,26 +47,6 @@
                         <li><a href="{{ relLangURL "/pages/about/" }}">
                             {{- partial "svg/feather.html" (dict "name" "user" "width" "16px" "height" "16px") -}}
                             <span>{{ i18n "sb_about" }}</span>
-                        </a></li>
-                        <li><a href="{{ relLangURL "/pages/services/" }}">
-                            {{- partial "svg/feather.html" (dict "name" "tool" "width" "16px" "height" "16px") -}}
-                            <span>{{ i18n "sb_services" }}</span>
-                        </a></li>
-                        <li><a href="{{ relLangURL "/pages/themes/" }}">
-                            {{- partial "svg/feather.html" (dict "name" "layers" "width" "16px" "height" "16px") -}}
-                            <span>{{ i18n "sb_themes" }}</span>
-                        </a></li>
-                        <li><a href="{{ relLangURL "/pages/apps/" }}">
-                            {{- partial "svg/feather.html" (dict "name" "grid" "width" "16px" "height" "16px") -}}
-                            <span>{{ i18n "sb_apps" }}</span>
-                        </a></li>
-                        <li><a href="{{ relLangURL "/pages/sponsors/" }}">
-                            {{- partial "svg/feather.html" (dict "name" "heart" "width" "16px" "height" "16px") -}}
-                            <span>{{ i18n "sb_sponsors" }}</span>
-                        </a></li>
-                        <li><a href="{{ relLangURL "/pages/clients/" }}">
-                            {{- partial "svg/feather.html" (dict "name" "briefcase" "width" "16px" "height" "16px") -}}
-                            <span>{{ i18n "sb_clients" }}</span>
                         </a></li>
                     </ul>
 
@@ -101,6 +73,26 @@
                         <li><a href="{{ relLangURL "/tags/web-development/" }}">
                             {{- partial "svg/feather.html" (dict "name" "code" "width" "16px" "height" "16px") -}}
                             <span>{{ i18n "sb_web_dev" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/frontend/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "layout" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_frontend" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/javascript/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "file-text" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_javascript" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/css/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "feather" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_css" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/networking/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "wifi" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_networking" }}</span>
+                        </a></li>
+                        <li><a href="{{ relLangURL "/tags/system-design/" }}">
+                            {{- partial "svg/feather.html" (dict "name" "layers" "width" "16px" "height" "16px") -}}
+                            <span>{{ i18n "sb_system_design" }}</span>
                         </a></li>
                     </ul>
 

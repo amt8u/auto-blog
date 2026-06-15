@@ -1,0 +1,21 @@
+footer {
+  @include my-8;
+  @include text-xs;
+  text-align: center;
+  color: var(--color-text-footer);
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+
+    a {
+      color: var(--color-text-footer);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

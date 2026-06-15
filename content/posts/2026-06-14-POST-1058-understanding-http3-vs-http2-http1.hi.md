@@ -3,7 +3,7 @@ title       = "HTTP/3 को समझना: क्या यह वाकई H
 description = "HTTP/3 और QUIC पर एक डेवलपर की ईमानदार नज़र — यह HTTP/2 और HTTP/1.1 को कहाँ मात देता है, कहाँ नहीं, और असल में इसे चालू करने की ज़रूरत किसे है।"
 date        = "2026-06-14T18:01:15+05:30"
 slug          = "understanding-http3-vs-http2-http1"
-tags          = ["http3", "quic", "वेब-परफ़ॉर्मेंस", "नेटवर्किंग"]
+tags          = ["http3", "quic", "वेब-परफ़ॉर्मेंस", "networking"]
 keywords      = ["http3", "http/3 बनाम http/2", "quic प्रोटोकॉल", "http3 क्या है", "क्या मुझे http3 इस्तेमाल करना चाहिए"]
 canonical     = "/hi/posts/understanding-http3-vs-http2-http1/"
 feature_image = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1600&q=80"

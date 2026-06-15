@@ -3,7 +3,7 @@ title       = "CSS लेआउट का इतिहास: टेबल स�
 description = "टेबल हैक्स और फ्लोट क्लियरफिक्स से लेकर Flexbox और CSS Grid तक — CSS लेआउट का पूरा इतिहास, और 2026 में आपको वास्तव में क्या उपयोग करना चाहिए।"
 date        = "2026-06-02T22:15:04+05:30"
 slug          = "css-layout-history-flexbox-grid-2026"
-tags          = ["css", "वेब डेवलपमेंट", "फ्रंटेंड"]
+tags          = ["css", "वेब डेवलपमेंट", "frontend"]
 keywords      = ["CSS लेआउट इतिहास", "flexbox बनाम grid 2026", "CSS grid ट्यूटोरियल", "CSS flexbox", "CSS subgrid", "टेबल लेआउट इतिहास"]
 canonical     = "/hi/posts/css-layout-history-flexbox-grid-2026/"
 feature_image = "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=1200&auto=format&fit=crop"

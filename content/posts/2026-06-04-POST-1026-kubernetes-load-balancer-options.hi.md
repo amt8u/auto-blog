@@ -3,7 +3,7 @@ title       = "Kubernetes लोड बैलेंसर: अंदर, बा�
 description = "हर Kubernetes लोड बैलेंसर विकल्प की व्याख्या — ClusterIP से Gateway API तक। जानें कि आपके सेटअप के लिए क्लस्टर के अंदर या बाहर क्या सही है।"
 date        = "2026-06-04T15:30:08+05:30"
 slug          = "kubernetes-load-balancer-options"
-tags          = ["kubernetes", "devops", "नेटवर्किंग"]
+tags          = ["kubernetes", "devops", "networking"]
 keywords      = ["Kubernetes लोड बैलेंसर", "k8s लोड बैलेंसिंग", "MetalLB", "Kubernetes Ingress", "Gateway API", "EKS लोड बैलेंसर"]
 canonical     = "/hi/posts/kubernetes-load-balancer-options/"
 feature_image = "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200"

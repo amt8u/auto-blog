@@ -35,9 +35,8 @@ paginate        = 10
   footer                = "© cloudmato.com — research-driven writing."
   color_scheme          = "light"
   navbar_width          = "wide"
-  navbar_show_all_languages = true
+  navbar_show_all_languages = false
   author                    = {name = "cloudmato.com"}
-  stats                     = {views = "1M+", impressions = "1.5M+"}
   default_feature_image     = "/images/default-feature.svg"
 
   # Features

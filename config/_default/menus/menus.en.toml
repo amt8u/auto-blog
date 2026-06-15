@@ -5,55 +5,58 @@
   weight     = 1
 
 [[navbar]]
-  identifier = "services"
-  name       = "Services"
-  url        = "/pages/services/"
-  weight     = 2
-
-[[navbar]]
-  identifier = "themes"
-  name       = "Themes"
-  url        = "/pages/themes/"
-  weight     = 3
-
-[[navbar]]
-  identifier = "apps"
-  name       = "Apps"
-  url        = "/pages/apps/"
-  weight     = 4
-
-[[navbar]]
-  identifier = "sponsors"
-  name       = "Sponsors"
-  url        = "/pages/sponsors/"
-  weight     = 5
-
-[[navbar]]
-  identifier = "clients"
-  name       = "Clients"
-  url        = "/pages/clients/"
-  weight     = 6
-
-[[navbar]]
   identifier = "blogs"
   name       = "Blog"
   url        = "/posts/"
-  weight     = 7
+  weight     = 2
 
 [[navbar]]
   identifier = "cat-security"
   name       = "Security"
   url        = "/tags/security/"
-  weight     = 8
+  weight     = 3
 
 [[navbar]]
   identifier = "cat-ai"
   name       = "AI Tools"
   url        = "/tags/ai-tools/"
-  weight     = 9
+  weight     = 4
 
 [[navbar]]
   identifier = "cat-webdev"
   name       = "Web Dev"
   url        = "/tags/web-development/"
-  weight     = 10
+  weight     = 5
+
+[[navbar]]
+  identifier = "cat-frontend"
+  name       = "Frontend"
+  url        = "/tags/frontend/"
+  parent     = "cat-webdev"
+  weight     = 1
+
+[[navbar]]
+  identifier = "cat-javascript"
+  name       = "JavaScript"
+  url        = "/tags/javascript/"
+  parent     = "cat-webdev"
+  weight     = 2
+
+[[navbar]]
+  identifier = "cat-css"
+  name       = "CSS"
+  url        = "/tags/css/"
+  parent     = "cat-webdev"
+  weight     = 3
+
+[[navbar]]
+  identifier = "cat-networking"
+  name       = "Networking"
+  url        = "/tags/networking/"
+  weight     = 6
+
+[[navbar]]
+  identifier = "cat-systemdesign"
+  name       = "System Design"
+  url        = "/tags/system-design/"
+  weight     = 7

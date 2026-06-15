@@ -3,7 +3,7 @@ title       = "CSS में Div को Center करने के सभी त
 description = "पुराने table-cell हैक्स से लेकर CSS anchor positioning तक — 2026 में div को center करने के हर तरीके, सबसे बुरे से सबसे अच्छे तक रैंक किए गए, असली कोड उदाहरणों के साथ।"
 date        = "2026-06-03T17:28:24+05:30"
 slug        = "center-a-div-css-2026"
-tags        = ["css", "वेब-डेवलपमेंट", "फ्रंटएंड"]
+tags        = ["css", "वेब-डेवलपमेंट", "frontend"]
 keywords    = ["CSS में div center करना", "css centering 2026", "flexbox center div", "css grid place-items", "css anchor positioning"]
 canonical   = "/hi/posts/center-a-div-css-2026/"
 feature_image = "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=1200&auto=format&fit=crop"

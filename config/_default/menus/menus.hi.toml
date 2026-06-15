@@ -5,55 +5,58 @@
   weight     = 1
 
 [[navbar]]
-  identifier = "services"
-  name       = "सेवाएं"
-  url        = "/hi/pages/services/"
-  weight     = 2
-
-[[navbar]]
-  identifier = "themes"
-  name       = "थीम्स"
-  url        = "/hi/pages/themes/"
-  weight     = 3
-
-[[navbar]]
-  identifier = "apps"
-  name       = "ऐप्स"
-  url        = "/hi/pages/apps/"
-  weight     = 4
-
-[[navbar]]
-  identifier = "sponsors"
-  name       = "प्रायोजक"
-  url        = "/hi/pages/sponsors/"
-  weight     = 5
-
-[[navbar]]
-  identifier = "clients"
-  name       = "क्लाइंट्स"
-  url        = "/hi/pages/clients/"
-  weight     = 6
-
-[[navbar]]
   identifier = "blogs"
   name       = "ब्लॉग"
   url        = "/hi/posts/"
-  weight     = 7
+  weight     = 2
 
 [[navbar]]
   identifier = "cat-security"
   name       = "सुरक्षा"
   url        = "/hi/tags/security/"
-  weight     = 8
+  weight     = 3
 
 [[navbar]]
   identifier = "cat-ai"
   name       = "AI टूल्स"
   url        = "/hi/tags/ai-tools/"
-  weight     = 9
+  weight     = 4
 
 [[navbar]]
   identifier = "cat-webdev"
   name       = "वेब डेव"
   url        = "/hi/tags/web-development/"
-  weight     = 10
+  weight     = 5
+
+[[navbar]]
+  identifier = "cat-frontend"
+  name       = "फ्रंटएंड"
+  url        = "/hi/tags/frontend/"
+  parent     = "cat-webdev"
+  weight     = 1
+
+[[navbar]]
+  identifier = "cat-javascript"
+  name       = "JavaScript"
+  url        = "/hi/tags/javascript/"
+  parent     = "cat-webdev"
+  weight     = 2
+
+[[navbar]]
+  identifier = "cat-css"
+  name       = "CSS"
+  url        = "/hi/tags/css/"
+  parent     = "cat-webdev"
+  weight     = 3
+
+[[navbar]]
+  identifier = "cat-networking"
+  name       = "नेटवर्किंग"
+  url        = "/hi/tags/networking/"
+  weight     = 6
+
+[[navbar]]
+  identifier = "cat-systemdesign"
+  name       = "सिस्टम डिज़ाइन"
+  url        = "/hi/tags/system-design/"
+  weight     = 7

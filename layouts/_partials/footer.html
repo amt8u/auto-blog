@@ -2,6 +2,11 @@
 <footer>
     <article>
         <span>{{- . | safeHTML -}}</span>
+        <nav class="footer-links">
+            <a href="{{ relLangURL "/pages/privacy/" }}">{{ i18n "footer_privacy" }}</a>
+            <a href="{{ relLangURL "/pages/terms/" }}">{{ i18n "footer_terms" }}</a>
+            <a href="{{ relLangURL "/pages/contact/" }}">{{ i18n "footer_contact" }}</a>
+        </nav>
         <a href="https://app.netlify.com/projects/cloudmato/deploys" target="_blank" rel="noopener" class="netlify-badge">
             <img src="https://api.netlify.com/api/v1/badges/cf7075c1-c7dc-42d1-a4a0-5888af0beb57/deploy-status" alt="Netlify Status">
         </a>

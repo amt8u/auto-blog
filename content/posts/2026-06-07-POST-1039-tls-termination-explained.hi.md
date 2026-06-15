@@ -3,7 +3,7 @@ title       = "TLS टर्मिनेशन की पूरी समझ (�
 description = "TLS टर्मिनेशन असल में क्या करता है, लोड बैलेंसर आपके ट्रैफ़िक को डिक्रिप्ट क्यों करते हैं, और क्या SSL/TLS वाकई ट्रांसपोर्ट लेयर का हिस्सा है। एक व्यावहारिक, बिना लाग-लपेट वाली गाइड।"
 date        = "2026-06-07T16:16:06+05:30"
 slug          = "tls-termination-explained"
-tags          = ["नेटवर्किंग", "सुरक्षा", "tls", "लोड-बैलेंसिंग"]
+tags          = ["networking", "सुरक्षा", "tls", "लोड-बैलेंसिंग"]
 keywords      = ["TLS टर्मिनेशन", "SSL टर्मिनेशन", "क्या SSL ट्रांसपोर्ट लेयर है", "TLS पासथ्रू", "लोड बैलेंसर TLS", "mTLS"]
 canonical     = "/hi/posts/tls-termination-explained/"
 feature_image = "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1600&q=80"

@@ -22,7 +22,7 @@ description = "cloudmato.com — research-driven writing at the intersection of 
 
 **cloudmato.com** is a research-driven blog where every article is backed by live web sources — no filler, no guesswork.
 
-The site covers software development, test automation, product engineering, and the tools that make modern development faster and more reliable.
+The site covers web development, browser internals, networking, security, databases, distributed systems, and the AI tools and models reshaping how software gets built.
 
 ### Why this blog?
 
@@ -30,11 +30,11 @@ Good technical writing is rare. Most articles either skim the surface or bury th
 
 ### Topics covered
 
-- Software architecture and product engineering
-- Test automation frameworks and strategies
-- Browser behaviour, dev tools, and web security
-- AI tools for developers
-- Hugo, static sites, and developer tooling
+- Web development, frontend frameworks, and browser DevTools
+- Networking, HTTP, DNS, and web security
+- Databases, caching, and distributed systems
+- AI tools, LLM APIs, and how to use them effectively
+- Cloud infrastructure, DevOps, and developer tooling
 
 ### Get in touch
 
