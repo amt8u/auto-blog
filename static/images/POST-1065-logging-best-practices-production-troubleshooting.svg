@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'Space Grotesk','IBM Plex Mono',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1726"/>
+      <stop offset="0.55" stop-color="#121d31"/>
+      <stop offset="1" stop-color="#0b1320"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16223a"/>
+      <stop offset="1" stop-color="#101a2c"/>
+    </linearGradient>
+    <linearGradient id="thread" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fca5a5" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#fca5a5" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="ds" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- backdrop -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g stroke="#1d2c47" stroke-width="1" opacity="0.5">
+    <path d="M0 90 H1200 M0 180 H1200 M0 540 H1200"/>
+  </g>
+
+  <!-- ===== TRACE: correlation thread across services ===== -->
+  <g transform="translate(0,0)">
+    <!-- correlation id tag -->
+    <g transform="translate(64,70)">
+      <rect x="0" y="0" width="232" height="40" rx="10" fill="#0d1626" stroke="#34d399" stroke-width="1.5"/>
+      <circle cx="22" cy="20" r="6" fill="#34d399"/>
+      <text x="40" y="26" font-family="'IBM Plex Mono',monospace" font-size="16" fill="#bff3da" letter-spacing="0.5">trace_id=8f3c…a1</text>
+    </g>
+
+    <!-- thread weaving through service nodes -->
+    <path d="M180 132 C 300 132, 320 246, 440 246 S 600 246, 700 130 S 940 130, 1040 244"
+          fill="none" stroke="url(#thread)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M180 132 C 300 132, 320 246, 440 246 S 600 246, 700 130 S 940 130, 1040 244"
+          fill="none" stroke="url(#thread)" stroke-width="12" stroke-linecap="round" opacity="0.18" filter="url(#soft)"/>
+
+    <!-- service nodes -->
+    <g font-family="'IBM Plex Mono',monospace" font-size="13" fill="#cfe2ff" text-anchor="middle">
+      <g>
+        <rect x="138" y="108" width="92" height="48" rx="12" fill="#16243d" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="184" y="137">gateway</text>
+      </g>
+      <g>
+        <rect x="394" y="222" width="92" height="48" rx="12" fill="#16243d" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="440" y="251">auth</text>
+      </g>
+      <g>
+        <rect x="654" y="106" width="92" height="48" rx="12" fill="#16243d" stroke="#38bdf8" stroke-width="1.5"/>
+        <text x="700" y="135">orders</text>
+      </g>
+      <g>
+        <rect x="994" y="220" width="100" height="48" rx="12" fill="#2a1722" stroke="#f87171" stroke-width="1.8"/>
+        <circle cx="1044" cy="234" r="50" fill="url(#glow)"/>
+        <text x="1044" y="249" fill="#fecaca">payments</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== LOG CONSOLE ===== -->
+  <g transform="translate(64,300)" filter="url(#ds)">
+    <rect x="0" y="0" width="1072" height="256" rx="18" fill="url(#panel)" stroke="#243650" stroke-width="1.5"/>
+    <!-- title bar -->
+    <rect x="0" y="0" width="1072" height="40" rx="18" fill="#0f1a2e"/>
+    <rect x="0" y="22" width="1072" height="18" fill="#0f1a2e"/>
+    <circle cx="26" cy="20" r="6" fill="#f87171"/>
+    <circle cx="48" cy="20" r="6" fill="#fbbf24"/>
+    <circle cx="70" cy="20" r="6" fill="#34d399"/>
+    <text x="96" y="25" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#7d93b3">production.log — tail -f</text>
+
+    <!-- log lines -->
+    <g font-family="'IBM Plex Mono',monospace" font-size="14.5">
+      <!-- helper rows -->
+      <g transform="translate(24,66)">
+        <rect x="0" y="0" width="52" height="20" rx="5" fill="#10331f"/>
+        <text x="26" y="15" fill="#5eead4" text-anchor="middle" font-size="11.5" letter-spacing="0.5">INFO</text>
+        <text x="66" y="15" fill="#8aa0c0">req received · status=200 · 14ms</text>
+      </g>
+      <g transform="translate(24,98)">
+        <rect x="0" y="0" width="52" height="20" rx="5" fill="#33240f"/>
+        <text x="26" y="15" fill="#fcd34d" text-anchor="middle" font-size="11.5" letter-spacing="0.5">WARN</text>
+        <text x="66" y="15" fill="#c9b58a">retry 2/3 · upstream slow · 820ms</text>
+      </g>
+
+      <!-- highlighted ERROR line -->
+      <g transform="translate(12,128)">
+        <rect x="0" y="0" width="1048" height="34" rx="8" fill="#2a1620" stroke="#f87171" stroke-width="1.2"/>
+        <g transform="translate(12,7)">
+          <rect x="0" y="0" width="58" height="20" rx="5" fill="#4a1620"/>
+          <text x="29" y="15" fill="#fca5a5" text-anchor="middle" font-size="11.5" letter-spacing="0.5">ERROR</text>
+        </g>
+        <text x="82" y="22" fill="#ffd9d9">payment.declined · trace=8f3c…a1 · timeout</text>
+      </g>
+
+      <g transform="translate(24,180)">
+        <rect x="0" y="0" width="52" height="20" rx="5" fill="#192a44"/>
+        <text x="26" y="15" fill="#7aa2d8" text-anchor="middle" font-size="11" letter-spacing="0.5">DEBUG</text>
+        <text x="66" y="15" fill="#5f7characters" /><text x="66" y="15" fill="#5f769b">cache miss · key=order:5521</text>
+      </g>
+      <g transform="translate(24,212)">
+        <rect x="0" y="0" width="52" height="20" rx="5" fill="#10331f"/>
+        <text x="26" y="15" fill="#5eead4" text-anchor="middle" font-size="11.5" letter-spacing="0.5">INFO</text>
+        <text x="66" y="15" fill="#8aa0c0">span closed · trace=8f3c…a1 · 940ms</text>
+      </g>
+    </g>
+
+    <!-- magnifier over the error line -->
+    <g transform="translate(905,118)">
+      <circle cx="0" cy="0" r="34" fill="#0c1422" fill-opacity="0.25" stroke="#e2e8f0" stroke-width="4"/>
+      <circle cx="0" cy="0" r="34" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="24" y1="24" x2="48" y2="48" stroke="#e2e8f0" stroke-width="7" stroke-linecap="round"/>
+      <path d="M-14 4 L-4 -8 L4 0 L16 -14" fill="none" stroke="#f87171" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- 3am clock chip -->
+  <g transform="translate(960,72)">
+    <rect x="0" y="0" width="176" height="44" rx="22" fill="#0d1626" stroke="#fbbf24" stroke-width="1.5"/>
+    <circle cx="26" cy="22" r="13" fill="none" stroke="#fbbf24" stroke-width="2"/>
+    <line x1="26" y1="22" x2="26" y2="14" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
+    <line x1="26" y1="22" x2="32" y2="25" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
+    <text x="50" y="28" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#fde68a">03:00 incident</text>
+  </g>
+
+  <!-- POST badge -->
+  <g transform="translate(64,576)">
+    <rect x="0" y="0" width="118" height="32" rx="8" fill="#0d1626" stroke="#34d399" stroke-width="1.3"/>
+    <text x="59" y="21" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#7fe9c4" text-anchor="middle" letter-spacing="1">POST-1065</text>
+  </g>
+
+  <!-- watermark -->
+  <text x="1136" y="598" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#5b7193" text-anchor="end" letter-spacing="0.5">cloudmato.com</text>
+</svg>
