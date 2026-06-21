@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="280" viewBox="0 0 700 280">
+  <rect width="700" height="280" fill="white"/>
+  <!-- Timeline axis -->
+  <line x1="45" y1="140" x2="672" y2="140" stroke="#4a90e2" stroke-width="3"/>
+  <polygon points="672,134 686,140 672,146" fill="#4a90e2"/>
+
+  <!-- Composite 1954 -->
+  <circle cx="60" cy="140" r="7" fill="#4a90e2"/>
+  <line x1="60" y1="133" x2="60" y2="105" stroke="#333333" stroke-width="1.5"/>
+  <text x="60" y="98" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">Composite</text>
+  <text x="60" y="160" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">1954</text>
+
+  <!-- VGA / S-Video 1987 -->
+  <circle cx="185" cy="140" r="7" fill="#4a90e2"/>
+  <line x1="185" y1="147" x2="185" y2="175" stroke="#333333" stroke-width="1.5"/>
+  <text x="185" y="187" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">VGA / S-Video</text>
+  <text x="185" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">1987</text>
+
+  <!-- DVI 1999 -->
+  <circle cx="315" cy="140" r="7" fill="#4a90e2"/>
+  <line x1="315" y1="133" x2="315" y2="100" stroke="#333333" stroke-width="1.5"/>
+  <text x="315" y="93" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">DVI</text>
+  <text x="315" y="160" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">1999</text>
+
+  <!-- HDMI 2003 -->
+  <circle cx="380" cy="140" r="7" fill="#e25f4a"/>
+  <line x1="380" y1="147" x2="380" y2="180" stroke="#333333" stroke-width="1.5"/>
+  <text x="380" y="192" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">HDMI</text>
+  <text x="380" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">2003</text>
+
+  <!-- DisplayPort 2006 -->
+  <circle cx="440" cy="140" r="7" fill="#4a90e2"/>
+  <line x1="440" y1="133" x2="440" y2="95" stroke="#333333" stroke-width="1.5"/>
+  <text x="440" y="88" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">DisplayPort</text>
+  <text x="440" y="160" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">2006</text>
+
+  <!-- Thunderbolt 3 / USB-C 2015 -->
+  <circle cx="540" cy="140" r="7" fill="#e25f4a"/>
+  <line x1="540" y1="147" x2="540" y2="185" stroke="#333333" stroke-width="1.5"/>
+  <text x="540" y="197" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">TB3 / USB-C</text>
+  <text x="540" y="120" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">2015</text>
+
+  <!-- TB5 / HDMI 2.2 2024+ -->
+  <circle cx="630" cy="140" r="7" fill="#4a90e2"/>
+  <line x1="630" y1="133" x2="630" y2="92" stroke="#333333" stroke-width="1.5"/>
+  <text x="630" y="83" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#333333">TB5 / HDMI 2.2</text>
+  <text x="630" y="160" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#666666">2024+</text>
+
+  <!-- Legend -->
+  <circle cx="75" cy="235" r="6" fill="#4a90e2"/>
+  <text x="87" y="240" font-family="Arial,sans-serif" font-size="11" fill="#333333">PC / Open Standard</text>
+  <circle cx="240" cy="235" r="6" fill="#e25f4a"/>
+  <text x="252" y="240" font-family="Arial,sans-serif" font-size="11" fill="#333333">Consumer AV / Licensed</text>
+
+  <!-- Title -->
+  <text x="350" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#333333">Timeline of Video Output Standards</text>
+  <text x="350" y="47" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#666666">From analog composite video to Thunderbolt 5</text>
+</svg>
