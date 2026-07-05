@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'Space Grotesk','Nunito',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef4f7"/>
+      <stop offset="1" stop-color="#dbe7ec"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f8fa"/>
+    </linearGradient>
+    <linearGradient id="live" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0e9f8e"/>
+      <stop offset="1" stop-color="#12b3a0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#183b46" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrLive" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0e9f8e"/>
+    </marker>
+    <marker id="arrDead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9fb3ba"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- faint mesh dots -->
+  <g fill="#c3d4da" opacity="0.55">
+    <circle cx="90" cy="90" r="3"/><circle cx="1110" cy="120" r="3"/>
+    <circle cx="1130" cy="520" r="3"/><circle cx="70" cy="540" r="3"/>
+  </g>
+
+  <!-- ===== hypermedia link arrows (drawn first, behind nodes) ===== -->
+  <!-- self : the only one everyone ships -->
+  <path d="M470 250 C 380 190, 300 190, 250 210" fill="none" stroke="#0e9f8e" stroke-width="3.5" marker-end="url(#arrLive)"/>
+  <!-- the links nobody follows -->
+  <g stroke="#9fb3ba" stroke-width="3" stroke-dasharray="7 8" fill="none" opacity="0.85">
+    <path d="M730 250 C 860 200, 940 210, 985 235" marker-end="url(#arrDead)"/>
+    <path d="M735 330 C 880 330, 940 350, 985 372" marker-end="url(#arrDead)"/>
+    <path d="M475 400 C 360 430, 300 440, 255 452" marker-end="url(#arrDead)"/>
+    <path d="M600 470 C 600 540, 620 560, 640 575" marker-end="url(#arrDead)"/>
+  </g>
+
+  <!-- ===== related resource nodes ===== -->
+  <!-- self (live) -->
+  <g>
+    <rect x="120" y="176" width="130" height="66" rx="14" fill="url(#live)" filter="url(#soft)"/>
+    <text x="185" y="205" text-anchor="middle" fill="#eafff9" font-size="15" font-weight="700">rel: self</text>
+    <text x="185" y="226" text-anchor="middle" fill="#bff1e8" font-size="12" font-family="'IBM Plex Mono',monospace">GET /order</text>
+  </g>
+  <!-- dead / unused nodes -->
+  <g font-family="'IBM Plex Mono',monospace">
+    <g opacity="0.7">
+      <rect x="985" y="205" width="140" height="60" rx="14" fill="#ffffff" stroke="#c4d3d9" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="1055" y="232" text-anchor="middle" fill="#7d949c" font-size="14" font-family="'Space Grotesk',sans-serif" font-weight="700">next</text>
+      <text x="1055" y="251" text-anchor="middle" fill="#9fb3ba" font-size="11">/order?p=2</text>
+    </g>
+    <g opacity="0.7">
+      <rect x="985" y="342" width="140" height="60" rx="14" fill="#ffffff" stroke="#c4d3d9" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="1055" y="369" text-anchor="middle" fill="#7d949c" font-size="14" font-family="'Space Grotesk',sans-serif" font-weight="700">cancel</text>
+      <text x="1055" y="388" text-anchor="middle" fill="#9fb3ba" font-size="11">DELETE</text>
+    </g>
+    <g opacity="0.7">
+      <rect x="120" y="422" width="140" height="60" rx="14" fill="#ffffff" stroke="#c4d3d9" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="190" y="449" text-anchor="middle" fill="#7d949c" font-size="14" font-family="'Space Grotesk',sans-serif" font-weight="700">payment</text>
+      <text x="190" y="468" text-anchor="middle" fill="#9fb3ba" font-size="11">/pay/88</text>
+    </g>
+    <g opacity="0.7">
+      <rect x="570" y="562" width="140" height="52" rx="14" fill="#ffffff" stroke="#c4d3d9" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="640" y="594" text-anchor="middle" fill="#7d949c" font-size="14" font-family="'Space Grotesk',sans-serif" font-weight="700">items</text>
+    </g>
+  </g>
+
+  <!-- ===== central response card ===== -->
+  <g filter="url(#soft)">
+    <rect x="440" y="205" width="320" height="270" rx="20" fill="url(#card)" stroke="#d4e2e7" stroke-width="1.5"/>
+    <!-- header -->
+    <rect x="440" y="205" width="320" height="46" rx="20" fill="#153b45"/>
+    <rect x="440" y="235" width="320" height="16" fill="#153b45"/>
+    <circle cx="466" cy="228" r="6" fill="#ef6f6c"/>
+    <circle cx="486" cy="228" r="6" fill="#f4c15d"/>
+    <circle cx="506" cy="228" r="6" fill="#5fd0a6"/>
+    <text x="740" y="233" text-anchor="end" fill="#9fc0c8" font-size="13" font-family="'IBM Plex Mono',monospace">200 OK</text>
+  </g>
+
+  <!-- JSON body -->
+  <g font-family="'IBM Plex Mono',monospace" font-size="15">
+    <text x="465" y="285" fill="#7d949c">{</text>
+    <text x="485" y="311" fill="#2b5560">"id"</text>
+    <text x="530" y="311" fill="#7d949c">:</text>
+    <text x="545" y="311" fill="#c96b3f">88</text>
+    <text x="565" y="311" fill="#7d949c">,</text>
+
+    <text x="485" y="337" fill="#2b5560">"status"</text>
+    <text x="565" y="337" fill="#7d949c">:</text>
+    <text x="580" y="337" fill="#0e9f8e">"paid"</text>
+    <text x="640" y="337" fill="#7d949c">,</text>
+
+    <!-- the H that gets skipped -->
+    <rect x="478" y="352" width="264" height="96" rx="10" fill="#0e9f8e" opacity="0.10"/>
+    <rect x="478" y="352" width="4" height="96" rx="2" fill="#0e9f8e"/>
+    <text x="497" y="378" fill="#0b7d70" font-weight="700">"_links"</text>
+    <text x="577" y="378" fill="#7d949c">: {</text>
+    <text x="517" y="404" fill="#2b5560">"self"</text>
+    <text x="510" y="430" fill="#b9c6cc">"next"</text>
+    <text x="577" y="430" fill="#b9c6cc">…</text>
+    <text x="640" y="404" fill="#7d949c">,</text>
+
+    <text x="465" y="470" fill="#7d949c">}</text>
+  </g>
+
+  <!-- "the H everyone skips" stamp -->
+  <g transform="rotate(-8 605 175)">
+    <rect x="470" y="150" width="270" height="50" rx="10" fill="none" stroke="#c96b3f" stroke-width="3"/>
+    <text x="605" y="182" text-anchor="middle" fill="#c96b3f" font-size="22" font-weight="800" letter-spacing="1">THE  H  IN  REST</text>
+  </g>
+
+  <!-- POST badge -->
+  <g>
+    <rect x="44" y="566" width="150" height="40" rx="20" fill="#153b45"/>
+    <text x="119" y="592" text-anchor="middle" fill="#7ef0dc" font-size="17" font-family="'IBM Plex Mono',monospace" font-weight="700" letter-spacing="1">POST-1069</text>
+  </g>
+
+  <!-- watermark -->
+  <text x="1156" y="596" text-anchor="end" fill="#6b8790" font-size="17" font-weight="700" opacity="0.75">cloudmato.com</text>
+</svg>

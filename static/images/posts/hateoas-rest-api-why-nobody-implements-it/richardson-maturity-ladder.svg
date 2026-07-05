@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320">
+  <rect width="700" height="320" fill="white"/>
+  <text x="350" y="30" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#333333">Richardson Maturity Model</text>
+  <rect x="120" y="250" width="460" height="40" fill="#f0f4f8" stroke="#333333"/>
+  <text x="140" y="275" font-family="sans-serif" font-size="14" fill="#333333">Level 0 — Single URI, single verb (the Swamp)</text>
+  <rect x="120" y="200" width="460" height="40" fill="#f0f4f8" stroke="#333333"/>
+  <text x="140" y="225" font-family="sans-serif" font-size="14" fill="#333333">Level 1 — Multiple resources (URIs)</text>
+  <rect x="120" y="150" width="460" height="40" fill="#f0f4f8" stroke="#333333"/>
+  <text x="140" y="175" font-family="sans-serif" font-size="14" fill="#333333">Level 2 — HTTP verbs + status codes</text>
+  <rect x="120" y="100" width="460" height="40" fill="#4a90e2" stroke="#333333"/>
+  <text x="140" y="125" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">Level 3 — HATEOAS (hypermedia controls)</text>
+  <text x="600" y="175" font-family="sans-serif" font-size="12" fill="#4a90e2">← you are</text>
+  <text x="600" y="190" font-family="sans-serif" font-size="12" fill="#4a90e2">   here</text>
+  <text x="350" y="70" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#333333" font-style="italic">Fielding: only Level 3 is truly "REST"</text>
+</svg>
