@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
+  <rect width="700" height="360" fill="white"/>
+  <text x="350" y="28" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333333" text-anchor="middle">A request passes through many caches</text>
+  <rect x="180" y="45" width="340" height="38" rx="4" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="69" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">1. Browser cache (on the device)</text>
+  <rect x="180" y="93" width="340" height="38" rx="4" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="117" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">2. Service worker / Cache API</text>
+  <rect x="180" y="141" width="340" height="38" rx="4" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="165" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">3. CDN / edge cache (global POPs)</text>
+  <rect x="180" y="189" width="340" height="38" rx="4" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="213" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">4. Reverse proxy (Varnish, Nginx)</text>
+  <rect x="180" y="237" width="340" height="38" rx="4" fill="#f0f4f8" stroke="#333333"/>
+  <text x="350" y="261" font-family="sans-serif" font-size="13" fill="#333333" text-anchor="middle">5. App / object cache (Redis, Memcached)</text>
+  <rect x="180" y="285" width="340" height="38" rx="4" fill="#4a90e2" stroke="#333333"/>
+  <text x="350" y="309" font-family="sans-serif" font-size="13" fill="white" text-anchor="middle">6. Database (query cache, buffer pool)</text>
+  <line x1="90" y1="64" x2="90" y2="304" stroke="#4a90e2" stroke-width="2"/>
+  <text x="70" y="64" font-family="sans-serif" font-size="11" fill="#333333" text-anchor="end">user</text>
+  <text x="70" y="308" font-family="sans-serif" font-size="11" fill="#333333" text-anchor="end">origin</text>
+  <polygon points="90,304 86,294 94,294" fill="#4a90e2"/>
+</svg>
